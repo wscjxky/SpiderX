@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/force',
+                    'echarts/chart/pie'
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+
+                var option = {
+    title : {
+        text: '音乐国家分布',
+        subtext: '万级歌曲',
+        x:'left',
+        y:'bottom'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'left',
+        data:['英文','中文','日语','韩语','其他']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : false,
+    series : (function (){
+        var series = [];
+        for (var i = 0; i < 30; i++) {
+            series.push({
+                name:'歌曲信息',
+                type:'pie',
+                itemStyle : {normal : {
+                    label : {show : i > 28},
+                    labelLine : {show : i > 28, length:20}
+                }},
+                radius : [i * 4 + 50, i * 4 + 53],
+
+                data:[
+                    {value: i * 8+ 8586,  name:'英文'},
+                    {value: i*64+1027,  name:'中文'},
+                    {value: i*16+893,  name:'日语'},
+                    {value:i*32+ 100,  name:'韩语'},
+                    {value: i*64+32, name:'其他'}
+                ]
+            })
+        }
+        series[0].markPoint = {
+            symbol:'emptyCircle',
+            symbolSize:series[0].radius[0],
+            effect:{show:true,scaleSize:12,color:'rgba(250,225,50,0.8)',shadowBlur:10,period:30},
+            data:[{x:'100%',y:'100%'}]
+        };
+        return series;
+    })()
+};
+
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+            }
+        );
+    </script>
+</body>
+
