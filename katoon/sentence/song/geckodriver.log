@@ -1,0 +1,22 @@
+1515746653766	geckodriver	INFO	geckodriver 0.19.1
+1515746653774	geckodriver	INFO	Listening on 127.0.0.1:59339
+1515746656866	mozrunner::runner	INFO	Running command: "D:\\firefox\\firefox.exe" "-marionette" "-headless" "-profile" "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rust_mozprofile.xnpvkhalBAOn"
+*** You are running in headless mode.
+1515746657273	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 13560, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515746658228	Marionette	INFO	Listening on port 59347
+1515746658387	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515746658426	Marionette	DEBUG	Register listener.js for window 4294967297
+1515746658442	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515746658642	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515746658642	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1515746660800	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://www.9ku.com/geshou/2.htm"
+1515746660853	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967304"
+1515746661393	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967310"
+1515746661393	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967311"
+1515746661393	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967312"
+1515746701157	Marionette	DEBUG	Received DOM event "pageshow" for "http://www.9ku.com/geshou/2.htm"
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Child 12688, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+hildThread] WARNING: pipe error: 232: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 513

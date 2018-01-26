@@ -1,0 +1,18 @@
+[INFO  - 2018-01-13T07:09:55.110Z] GhostDriver - Main - running on port 59833
+[INFO  - 2018-01-13T07:09:59.595Z] Session [c46fa820-f830-11e7-a518-2990c26eb659] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-01-13T07:09:59.595Z] Session [c46fa820-f830-11e7-a518-2990c26eb659] - page.customHeaders:  - {}
+[INFO  - 2018-01-13T07:09:59.596Z] Session [c46fa820-f830-11e7-a518-2990c26eb659] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-01-13T07:09:59.596Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: c46fa820-f830-11e7-a518-2990c26eb659
+[ERROR - 2018-01-13T07:11:26.029Z] Session [c46fa820-f830-11e7-a518-2990c26eb659] - page.onError - msg: TypeError: undefined is not an object (evaluating 'WN1x.addCallback')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-13T07:11:26.030Z] Session [c46fa820-f830-11e7-a518-2990c26eb659] - page.onError - stack:
+  (anonymous function) (http://s3.music.126.net/web/s/core.js?29194239c59167b56e51d0031a55eb05:132)
+  forEach (:0)
+  bd6X (http://s3.music.126.net/web/s/core.js?29194239c59167b56e51d0031a55eb05:17)
+  (anonymous function) (http://s3.music.126.net/web/s/core.js?29194239c59167b56e51d0031a55eb05:132)
+  (anonymous function) (http://s3.music.126.net/web/s/core.js?29194239c59167b56e51d0031a55eb05:1)
+  PB9s (http://s3.music.126.net/web/s/core.js?29194239c59167b56e51d0031a55eb05:25)
+  (anonymous function) (http://s3.music.126.net/web/s/core.js?29194239c59167b56e51d0031a55eb05:1)
+
+  phantomjs://platform/console++.js:263 in error

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:900px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/force'
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+
+                var option = {
+
+                    tooltip: {  
+                    trigger: 'item',  
+                    borderRadius: 8,//边框圆角  
+                    backgroundColor: 'rgba(51,204,204,0.7)',//背景颜色（此时为默认色）  
+                    formatter: "<div style=' text-align:center;'><img style=' text-align:center;width:100px;height:100px;' src='551951796.jpg'>" +
+                    "<p style='color: midnightblue;font:blod'>相同喜欢的歌<br>" +
+                    "歌名：Pray<br>" +
+                    "歌手：川瀬智子，<br>" +
+                    "专辑：银魂BEST</p></div>" +
+                    ""
+
+//                            function(params) {    
+//                        var res=params.name+'<br/>';  //电厂名称  
+//                        var s=myChart.getOption()  ;
+//                         res="<img style='width:250px;height:150px;' src='492496544.jpg'>";  
+//
+//                       console.log(res);                         return res;    
+//                    },  
+                },  
+    title : {
+        text: '网易云用户关系图',
+        subtext: '千万级数据',
+        x:'left',
+        y:'bottom'
+    },
+
+    toolbox: {
+        show : true,
+        feature : {
+            restore : {show: true},
+            magicType: {show: true, type: ['force', 'chord']},
+            saveAsImage : {show: true}
+        }
+    },
+    legend: {
+        x: 'left',
+        data:['家人','朋友','人物']
+    },
+    series : [
+        {
+            type:'force',
+            name : "人物关系",
+            ribbonType: false,
+            categories : [
+                {
+                    name: '人物'
+                },
+                {
+                    name: '家人'
+                },
+                {
+                    name:'朋友'
+                }
+            ],
+            itemStyle: {
+                normal: {
+                    label: {
+                        show: true,
+                        textStyle: {
+                            color: '#333',
+                            fontWeight:'bolder',
+                            fontSize:'25'
+                        }
+                    },
+                    nodeStyle : {
+                        brushType : 'both',
+                        borderColor : 'rgba(255,215,0,0.4)',
+                        borderWidth : 4
+                    },
+                    linkStyle: {
+                        type: 'curve'
+                    }
+                },
+                emphasis: {
+                    label: {
+                        show: false
+                        // textStyle: null      // 默认使用全局文本样式，详见TEXTSTYLE
+                    },
+                    nodeStyle : {
+//                        r: 30
+                    },
+                    linkStyle : {}
+                }
+            },
+            useWorker: false,
+            minRadius : 30,
+            maxRadius : 70,
+            gravity: 1.2,
+            scaling: 1.8,
+            roam: true,
+            nodes:[
+{'category': '\u4eba\u7269', 'name': 'BAMBOO-\u677f\u5e03', 'value': 100},{'category': '\u4eba\u7269', 'name': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', 'value': 4},{'category': '\u4eba\u7269', 'name': 'wwz000811', 'value': 9},{'category': '\u4eba\u7269', 'name': 'MySexyGir1', 'value': 5},{'category': '\u4eba\u7269', 'name': '\u4e00\u53ea\u5c0f\u732b\u9171', 'value': 3},{'category': '\u4eba\u7269', 'name': '\u5c0f\u65e5\u5149', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u6d77\u843d\u795e\u7fbd', 'value': 4},{'category': '\u4eba\u7269', 'name': '\u9648shori', 'value': 6},{'category': '\u4eba\u7269', 'name': '\u5c0f\u51ef\u65e0\u654c\u4e4b\u5929\u706d\u7ade\u8d5b\u72d7', 'value': 2},{'category': '\u4eba\u7269', 'name': '18\u5398\u7c73\u5c0f\u4e2a\u5b50', 'value': 2},{'category': '\u4eba\u7269', 'name': 'Stardust\u4e36\u661f\u8fb0', 'value': 3},{'category': '\u4eba\u7269', 'name': '\u79cb\u5929\u7684\u843d\u7ea2', 'value': 13},{'category': '\u4eba\u7269', 'name': '\u54c8\u5409\u91cc', 'value': 12},{'category': '\u4eba\u7269', 'name': '\u6761\u6761\u6700\u5e05', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u5728\u9633\u5149\u4e0b\u6d41\u5931\u7684\u9752\u6625', 'value': 11},{'category': '\u4eba\u7269', 'name': '\u85b0de\u53cb\u4ebaA', 'value': 2},{'category': '\u4eba\u7269', 'name': '\u4e3fUnravel\u706cghoul', 'value': 2},{'category': '\u4eba\u7269', 'name': '\u843d\u82b1\u4ea6\u76f8\u4f34\u706c', 'value': 3},{'category': '\u4eba\u7269', 'name': '\u8fd9\u5c31\u662fi\u7231', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', 'value': 100},{'category': '\u4eba\u7269', 'name': '\u5173\u4e8e\u5c0f\u54e5\u54e5\u5728\u8bf4\u4ec0\u4e48\u771f\u7684\u597d\u60f3\u77e5\u9053', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u79cb\u5929\u7684\u843d\u7ea2', 'value': 8},{'category': '\u4eba\u7269', 'name': 'MySexyGir1', 'value': 8},{'category': '\u4eba\u7269', 'name': 'wwz000811', 'value': 13},{'category': '\u4eba\u7269', 'name': 'Stardust\u4e36\u661f\u8fb0', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u54c8\u5409\u91cc', 'value': 27},{'category': '\u4eba\u7269', 'name': '\u85b0de\u53cb\u4ebaA', 'value': 2},{'category': '\u4eba\u7269', 'name': '\u5a09\u67ad\u8885', 'value': 2},{'category': '\u4eba\u7269', 'name': '\u843d\u82b1\u4ea6\u76f8\u4f34\u706c', 'value': 7},{'category': '\u4eba\u7269', 'name': '\u5728\u9633\u5149\u4e0b\u6d41\u5931\u7684\u9752\u6625', 'value': 11},{'category': '\u4eba\u7269', 'name': '\u6761\u6761\u6700\u5e05', 'value': 1},{'category': '\u4eba\u7269', 'name': '18\u5398\u7c73\u5c0f\u4e2a\u5b50', 'value': 19},{'category': '\u4eba\u7269', 'name': '\u5965\u5229\u53cb\u5207', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u8fd9\u5c31\u662fi\u7231', 'value': 7},{'category': '\u4eba\u7269', 'name': '\u68c0\u6e05\u5b81', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u9648shori', 'value': 21},{'category': '\u4eba\u7269', 'name': 'Tutur-NI', 'value': 1},{'category': '\u4eba\u7269', 'name': 'wwz000811', 'value': 100},{'category': '\u4eba\u7269', 'name': '\u6d77\u843d\u795e\u7fbd', 'value': 13},{'category': '\u4eba\u7269', 'name': '\u6761\u6761\u6700\u5e05', 'value': 2},{'category': '\u4eba\u7269', 'name': '\u79cb\u5929\u7684\u843d\u7ea2', 'value': 35},{'category': '\u4eba\u7269', 'name': '\u5173\u4e8e\u5c0f\u54e5\u54e5\u5728\u8bf4\u4ec0\u4e48\u771f\u7684\u597d\u60f3\u77e5\u9053', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u85b0de\u53cb\u4ebaA', 'value': 6},{'category': '\u4eba\u7269', 'name': 'JellyJello', 'value': 4},{'category': '\u4eba\u7269', 'name': '\u4e3fUnravel\u706cghoul', 'value': 3},{'category': '\u4eba\u7269', 'name': 'Ren\u8d30\u8ca8', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u5c0f\u51ef\u65e0\u654c\u4e4b\u5929\u706d\u7ade\u8d5b\u72d7', 'value': 4},{'category': '\u4eba\u7269', 'name': '\u843d\u82b1\u4ea6\u76f8\u4f34\u706c', 'value': 10},{'category': '\u4eba\u7269', 'name': '\u5728\u9633\u5149\u4e0b\u6d41\u5931\u7684\u9752\u6625', 'value': 41},{'category': '\u4eba\u7269', 'name': '\u5c0f\u65e5\u5149', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u9648shori', 'value': 39},{'category': '\u4eba\u7269', 'name': '\u8fd9\u5c31\u662fi\u7231', 'value': 10},{'category': '\u4eba\u7269', 'name': '\u4e00\u53ea\u5c0f\u732b\u9171', 'value': 2},{'category': '\u4eba\u7269', 'name': 'MySexyGir1', 'value': 15},{'category': '\u4eba\u7269', 'name': 'Stardust\u4e36\u661f\u8fb0', 'value': 6},{'category': '\u4eba\u7269', 'name': 'Tutur-NI', 'value': 3},{'category': '\u4eba\u7269', 'name': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', 'value': 13},{'category': '\u4eba\u7269', 'name': '\u54c8\u5409\u91cc', 'value': 35},{'category': '\u4eba\u7269', 'name': '18\u5398\u7c73\u5c0f\u4e2a\u5b50', 'value': 19},{'category': '\u4eba\u7269', 'name': 'MySexyGir1', 'value': 100},{'category': '\u4eba\u7269', 'name': '\u5728\u9633\u5149\u4e0b\u6d41\u5931\u7684\u9752\u6625', 'value': 6},{'category': '\u4eba\u7269', 'name': '\u79cb\u5929\u7684\u843d\u7ea2', 'value': 10},{'category': '\u4eba\u7269', 'name': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', 'value': 8},{'category': '\u4eba\u7269', 'name': '\u54c8\u5409\u91cc', 'value': 29},{'category': '\u4eba\u7269', 'name': '\u5a09\u67ad\u8885', 'value': 2},{'category': '\u4eba\u7269', 'name': '\u4e00\u53ea\u5c0f\u732b\u9171', 'value': 1},{'category': '\u4eba\u7269', 'name': '18\u5398\u7c73\u5c0f\u4e2a\u5b50', 'value': 15},{'category': '\u4eba\u7269', 'name': 'Stardust\u4e36\u661f\u8fb0', 'value': 3},{'category': '\u4eba\u7269', 'name': 'wwz000811', 'value': 15},{'category': '\u4eba\u7269', 'name': '\u6761\u6761\u6700\u5e05', 'value': 1},{'category': '\u4eba\u7269', 'name': 'JellyJello', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u8fd9\u5c31\u662fi\u7231', 'value': 3},{'category': '\u4eba\u7269', 'name': '\u5c0f\u51ef\u65e0\u654c\u4e4b\u5929\u706d\u7ade\u8d5b\u72d7', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u5965\u5229\u53cb\u5207', 'value': 1},{'category': '\u4eba\u7269', 'name': '\u843d\u82b1\u4ea6\u76f8\u4f34\u706c', 'value': 5},{'category': '\u4eba\u7269', 'name': '\u6d77\u843d\u795e\u7fbd', 'value': 2},{'category': '\u4eba\u7269', 'name': '\u9648shori', 'value': 17},
+],
+            links : [{'source': 'BAMBOO-\u677f\u5e03', target: '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', 'weight': 4},{'source': 'BAMBOO-\u677f\u5e03', target: 'wwz000811', 'weight': 9},{'source': 'BAMBOO-\u677f\u5e03', target: 'MySexyGir1', 'weight': 5},{'source': 'BAMBOO-\u677f\u5e03', target: '\u4e00\u53ea\u5c0f\u732b\u9171', 'weight': 3},{'source': 'BAMBOO-\u677f\u5e03', target: '\u5c0f\u65e5\u5149', 'weight': 1},{'source': 'BAMBOO-\u677f\u5e03', target: '\u6d77\u843d\u795e\u7fbd', 'weight': 4},{'source': 'BAMBOO-\u677f\u5e03', target: '\u9648shori', 'weight': 6},{'source': 'BAMBOO-\u677f\u5e03', target: '\u5c0f\u51ef\u65e0\u654c\u4e4b\u5929\u706d\u7ade\u8d5b\u72d7', 'weight': 2},{'source': 'BAMBOO-\u677f\u5e03', target: '18\u5398\u7c73\u5c0f\u4e2a\u5b50', 'weight': 2},{'source': 'BAMBOO-\u677f\u5e03', target: 'Stardust\u4e36\u661f\u8fb0', 'weight': 3},{'source': 'BAMBOO-\u677f\u5e03', target: '\u79cb\u5929\u7684\u843d\u7ea2', 'weight': 13},{'source': 'BAMBOO-\u677f\u5e03', target: '\u54c8\u5409\u91cc', 'weight': 12},{'source': 'BAMBOO-\u677f\u5e03', target: '\u6761\u6761\u6700\u5e05', 'weight': 1},{'source': 'BAMBOO-\u677f\u5e03', target: '\u5728\u9633\u5149\u4e0b\u6d41\u5931\u7684\u9752\u6625', 'weight': 11},{'source': 'BAMBOO-\u677f\u5e03', target: '\u85b0de\u53cb\u4ebaA', 'weight': 2},{'source': 'BAMBOO-\u677f\u5e03', target: '\u4e3fUnravel\u706cghoul', 'weight': 2},{'source': 'BAMBOO-\u677f\u5e03', target: '\u843d\u82b1\u4ea6\u76f8\u4f34\u706c', 'weight': 3},{'source': 'BAMBOO-\u677f\u5e03', target: '\u8fd9\u5c31\u662fi\u7231', 'weight': 1},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u5173\u4e8e\u5c0f\u54e5\u54e5\u5728\u8bf4\u4ec0\u4e48\u771f\u7684\u597d\u60f3\u77e5\u9053', 'weight': 1},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u79cb\u5929\u7684\u843d\u7ea2', 'weight': 8},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: 'MySexyGir1', 'weight': 8},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: 'wwz000811', 'weight': 13},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: 'Stardust\u4e36\u661f\u8fb0', 'weight': 1},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u54c8\u5409\u91cc', 'weight': 27},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u85b0de\u53cb\u4ebaA', 'weight': 2},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u5a09\u67ad\u8885', 'weight': 2},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u843d\u82b1\u4ea6\u76f8\u4f34\u706c', 'weight': 7},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u5728\u9633\u5149\u4e0b\u6d41\u5931\u7684\u9752\u6625', 'weight': 11},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u6761\u6761\u6700\u5e05', 'weight': 1},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '18\u5398\u7c73\u5c0f\u4e2a\u5b50', 'weight': 19},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u5965\u5229\u53cb\u5207', 'weight': 1},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u8fd9\u5c31\u662fi\u7231', 'weight': 7},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u68c0\u6e05\u5b81', 'weight': 1},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: '\u9648shori', 'weight': 21},{'source': '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', target: 'Tutur-NI', 'weight': 1},{'source': 'wwz000811', target: '\u6d77\u843d\u795e\u7fbd', 'weight': 13},{'source': 'wwz000811', target: '\u6761\u6761\u6700\u5e05', 'weight': 2},{'source': 'wwz000811', target: '\u79cb\u5929\u7684\u843d\u7ea2', 'weight': 35},{'source': 'wwz000811', target: '\u5173\u4e8e\u5c0f\u54e5\u54e5\u5728\u8bf4\u4ec0\u4e48\u771f\u7684\u597d\u60f3\u77e5\u9053', 'weight': 1},{'source': 'wwz000811', target: '\u85b0de\u53cb\u4ebaA', 'weight': 6},{'source': 'wwz000811', target: 'JellyJello', 'weight': 4},{'source': 'wwz000811', target: '\u4e3fUnravel\u706cghoul', 'weight': 3},{'source': 'wwz000811', target: 'Ren\u8d30\u8ca8', 'weight': 1},{'source': 'wwz000811', target: '\u5c0f\u51ef\u65e0\u654c\u4e4b\u5929\u706d\u7ade\u8d5b\u72d7', 'weight': 4},{'source': 'wwz000811', target: '\u843d\u82b1\u4ea6\u76f8\u4f34\u706c', 'weight': 10},{'source': 'wwz000811', target: '\u5728\u9633\u5149\u4e0b\u6d41\u5931\u7684\u9752\u6625', 'weight': 41},{'source': 'wwz000811', target: '\u5c0f\u65e5\u5149', 'weight': 1},{'source': 'wwz000811', target: '\u9648shori', 'weight': 39},{'source': 'wwz000811', target: '\u8fd9\u5c31\u662fi\u7231', 'weight': 10},{'source': 'wwz000811', target: '\u4e00\u53ea\u5c0f\u732b\u9171', 'weight': 2},{'source': 'wwz000811', target: 'MySexyGir1', 'weight': 15},{'source': 'wwz000811', target: 'Stardust\u4e36\u661f\u8fb0', 'weight': 6},{'source': 'wwz000811', target: 'Tutur-NI', 'weight': 3},{'source': 'wwz000811', target: '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', 'weight': 13},{'source': 'wwz000811', target: '\u54c8\u5409\u91cc', 'weight': 35},{'source': 'wwz000811', target: '18\u5398\u7c73\u5c0f\u4e2a\u5b50', 'weight': 19},{'source': 'MySexyGir1', target: '\u5728\u9633\u5149\u4e0b\u6d41\u5931\u7684\u9752\u6625', 'weight': 6},{'source': 'MySexyGir1', target: '\u79cb\u5929\u7684\u843d\u7ea2', 'weight': 10},{'source': 'MySexyGir1', target: '\u5341\u5e74\u4e0d\u9047\u4f60\u5341\u68a6\u4e5d\u6709\u4f60', 'weight': 8},{'source': 'MySexyGir1', target: '\u54c8\u5409\u91cc', 'weight': 29},{'source': 'MySexyGir1', target: '\u5a09\u67ad\u8885', 'weight': 2},{'source': 'MySexyGir1', target: '\u4e00\u53ea\u5c0f\u732b\u9171', 'weight': 1},{'source': 'MySexyGir1', target: '18\u5398\u7c73\u5c0f\u4e2a\u5b50', 'weight': 15},{'source': 'MySexyGir1', target: 'Stardust\u4e36\u661f\u8fb0', 'weight': 3},{'source': 'MySexyGir1', target: 'wwz000811', 'weight': 15},{'source': 'MySexyGir1', target: '\u6761\u6761\u6700\u5e05', 'weight': 1},{'source': 'MySexyGir1', target: 'JellyJello', 'weight': 1},{'source': 'MySexyGir1', target: '\u8fd9\u5c31\u662fi\u7231', 'weight': 3},{'source': 'MySexyGir1', target: '\u5c0f\u51ef\u65e0\u654c\u4e4b\u5929\u706d\u7ade\u8d5b\u72d7', 'weight': 1},{'source': 'MySexyGir1', target: '\u5965\u5229\u53cb\u5207', 'weight': 1},{'source': 'MySexyGir1', target: '\u843d\u82b1\u4ea6\u76f8\u4f34\u706c', 'weight': 5},{'source': 'MySexyGir1', target: '\u6d77\u843d\u795e\u7fbd', 'weight': 2},{'source': 'MySexyGir1', target: '\u9648shori', 'weight': 17},
+]
+        }
+    ]
+};
+
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+            }
+        );
+    </script>
+</body>
+
