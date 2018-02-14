@@ -157,7 +157,7 @@ if __name__ == '__main__':
     while True:
         if diedai > 0 and not STOP_FLAG:
             users_idlist = []
-            for i in range(50):
+            for i in range(200):
                 pop = DB.spop('users')
                 if (DB.sadd('ori_users', pop)):
                     users_idlist.append(pop)

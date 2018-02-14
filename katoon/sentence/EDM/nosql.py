@@ -2,7 +2,7 @@
 
 import redis
 
-DB = redis.Redis(host='47.94.251.202', port=6379,db=1,password='wscj123')
+DB = redis.Redis(host='47.94.251.202', port=6379,db=1,password='wscjxky123')
 
 # if __name__ == '__main__':
 #
