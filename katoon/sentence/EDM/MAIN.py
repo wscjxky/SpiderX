@@ -172,25 +172,6 @@ def get_user_allsongs():
         # get_playlist_song(play_id,play_source)
 
 
-def get_user_likesongs(user_id, data):
-    # 用户喜欢的歌单下的所有歌
-    res = json.loads(data)
-    for playlist in res['playlist']:
-        if '喜欢' in playlist['name'].encode('utf8'):
-            print playlist['name']
-            url = 'http://music.163.com/playlist?id=' + str(playlist['id'])
-            data = (requestUrl(url))
-            soup = BeautifulSoup(data, 'html.parser')
-            tag_ul = soup.find('ul', class_="f-hide")
-            try:
-                for li in tag_ul:
-                    for l in li:
-                        song_id = l.get('href')[9:]
-                        playlist_name = 'user:' + str(user_id) + ':like_song'
-                        DB.rpush(playlist_name, song_id)
-            except Exception, e:
-                print e
-        break
 
 
 def get_user_top():
@@ -402,18 +383,6 @@ if __name__ == '__main__':
 # user_list=get_alluser_id()
 # for user in user_list:
 #     get_user_info(user)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*- #
+import json
 import random
 import re
 
@@ -10,6 +11,8 @@ import urllib2
 from constant import *
 from bs4 import BeautifulSoup
 import redis
+
+
 socket.setdefaulttimeout(10)
 DB = redis.Redis(host='47.94.251.202', port=6379,db=10,password='wscjxky')
 
@@ -30,6 +33,24 @@ def startthread(fucname, urllist, ):
         t.start()
     for j in threadlist:
         j.join()
+def get_user_likesongs(user_id):
+    # 用户喜欢的歌单下的所有歌
+    data=requestUrl('http://music.163.com/api/user/playlist/?offset=&limit=1&uid='+str(user_id))
+    res = json.loads(data)
+    playlist = res['playlist'][0]
+    print playlist['name']
+    url = 'http://music.163.com/playlist?id=' + str(playlist['id'])
+    data = (requestUrl(url))
+    soup = BeautifulSoup(data, 'html.parser')
+    tag_ul = soup.find('ul', class_="f-hide")
+    try:
+        for li in tag_ul:
+            for l in li:
+                song_id = l.get('href')[9:]
+                playlist_name = 'user:' + str(user_id) + ':like_songs'
+                DB.sadd(playlist_name, song_id)
+    except Exception, e:
+        print e
 
 def get_indexpage_playlist(data):
     soup = BeautifulSoup(data, 'html.parser')
@@ -97,6 +118,7 @@ def get_playlist_followuser(playlist_id):
         if tag_a != -1:
             user_id = tag_a.get('href')[14:]
             DB.sadd('users', str(user_id))
+
 def get_user_info(user_id):
     url = 'http://music.163.com/user/home?id=' + str(user_id)
     data = requestUrl(url)
@@ -154,18 +176,33 @@ if __name__ == '__main__':
     #         break
     # 多线程取user_info
     STOP_FLAG=False
+    # while True:
+    #     if diedai > 0 and not STOP_FLAG:
+    #         users_idlist = []
+    #         for i in range(200):
+    #             pop = DB.spop('users')
+    #             if (DB.sadd('ori_users', pop)):
+    #                 users_idlist.append(pop)
+    #         time.sleep(TIME_SLEEP)
+    #         startthread(get_user_info, users_idlist)
+    #         diedai -= 1
+    #     else:
+    #         break
+
+
+    #取用户喜欢的歌
     while True:
         if diedai > 0 and not STOP_FLAG:
             users_idlist = []
             for i in range(200):
                 pop = DB.spop('users')
-                if (DB.sadd('ori_users', pop)):
-                    users_idlist.append(pop)
+                users_idlist.append(pop)
             time.sleep(TIME_SLEEP)
-            startthread(get_user_info, users_idlist)
+            startthread(get_user_likesongs, users_idlist)
             diedai -= 1
         else:
             break
+
 
     # print DB.sismember('users','')
     # 取热门歌单
