@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*- #
+import json
 import random
 import re
 
@@ -42,6 +43,7 @@ def get_indexpage_playlist(data):
     except Exception, e:
         print e
 def get_playlist_playlistandfollower(playlist_id):
+
     data=requestUrl('http://music.163.com/playlist?id=' + str(playlist_id))
     soup = BeautifulSoup(data, 'html.parser')
     tag_divs = soup.find_all('a', class_="sname f-fs1 s-fc0")
@@ -54,10 +56,11 @@ def get_playlist_playlistandfollower(playlist_id):
     except Exception, e:
         print e
 def requestUrl(url, restart=0):
-    proxy={'http': 'http://39.134.93.13:80'}
-    proxy_support = urllib2.ProxyHandler(proxy)
-    opener = urllib2.build_opener(proxy_support)
-    urllib2.install_opener(opener)
+    # proxy={'http': 'http://39.134.93.13:80'}
+    # proxy_support = urllib2.ProxyHandler(proxy)
+    # opener = urllib2.build_opener(proxy_support)
+    # urllib2.install_opener(opener)
+
     filename = url[FILE_OFFSET:]
     try:
         if  restart:
@@ -79,6 +82,25 @@ def requestUrl(url, restart=0):
             return data
     except Exception, e:
         print e
+def get_user_likesongs(user_id):
+    # 用户喜欢的歌单下的所有歌
+    data=requestUrl('http://music.163.com/api/user/playlist/?offset=&limit=1&uid=' + str(user_id))
+    res = json.loads(data)
+    playlist=res['playlist'][0]
+    print playlist['name']
+    url = 'http://music.163.com/playlist?id=' + str(playlist['id'])
+    data = (requestUrl(url))
+    soup = BeautifulSoup(data, 'html.parser')
+    tag_ul = soup.find('ul', class_="f-hide")
+    try:
+        for li in tag_ul:
+            for l in li:
+                song_id = l.get('href')[9:]
+                playlist_name = 'user:' + str(user_id) + ':like_songs'
+                DB.sadd(playlist_name, song_id)
+    except Exception, e:
+        print e
+
 
 def get_playlist_followuser(playlist_id):
     # 获取歌单的追随者
@@ -103,7 +125,7 @@ def get_user_info(user_id):
         if city:
             dic['city']=city.text[5:]
         dic['img'] = soup.find('dt', attrs={'id': 'ava'}).find('img').get('src')
-
+        print name.text
         DB.hmset('user:' + str(user_id), dic)
 
     except Exception, e:
@@ -124,31 +146,67 @@ def check_user_page(user_id):
         print 'none'
 
 if __name__ == '__main__':
+    diedai=10
+
     # 279254081
     # while True:
     #     playlist_idlist=[]
     #     for i in range(50):
     #         playlist_idlist.append()
     #     startthread(get_playlist_playlist(playlist_idlist),playlist_idlist)
+    # 多线程取userinfo
+    STOP_FLAG=False
+    # while True:
+    #     if diedai > 0 and not STOP_FLAG:
+    #         users_idlist = []
+    #         for i in range(200):
+    #             pop = DB.spop('users')
+    #             if (DB.sadd('ori_users', pop)):
+    #                 users_idlist.append(pop)
+    #         time.sleep(TIME_SLEEP)
+    #         startthread(get_user_info, users_idlist)
+    #         diedai -= 1
+    #     else:
+    #         break
+    #多线程取喜爱的音乐
+    while True:
+        if diedai>0:
+            user_id_list = []
+            for i in range(100):
+                pop = DB.spop('users')
+                user_id_list.append(pop)
+            startthread(get_user_likesongs,user_id_list)
+            diedai-=1
+            time.sleep(TIME_SLEEP)
 
+        else:
+            break
     #多线程取user
     # while True:
-    #         playlist_idlist = []
-    #         for i in range(50):
-    #             pop = DB.spop('playlist')
-    #             DB.sadd('ori_playlist', pop)
-    #             playlist_idlist.append(pop)
-    #         time.sleep(TIME_SLEEP)
-    #         startthread(get_playlist_playlistandfollower,playlist_idlist)
-    print DB.sismember('users','')
-    # url='http://music.163.com/discover/playlist/?order=hot&cat=%E5%85%A8%E9%83%A8&limit=35&offset='
-    # for i in range(0,701,35):
-    #     get_indexpage_playlist(requestUrl(url+str(i)))
+            # while True:
+            #     if diedai>0:
+            #         playlist_idlist = []
+            #         for i in range(100):
+            #             pop = DB.spop('playlist')
+            #             if (DB.sadd('ori_playlist', pop)):
+            #                 playlist_idlist.append(pop)
+            #         time.sleep(TIME_SLEEP)
+            #         startthread(get_playlist_playlistandfollower,playlist_idlist)
+            #         diedai-=1
+            #     else:
+            #         break
 
+
+    #获取歌单
     # while True:
     #     playlist_idlist=[]
     #     for i in range(50):
     #         playlist_idlist.append(DB.spop('playlist'))
     #     startthread(get_playlist_followuser,playlist_idlist)
+
+    # 取热门歌单
+    # url='http://music.163.com/discover/playlist/?order=hot&cat=%E5%85%A8%E9%83%A8&limit=35&offset='
+    # for i in range(0,701,35):
+    #     get_indexpage_playlist(requestUrl(url+str(i)))
 
 

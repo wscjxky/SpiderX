@@ -161,7 +161,7 @@ if __name__ == '__main__':
     #     startthread(get_playlist_playlist(playlist_idlist),playlist_idlist)
 
     #多线程取user
-    diedai=30
+    diedai=2
     # while True:
     #     if diedai>0:
     #         playlist_idlist = []
@@ -176,32 +176,31 @@ if __name__ == '__main__':
     #         break
     # 多线程取user_info
     STOP_FLAG=False
+    while True:
+        if diedai > 0 and not STOP_FLAG:
+            users_idlist = []
+            for i in range(1000):
+                pop = DB.spop('co_users')
+                users_idlist.append(pop)
+            time.sleep(TIME_SLEEP)
+            startthread(get_user_info, users_idlist)
+            diedai -= 1
+        else:
+            break
+
+
+    #取用户喜欢的歌
     # while True:
     #     if diedai > 0 and not STOP_FLAG:
     #         users_idlist = []
     #         for i in range(200):
     #             pop = DB.spop('users')
-    #             if (DB.sadd('ori_users', pop)):
-    #                 users_idlist.append(pop)
+    #             users_idlist.append(pop)
     #         time.sleep(TIME_SLEEP)
-    #         startthread(get_user_info, users_idlist)
+    #         startthread(get_user_likesongs, users_idlist)
     #         diedai -= 1
     #     else:
     #         break
-
-
-    #取用户喜欢的歌
-    while True:
-        if diedai > 0 and not STOP_FLAG:
-            users_idlist = []
-            for i in range(200):
-                pop = DB.spop('users')
-                users_idlist.append(pop)
-            time.sleep(TIME_SLEEP)
-            startthread(get_user_likesongs, users_idlist)
-            diedai -= 1
-        else:
-            break
 
 
     # print DB.sismember('users','')
