@@ -14,7 +14,7 @@ import redis
 
 
 socket.setdefaulttimeout(10)
-DB = redis.Redis(host='47.94.251.202', port=6379,db=10,password='wscjxky')
+DB = redis.Redis(host='47.94.251.202', port=6379,db=2,password='wscjxky')
 
 import threading
 class MyThread(threading.Thread):
