@@ -26,6 +26,7 @@ DB = redis.Redis(host='47.94.251.202', port=6379, db=2, password='wscjxky')
 key_cache = 'cache:'
 re_chinese_words = re.compile(u"[\u4e00-\u9fa5]+")
 baike_url = 'https://baike.baidu.com/item/'
+base_url = 'https://baike.baidu.com'
 data_file = 'data.txt'
 sort_list = []
 
@@ -106,36 +107,98 @@ def getPicData():
             pic_url = (re.search(u"(/pic/.+)/0", data)).group(1)
             album_url = 'https://baike.baidu.com' + pic_url
             url_list.append(album_url)
-            sort_list.append(sort+':pic')
-            print 'pic:'+sort
+            sort_list.append(sort + ':pic')
+            print 'pic:' + sort
         except Exception as e:
             print e
     startthread(requestUrl, url_list, sort_list)
-def getPicUrl():
-    key_pic='pic:'
-    keys = DB.keys('cache:*:pic')
+
+
+def getPicAlbum():
+    keys = DB.keys('cache:*')
+    url_list = []
+    sort_list = []
     for key in keys:
-        data=DB.get(key)
-        new_key= key[6:]
-        print key
-        pic= re.findall(u'img  src="(.*?)"',data)
-        for i in pic:
-            DB.sadd(key_pic + new_key[:-4], i)
-        pic= re.findall(u'img src="(.*?)"', data)
-        for j in pic:
-            DB.sadd(key_pic + new_key[:-4], j)
+        # try:
+        data = DB.get(key)
+        sort = key[6:][:-4]
+        # try:
+        #     data = DB.get(key)
+        #     sort = key[6:]
+        #     pic_url = (re.search(u"(/pic/.+)/0", data)).group(1)
+        #     album_url = 'https://baike.baidu.com' + pic_url
+        #     url_list.append(album_url)
+        #     sort_list.append(sort + ':pic')
+        #     print 'pic:' + sort
+        # except Exception as e:
+        #     print e
+        # startthread(requestUrl, url_list, sort_list)
+        soup = BeautifulSoup(data, 'html.parser')
+        tags_div = soup.find_all('div', class_="album-pics")
+        for tag_div in tags_div:
+            tags_img = tag_div.find_all('a')
+            for tag_img in tags_img:
+                print tag_img.get('href')
+                print sort
+                DB.sadd('album:' + sort, base_url + tag_img.get('href'))
+
+                # key_pic = 'pic:'
+                # keys = DB.keys('cache:*:pic')
+                # for key in keys:
+                #     data = DB.get(key)
+                #     new_key = key[6:]
+                #     print key
+                #     pic = re.findall(u'img  src="(.*?)"', data)
+                #     for i in pic:
+                #         DB.sadd(key_pic + new_key[:-4], i)
+                #     pic = re.findall(u'img src="(.*?)"', data)
+                #     for j in pic:
+                #         DB.sadd(key_pic + new_key[:-4], j)
 
 
-keys = DB.keys('pic:*')
-for key in keys:
-    data=DB.smembers(key)
-    try:
-        os.mkdir(key[4:].decode('utf-8'))
-        for index,i in enumerate(data):
-            request = urllib2.Request(i, None, M_Headers)
-            response = urllib2.urlopen(request)
-            with open("%s/%s.jpg" % (key[4:].decode('utf-8'),str(index)), "wb") as f:
-                f.write(response.read())
-            print(i)
-    except:
-        pass
+def getPicHref(url, sort):
+    time.sleep(TIME_SLEEP)
+    req = urllib2.Request(url, headers=M_Headers)
+    data = urllib2.urlopen(req).read()
+    soup = BeautifulSoup(data, 'html.parser')
+    tag_a = soup.find('a', class_="origin")
+    href = tag_a.get('href')
+    print href
+    DB.sadd(sort, href)
+
+
+'output_images'
+
+
+def getAlbumPIc():
+    keys = DB.keys('album:*')
+    threadlist = []
+    for key in keys:
+        members = DB.smembers(key)
+        sort = 'album_pic:' + key[6:]
+        print members, sort
+        for m in members:
+            threadlist.append(MyThread(getPicHref, (m, sort,)))
+    for t in threadlist:
+        t.setDaemon(True)  # 如果你在for循环里用，不行， 因为上一个多线程还没结束又开始下一个
+        t.start()
+    for j in threadlist:
+        j.join()
+
+
+
+def downloadPic():
+    keys = DB.keys('album_pic*')
+    for key in keys:
+        data = DB.smembers(key)
+        try:
+            os.mkdir('output_images/'+key[10:].decode('utf-8'))
+            for index, i in enumerate(data):
+                request = urllib2.Request(i, None, M_Headers)
+                response = urllib2.urlopen(request)
+                with open("output_images/%s/%s.jpg" % (key[10:].decode('utf-8'), str(index)), "wb") as f:
+                    f.write(response.read())
+                print(i)
+        except Exception as e:
+            print  e
+downloadPic()
