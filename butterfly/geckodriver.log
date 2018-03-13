@@ -1,0 +1,124 @@
+1520917713336	geckodriver	INFO	geckodriver 0.19.1
+1520917713341	geckodriver	INFO	Listening on 127.0.0.1:54571
+1520917716419	mozrunner::runner	INFO	Running command: "D:\\firefox\\firefox.exe" "-marionette" "-headless" "-profile" "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rust_mozprofile.ICxPEbntaPxv"
+*** You are running in headless mode.
+1520917716778	Marionette	INFO	Enabled via --marionette
+1520917717799	Marionette	INFO	Listening on port 54579
+1520917717960	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript warning: http://mnh.scu.edu.cn/bb_pic_view.aspx?er_id=2631366&paramMap.name=%E6%A7%AD%E7%83%9F%E5%B0%BA%E8%9B%BE, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/bb_pic_view.aspx?er_id=2631366&paramMap.name=%E6%A7%AD%E7%83%9F%E5%B0%BA%E8%9B%BE line 6 > eval, line 1: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://mnh.scu.edu.cn/bb_pic_view.aspx?er_id=2631366&paramMap.name=%E6%A7%AD%E7%83%9F%E5%B0%BA%E8%9B%BE line 6 > eval, line 1: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://mnh.scu.edu.cn/bb_pic_view.aspx?er_id=2631366&paramMap.name=%E6%A7%AD%E7%83%9F%E5%B0%BA%E8%9B%BE line 6 > eval, line 1: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://mnh.scu.edu.cn/bb_pic_view.aspx?er_id=2631366&paramMap.name=%E6%A7%AD%E7%83%9F%E5%B0%BA%E8%9B%BE line 6 > eval, line 1: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://mnh.scu.edu.cn/bb_pic_view.aspx?er_id=2631366&paramMap.name=%E6%A7%AD%E7%83%9F%E5%B0%BA%E8%9B%BE line 6 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/bb_pic_view.aspx?er_id=2631366&paramMap.name=%E6%A7%AD%E7%83%9F%E5%B0%BA%E8%9B%BE, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/bb_pic_view.aspx?er_id=2631366&paramMap.name=%E6%A7%AD%E7%83%9F%E5%B0%BA%E8%9B%BE line 33 > eval, line 1: unreachable code after return statement
+%9D%B6 line 33 > eval, line 1: unreachable code after return statement
+%9E%9F line 33 > eval, line 1: unreachable code after return statement
+%BA%8C%E5%B0%BE%E8%9B%B1%E8%9D%B6 line 33 > eval, line 1: unreachable code after return statement
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+33 > eval, line 1: unreachable code after return statement
+de after return statement
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 31124, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 31344, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 33832, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+6
+[Parent 2952, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Child 572, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 572, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+11 < _startProvider/AMProviderShutdown/<@AddonManager.jsm:745:21 < AMProviderShutdown@AddonManager.jsm:743:16 < trigger@AsyncShutdown.jsm:704:23 < _wait@AsyncShutdown.jsm:851:7 < wait@AsyncShutdown.jsm:835:28 < shutdownManager@AddonManager.jsm:1122:15 < trigger@AsyncShutdown.jsm:704:23 < _wait@AsyncShutdown.jsm:851:7 < wait@AsyncShutdown.jsm:835:28 < observe@AsyncShutdown.jsm:518:17
+erShutdown@AddonManager.jsm:743:16 < trigger@AsyncShutdown.jsm:704:23 < _wait@AsyncShutdown.jsm:851:7 < wait@AsyncShutdown.jsm:835:28 < shutdownManager@AddonManager.jsm:1122:15 < trigger@AsyncShutdown.jsm:704:23 < _wait@AsyncShutdown.jsm:851:7 < wait@AsyncShutdown.jsm:835:28 < observe@AsyncShutdown.jsm:518:17
+bserve@AsyncShutdown.jsm:518:17
+8:17
+se modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:332:17) JS Stack trace: saveChanges@XPIProviderUtils.js:332:17 < shutdown@XPIProviderUtils.js:658:9 < shutdown@XPIProvider.jsm:2377:11 < _startProvider/AMProviderShutdown/<@AddonManager.jsm:745:21 < AMProviderShutdown@AddonManager.jsm:743:16 < trigger@AsyncShutdown.jsm:704:23 < _wait@AsyncShutdown.jsm:851:7 < wait@AsyncShutdown.jsm:835:28 < shutdownManager@AddonManager.jsm:1122:15 < trigger@AsyncShutdown.jsm:704:23 < _wait@AsyncShutdown.jsm:851:7 < wait@AsyncShutdown.jsm:835:28 < observe@AsyncShutdown.jsm:518:17
+ warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4, line 1: unreachable code after return statement
+JavaScript warning: http://mnh.scu.edu.cn/search_st.aspx?cate_id=22177&code=4 line 8 > eval, line 1: unreachable code after return statement
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Child 15856, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 7852, Chrome_ChildThread] WARNING: pipe error: 232: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 513
