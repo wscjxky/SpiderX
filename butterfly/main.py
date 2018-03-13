@@ -186,19 +186,52 @@ def getAlbumPIc():
         j.join()
 
 
-
+def requestPic(key, url, index):
+    request = urllib2.Request(url, headers=M_Headers)
+    response = urllib2.urlopen(request)
+    with open("output_images/%s/%s_%s.jpg" % (key, key, str(index)), "wb") as f:
+        f.write(response.read())
+    print url
 def downloadPic():
     keys = DB.keys('album_pic*')
-    for key in keys:
+    threadlist = []
+    for index, key in enumerate(keys):
+        # with open('index.txt', 'a') as f:
+        #     f.write(str(index) + key[10:] + '\n')
         data = DB.smembers(key)
         try:
-            os.mkdir('output_images/'+key[10:].decode('utf-8'))
-            for index, i in enumerate(data):
-                request = urllib2.Request(i, None, M_Headers)
-                response = urllib2.urlopen(request)
-                with open("output_images/%s/%s.jpg" % (key[10:].decode('utf-8'), str(index)), "wb") as f:
-                    f.write(response.read())
-                print(i)
+            os.mkdir('output_images/' +str(index))
+            for index_pic, i in enumerate(data):
+                threadlist.append(MyThread(requestPic, (index, i, index_pic,)))
         except Exception as e:
             print  e
-downloadPic()
+    for t in threadlist:
+        t.setDaemon(True)  # 如果你在for循环里用，不行， 因为上一个多线程还没结束又开始下一个
+        t.start()
+    for j in threadlist:
+        j.join()
+
+
+import json
+
+
+def loadJson():
+    f = open("data.json")
+    data = json.load(f)
+    data = data['data']
+    sort=data[0]['fromPageTitle']
+    for i in range(10):
+        print data[i]['hoverURL']
+        if data[i]['hoverURL'] :
+            DB.sadd('photo:'+sort,data[i]['hoverURL'])
+
+
+# loadJson()
+if __name__ == '__main__':
+    data=DB.smembers('pic_real_url:大紫蛱蝶')
+    for i in data:
+        request = urllib2.Request(i, headers=M_Headers)
+        response = urllib2.urlopen(request)
+        print response
+        with open("test.jpg", "wb") as f:
+            f.write(response.read())

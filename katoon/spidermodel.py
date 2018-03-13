@@ -191,6 +191,31 @@ song文件夹用于爬取歌词
 # #         print(driver.page_source)
 #
 #
+# 多线程下载图片
+# def requestPic(key, url, index):
+#     request = urllib2.Request(url, headers=M_Headers)
+#     response = urllib2.urlopen(request)
+#     with open("output_images/%s/%s_%s.jpg" % (key, key, str(index)), "wb") as f:
+#         f.write(response.read())
+#     print url
+# def downloadPic():
+#     keys = DB.keys('album_pic*')
+#     threadlist = []
+#     for index, key in enumerate(keys):
+#         # with open('index.txt', 'a') as f:
+#         #     f.write(str(index) + key[10:] + '\n')
+#         data = DB.smembers(key)
+#         try:
+#             os.mkdir('output_images/' +str(index))
+#             for index_pic, i in enumerate(data):
+#                 threadlist.append(MyThread(requestPic, (index, i, index_pic,)))
+#         except Exception as e:
+#             print  e
+#     for t in threadlist:
+#         t.setDaemon(True)  # 如果你在for循环里用，不行， 因为上一个多线程还没结束又开始下一个
+#         t.start()
+#     # for j in threadlist:
+#         # j.join()
 # #尝试着多线程抓取合理运用资源
 # #三个方法创建线程的3个方法
 # # 1，threading.Thread(fun,args)

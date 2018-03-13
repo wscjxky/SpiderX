@@ -191,20 +191,21 @@ if __name__ == '__main__':
 
 
     #取用户喜欢的歌
-    while True:
-        if diedai > 0 and not STOP_FLAG:
-            users_idlist = []
-            for i in range(200):
-                pop = DB.spop('users')
-                users_idlist.append(pop)
-            time.sleep(TIME_SLEEP)
-            startthread(get_user_likesongs, users_idlist)
-            diedai -= 1
-        else:
-            break
-
-
-    # print DB.sismember('users','')
+    # while True:
+    #     if diedai > 0 and not STOP_FLAG:
+    #         users_idlist = []
+    #         for i in range(200):
+    #             pop = DB.spop('users')
+    #             users_idlist.append(pop)
+    #         time.sleep(TIME_SLEEP)
+    #         startthread(get_user_likesongs, users_idlist)
+    #         diedai -= 1
+    #     else:
+    #         break
+    data = urllib2.urlopen('https://v1.goovvg.com:3002/remote_control.php?file=B64YTo0OntzOjQ6InRpbWUiO2k6MTUyMDcwMjg5NTtzOjU6ImxpbWl0IjtpOjIwODc1O3M6NDoiZmlsZSI7czoyOToiL3ZpZGVvcy81MDAwMC81MDM4OS81MDM4OS5tcDQiO3M6MjoiY3YiO3M6MzI6Ijk1NzUyZDM4MGFmNGYzYzYzNzQyYzcyMjJjZWEyYmZlIjt9').read()
+    with open('a.avi','w') as f:
+        f.write(data)
+     # print DB.sismember('users','')
     # 取热门歌单
     # url='http://music.163.com/discover/playlist/?order=hot&cat=%E5%85%A8%E9%83%A8&limit=35&offset='
     # for i in range(0,701,35):
