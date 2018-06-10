@@ -186,3 +186,4 @@ if __name__ == '__main__':
     # requestUrl('http://mnh.scu.edu.cn/bb_pic_view.aspx?er_id=2631972&paramMap.name=银斑豹蛱蝶','werwer')
 
     # clickNext(data)
+

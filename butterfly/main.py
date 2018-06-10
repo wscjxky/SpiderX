@@ -23,6 +23,7 @@ M_Headers = {
 }
 socket.setdefaulttimeout(10)
 DB = redis.Redis(host='47.94.251.202', port=6379, db=2, password='wscjxky')
+DB.keys()
 key_cache = 'cache:'
 re_chinese_words = re.compile(u"[\u4e00-\u9fa5]+")
 baike_url = 'https://baike.baidu.com/item/'

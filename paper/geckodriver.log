@@ -1,0 +1,36 @@
+1521347642974	geckodriver	INFO	geckodriver 0.19.1
+1521347642984	geckodriver	INFO	Listening on 127.0.0.1:2321
+1521347646080	mozrunner::runner	INFO	Running command: "D:\\firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\rust_mozprofile.HD6Fu1SYqJN5"
+1521347646481	Marionette	INFO	Enabled via --marionette
+1521347647492	Marionette	INFO	Listening on port 2342
+1521347647605	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521344630418	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 17684, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 17684, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Child 14388, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 17684, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+_60GHz_TDDFDD_Massive_MIMO_Systems, line 1: Error: Failed to load file javascript/min/core/widgetLoader.js
+JavaScript error: https://www.researchgate.net/publication/315927534_Angle_Domain_Signal_Processing_aided_Channel_Estimation_for_Indoor_60GHz_TDDFDD_Massive_MIMO_Systems, line 1: Error: Failed to load file javascript/vendor/svgxuse/svgxuse.min.js
+JavaScript error: https://www.researchgate.net/publication/315927534_Angle_Domain_Signal_Processing_aided_Channel_Estimation_for_Indoor_60GHz_TDDFDD_Massive_MIMO_Systems, line 1: Error: Failed to load file javascript/min/pow/publicliterature/views/PublicHtmlPdfViewerView.js
+JavaScript error: , line 0: uncaught exception: YRG was not loaded when attaching widgets
+JavaScript error: https://www.researchgate.net/publication/315927534_Angle_Domain_Signal_Processing_aided_Channel_Estimation_for_Indoor_60GHz_TDDFDD_Massive_MIMO_Systems, line 162: ReferenceError: RGCommons is not defined
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 19352, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 19352, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Child 19316, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 19316, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 19352, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Child 5748, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[GPU 17628, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
