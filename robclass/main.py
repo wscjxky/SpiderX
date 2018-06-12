@@ -77,7 +77,7 @@ def duoXuan(driver, i):
 
 def XuanKe(driver):
     driver.find_element_by_xpath('//*[@id="sidebar2"]/div[1]/div[1]/div/ul/li[2]/ul/li[1]/a').click()
-    i_list = [2, 6]
+    i_list = [9,10]
     flag = False
     try_cnt = 1
     i = 0
@@ -104,12 +104,16 @@ def XuanKe(driver):
                 driver.quit()
                 main()
             time.sleep(delta)
+
+
 def main():
     chrome_options = Options()
-    # chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--headless')
     chrome_options.add_argument('--disable-infobars')
     driver = Firefox(executable_path='geckodriver', firefox_options=chrome_options)
     search(driver)
     XuanKe(driver)
+
+
 if __name__ == '__main__':
     main()
