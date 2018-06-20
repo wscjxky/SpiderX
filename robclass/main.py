@@ -10,7 +10,7 @@ from selenium.webdriver import Firefox
 # import pymongo
 import logging
 import requests
-
+from  .fateadm_api import TestFunc
 # from config import *
 
 
