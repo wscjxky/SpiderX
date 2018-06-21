@@ -20,8 +20,8 @@ cache_time=1000
 
 # 课程号在第一个就是1
 # class_code = [1]
-class_code = [	335,336]
-retry_max = 1500
+class_code = [335,336]
+retry_max = 1200
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
     ,

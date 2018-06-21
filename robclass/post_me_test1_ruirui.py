@@ -17,11 +17,10 @@ time_delay = 1
 cookie_name = '16321143'
 cache_time = 1000
 
-
 # 课程号在第一个就是1
 # class_code = [1]
 class_code = [290]
-retry_max = 1500
+retry_max = 1200
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
     ,
@@ -411,7 +410,7 @@ def has_free(class_code, reset=False):
     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
     soup = BeautifulSoup(res.text, 'html.parser')
     class_trs = soup.find_all("tr")
-    class_tr = class_trs[class_code ]
+    class_tr = class_trs[class_code]
     has_free = class_tr.find('input')
     if has_free:
         print('ok')
@@ -432,6 +431,7 @@ if __name__ == '__main__':
         try:
             if retry_num > retry_max:
                 reset = True
+                retry_num = 0
                 continue
             if i == len(class_code):
                 i = 0
@@ -444,7 +444,6 @@ if __name__ == '__main__':
                 i += 1
                 retry_num += 1
                 reset = False
-
         except Exception as e:
             print(e)
             reset = True

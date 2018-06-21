@@ -9,16 +9,16 @@ import requests
 
 # username = '16281117'
 # password = '111516'
-username = '16281152'
-password = '090020'
+username = '16281116'
+password = 'wb574536413'
 FATEA_PRED_URL = "http://pred.fateadm.com"
 time_delay = 1
 cookie_name = '16271187'
 cache_time = 1000
 # 课程号在第一个就是1
 # class_code = [1]
-class_code = [264,267,326]
-retry_max = 1500
+class_code = [ 292]
+retry_max = 1200
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
     ,
