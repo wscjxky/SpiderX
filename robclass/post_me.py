@@ -9,20 +9,22 @@ from selenium.webdriver.firefox.options import Options
 # code_list = ['81886', '82578', '83429', '83129', '82580', '82182', '82781']
 # 试一下大学生安全教育
 
-# code_list = ['83357']
+code_list = ['83357']
 # code_list = ['84158', '84163', '84118', '84135']
 #
 # code_list = ['82532', '83194', '83009']
 
-code_list = ['84114', '84177', '84161']
+# code_list = ['84114', '84177', '84161']
 import base64
 import hashlib
 import json
 import requests
 
-username = '16281117'
-password = '111516'
-
+#
+# username = '16281117'
+# password = '111516'
+username = '15281106'
+password = 'wscjxky123'
 FATEA_PRED_URL = "http://pred.fateadm.com"
 
 
@@ -233,7 +235,7 @@ def TestFunc(imgdata):
     # file_name       = imgurl+".jpg"
     # rsp             = api.PredictFromFile( pred_type, file_name)
     rsp = api.Predict(pred_type, imgdata)
-    print(rsp.pred_rsp.value)
+    print('code : ' + rsp.pred_rsp.value)
     #
     # just_flag    = False
     # if just_flag :
@@ -247,7 +249,6 @@ def TestFunc(imgdata):
     # 充值
     # api.Charge(card_id, card_key)
     return rsp.pred_rsp.value
-
 
 
 def get_Session():
@@ -294,7 +295,10 @@ headers = {
     'Host': 'dean.bjtu.edu.cn',
     'Pragma': 'no-cache',
     'Connection': 'keep-alive',
-
+    'Accept':'image/webp,image/apng,image/*,*/*;q=0.8',
+    'Accept-Encoding':'gzip, deflate, br',
+    'Accept-Language':'zh-CN,zh;q=0.9',
+    'Cache-Control':'no-cache',
     # "Connection": "close",
 }
 headers_image = {
@@ -303,7 +307,10 @@ headers_image = {
     'Referer': 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/'
     ,
     'Host': 'dean.bjtu.edu.cn',
-    'X-Requested-With': 'XMLHttpRequest'
+    'X-Requested-With': 'XMLHttpRequest',
+    'Pragma': 'no-cache',
+    'Connection': 'keep-alive',
+    'Cache-Control': 'no-cache'
     # "Connection": "close",
 }
 
@@ -331,7 +338,7 @@ def post_met(ssrequest, class_code, hashkey, answer):
     # }
     re = requests.post('https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=submit',
                        cookies=ssrequest.cookies,
-                       headers=headers,
+                       headers=headers_image,
                        # data={
                        #     'select_id': 135194
                        #  }
@@ -342,6 +349,7 @@ def post_met(ssrequest, class_code, hashkey, answer):
                        #                     }
                        data=data)
     print(class_code)
+    time.sleep(4)
     # print(data)
     # re.close()
     # print(re)
@@ -355,7 +363,7 @@ def getCode():
     json_data = re.json()
     hashkey = json_data['key']
     print(json_data)
-    img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'])
+    img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],headers=headers)
     answer = TestFunc(img_data.content)
     return hashkey, answer
 
@@ -405,33 +413,33 @@ def download():
 
 if __name__ == '__main__':
     import time
-
     global hashkey, answer, driver, ssr
     ssr, driver = get_Session()
     driver.quit()
     hashkey, answer = getCode()
-    time_start = time.time()
-    time_start1 = time.time()
-    while True:
-        try:
-            time_end = time.time()
-            time_end1 = time.time()
-            cost_time = time_end - time_start
-            cost_time1 = time_end1 - time_start1
-            print(cost_time)
-            if cost_time > 120:
-                print('reset code ' + str(cost_time))
-                hashkey, answer = getCode()
-                time_start = time.time()
-            if cost_time1 > 1000:
-                print('reset driver ' + str(cost_time1))
-                ssr, driver = get_Session()
-                driver.quit()
-                time_start1 = time.time()
-            for i in code_list:
-                post_met(ssr, i, hashkey, answer)
-        except:
-            pass
+    post_met(ssr, code_list[0], hashkey, answer)
+    # time_start = time.time()
+    # time_start1 = time.time()
+    # while True:
+    #     try:
+    #         time_end = time.time()
+    #         time_end1 = time.time()
+    #         cost_time = time_end - time_start
+    #         cost_time1 = time_end1 - time_start1
+    #         print(cost_time)
+    #         if cost_time > 120:
+    #             print('reset code ' + str(cost_time))
+    #             hashkey, answer = getCode()
+    #             time_start = time.time()
+    #         if cost_time1 > 1000:
+    #             print('reset driver ' + str(cost_time1))
+    #             ssr, driver = get_Session()
+    #             driver.quit()
+    #             time_start1 = time.time()
+    #         for i in code_list:
+    #             post_met(ssr, i, hashkey, answer)
+    #     except:
+    #         pass
 
 # if __name__ == '__main__':
 #     # ssr, driver = get_Session()
