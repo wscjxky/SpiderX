@@ -1,7 +1,6 @@
-import random
-import requests
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
+
 # from .fateadm_api import TestFunc
 # 【80L145Q】VHDL及设计实践 81886
 # 【80L204Q】虚拟化与云计算 82578
@@ -9,17 +8,29 @@ from selenium.webdriver.firefox.options import Options
 # 机械学习 82182 82781
 # code_list = ['81886', '82578', '83429', '83129', '82580', '82182', '82781']
 # 试一下大学生安全教育
+
 # code_list = ['83357']
 # code_list = ['84158', '84163', '84118', '84135']
-code_list = ['84158', '84163', '84118', '84135']
+#
+# code_list = ['82532', '83194', '83009']
+
+code_list = ['84114', '84177', '84161']
 import base64
 import hashlib
 import json
 import requests
+
+username = '16281117'
+password = '111516'
+
 FATEA_PRED_URL = "http://pred.fateadm.com"
+
+
 class TmpObj():
     def __init__(self):
         self.value = None
+
+
 class Rsp():
     def __init__(self):
         self.ret_code = -1
@@ -45,6 +56,8 @@ class Rsp():
                 if "result" in jrsp_ext:
                     data = jrsp_ext["result"]
                     self.pred_rsp.value = data
+
+
 def CalcSign(usr_id, passwd, timestamp):
     md5 = hashlib.md5()
     md5.update((timestamp + passwd).encode())
@@ -54,10 +67,14 @@ def CalcSign(usr_id, passwd, timestamp):
     md5.update((usr_id + timestamp + csign).encode())
     csign = md5.hexdigest()
     return csign
+
+
 def CalcCardSign(cardid, cardkey, timestamp, passwd):
     md5 = hashlib.md5()
     md5.update(passwd + timestamp + cardid + cardkey)
     return md5.hexdigest()
+
+
 def HttpRequest(url, body_data):
     rsp = Rsp()
     post_data = body_data
@@ -67,6 +84,8 @@ def HttpRequest(url, body_data):
     rsp_data = requests.post(url, post_data, headers=header)
     rsp.ParseJsonRsp(rsp_data.text)
     return rsp
+
+
 class FateadmApi():
     def __init__(self, app_id, app_key, usr_id, usr_key):
         self.app_id = app_id
@@ -197,6 +216,8 @@ class FateadmApi():
         else:
             LOG("charge failed ret: {} err: {}".format(rsp.ret_code, rsp.err_msg.encode('utf-8')))
         return rsp
+
+
 def TestFunc(imgdata):
     pd_id = "103797"  # 用户信息页可以查询到pd信息
     pd_key = "B9G8DxjiEK7U8Gr+dVS93rJyL2P5gtoH"
@@ -228,7 +249,6 @@ def TestFunc(imgdata):
     return rsp.pred_rsp.value
 
 
-# checkboxs=83357&hashkey=aba62feefef77792b4b88afea9d695c1d3b1a354&answer=49
 
 def get_Session():
     chrome_options = Options()
@@ -236,8 +256,6 @@ def get_Session():
     chrome_options.add_argument('disable-infobars')
     driver = Firefox(executable_path='geckodriver', firefox_options=chrome_options)
     url = 'https://mis.bjtu.edu.cn/home/'
-    username = '15281106'
-    password = 'wscjxky123'
     driver.get(url)
     driver.maximize_window()
     elem = driver.find_element_by_css_selector('#id_loginname')
@@ -387,6 +405,7 @@ def download():
 
 if __name__ == '__main__':
     import time
+
     global hashkey, answer, driver, ssr
     ssr, driver = get_Session()
     driver.quit()
