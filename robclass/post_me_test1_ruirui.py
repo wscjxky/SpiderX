@@ -16,9 +16,12 @@ FATEA_PRED_URL = "http://pred.fateadm.com"
 time_delay = 1
 cookie_name = '16321143'
 cache_time = 1000
+
+
 # 课程号在第一个就是1
 # class_code = [1]
 class_code = [290]
+retry_max = 1500
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
     ,
@@ -247,37 +250,35 @@ def TestFunc(imgdata):
     # api.Charge(card_id, card_key)
     return rsp.pred_rsp.value
 
-BCOOKIES={}
-def get_Session(reset=True):
-    print(reset)
-    if  reset:
-        chrome_options = Options()
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('disable-infobars')
-        driver = Firefox(executable_path='geckodriver', firefox_options=chrome_options)
-        url = 'https://mis.bjtu.edu.cn/home/'
-        driver.get(url)
-        driver.maximize_window()
-        elem = driver.find_element_by_css_selector('#id_loginname')
-        elem.send_keys(username)
-        elem = driver.find_element_by_xpath('//*[@id="id_password"]')
-        elem.send_keys(password)
-        elem = driver.find_element_by_xpath('//*[@id="form1"]/div/div/button')
-        elem.click()
-        elem = driver.find_element_by_xpath(
-            '//*[@id="wrap"]/div[2]/div[2]/div/div[2]/div/div/table/tbody/tr[2]/td[1]/div/div/h5/a')
-        elem.click()
-        time.sleep(1)
-        handles = driver.window_handles
-        driver.switch_to.window(handles[-1])
-        cookie = driver.get_cookies()
-        for i in cookie:  # 添加cookie到CookieJar
-            BCOOKIES[i["name"]] = i["value"]
-        print('reload' + str(BCOOKIES))
-    else:
-       pass
+
+def get_Session():
+    BCOOKIES = {}
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('disable-infobars')
+    driver = Firefox(executable_path='geckodriver', firefox_options=chrome_options)
+    url = 'https://mis.bjtu.edu.cn/home/'
+    driver.get(url)
+    driver.maximize_window()
+    elem = driver.find_element_by_css_selector('#id_loginname')
+    elem.send_keys(username)
+    elem = driver.find_element_by_xpath('//*[@id="id_password"]')
+    elem.send_keys(password)
+    elem = driver.find_element_by_xpath('//*[@id="form1"]/div/div/button')
+    elem.click()
+    elem = driver.find_element_by_xpath(
+        '//*[@id="wrap"]/div[2]/div[2]/div/div[2]/div/div/table/tbody/tr[2]/td[1]/div/div/h5/a')
+    elem.click()
+    time.sleep(1)
+    handles = driver.window_handles
+    driver.switch_to.window(handles[-1])
+    cookie = driver.get_cookies()
+    for i in cookie:  # 添加cookie到CookieJar
+        BCOOKIES[i["name"]] = i["value"]
+    print('reload' + str(BCOOKIES))
     ssrequest = requests.session()
     requests.utils.add_dict_to_cookiejar(ssrequest.cookies, BCOOKIES)
+    driver.close()
     return ssrequest.cookies
 
 
@@ -402,12 +403,15 @@ def post_request(cookies, class_code, hashkey, answer):
 
 
 def has_free(class_code, reset=False):
+    global cookies
+    print(reset)
     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
-    cookies = get_Session(reset)
+    if reset:
+        cookies = get_Session()
     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
     soup = BeautifulSoup(res.text, 'html.parser')
     class_trs = soup.find_all("tr")
-    class_tr = class_trs[class_code + 1]
+    class_tr = class_trs[class_code ]
     has_free = class_tr.find('input')
     if has_free:
         print('ok')
@@ -423,20 +427,24 @@ if __name__ == '__main__':
     reset = False
     i = 0
     retry_num = 0
-    has_free(reset=True, class_code=class_code[i])
+    cookies = get_Session()
     while True:
         try:
+            if retry_num > retry_max:
+                reset = True
+                continue
             if i == len(class_code):
                 i = 0
-            if has_free(reset=reset, class_code=class_code[i]):
+            if has_free(class_code=class_code[i], reset=reset):
                 # break
                 continue
             else:
                 print('retry_time : ' + str(retry_num))
-                print('code ： ' + str(i))
+                print('code ： ' + str(class_code[i]))
                 i += 1
                 retry_num += 1
                 reset = False
+
         except Exception as e:
             print(e)
             reset = True

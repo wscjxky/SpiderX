@@ -9,16 +9,15 @@ import requests
 
 # username = '16281117'
 # password = '111516'
-username = '16271187'
-password = '971223zr'
+username = '16281152'
+password = '090020'
 FATEA_PRED_URL = "http://pred.fateadm.com"
 time_delay = 1
 cookie_name = '16271187'
 cache_time = 1000
-
 # 课程号在第一个就是1
 # class_code = [1]
-class_code = [173]
+class_code = [264,267,326]
 retry_max = 1500
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
@@ -409,7 +408,7 @@ def has_free(class_code, reset=False):
     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
     soup = BeautifulSoup(res.text, 'html.parser')
     class_trs = soup.find_all("tr")
-    class_tr = class_trs[class_code ]
+    class_tr = class_trs[class_code]
     has_free = class_tr.find('input')
     if has_free:
         print('ok')
