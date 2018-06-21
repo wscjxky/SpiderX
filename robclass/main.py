@@ -1,119 +1,126 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
-import time
-from selenium.webdriver import Firefox
-
-# import pymongo
-import logging
+import urllib.error, urllib.request, urllib.parse
+import http.cookiejar
 import requests
-from  .fateadm_api import TestFunc
-# from config import *
+import threading
+import asyncio
+from bs4 import BeautifulSoup
+import os
+import sqlite3
+import requests
+import time
+from multiprocessing import Process,Pool
 
+from retrying import retry
+from win32.win32crypt import CryptUnprotectData
+def getcookiefromchrome(host='.oschina.net'):
+    cookiepath=os.environ['LOCALAPPDATA']+r"\Google\Chrome\User Data\Default\Cookies"
+    sql="select host_key,name,encrypted_value from cookies where host_key='%s'" % host
+    with sqlite3.connect(cookiepath) as conn:
+        cu=conn.cursor()
+        cookies={name:CryptUnprotectData(encrypted_value)[1].decode() for host_key,name,encrypted_value in cu.execute(sql).fetchall()}
+        # print(cookies)
+        return cookies
 
-# user_id_str = '16231199'
-# password_str = '297659'
-user_id_str = '15281106'
-password_str = 'wscjxky123'
-xpath_str = ''
-delta = 0.2
-try_max_count = 1000
-
-
-def search(driver):
-    wait = WebDriverWait(driver, 10)
-
-    try:
-        driver.get('https://mis.bjtu.edu.cn/home/')
-        name = wait.until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, '#id_loginname'))
-        )
-        password = wait.until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, '#id_password'))
-        )
-        submit = wait.until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, '#form1 > div > div > button'))
-        )
-        name.send_keys(user_id_str)
-        password.send_keys(password_str)
-        submit.click()
-    except TimeoutException:
-        return search(driver)
-    driver.maximize_window()
-    ShaungXueWei = driver.find_element_by_css_selector(
-        '#wrap > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div > div > table > tbody > tr:nth-child(2) > td:nth-child(1) > div > div > a')
-
-    ShaungXueWei.click()
-    elem = driver.find_element_by_xpath(
-        '//*[@id="wrap"]/div[2]/div[2]/div/div[2]/div/div/table/tbody/tr[2]/td[1]/div/div/h5/a')
-    elem.click()
-
-    handles = driver.window_handles
-    driver.switch_to.window(handles[1])
-
-    time.sleep(3)
-
-    try:
-        elem = driver.find_element_by_css_selector('#sidebar > div > div.nav-wrap > ul > li:nth-child(4) > a > span')
-        elem.click()
-    except:
-        elem = driver.find_element_by_xpath('//*[@id="menu-toggler"]')
-        print(elem.id)
-        elem.click()
-        print('End')
-
-    driver.find_element_by_xpath('//*[@id="sidebar2"]/div[1]/div[1]/div/ul/li[1]/ul/li[2]/a').click()
-
-
-def duoXuan(driver, i):
-    # current > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > label:nth-child(1)
-    driver.find_element_by_css_selector('#current > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(' + str(
-        i) + ') > td:nth-child(1) > label').click()
-    return True
-
-
-def XuanKe(driver):
-    driver.find_element_by_xpath('//*[@id="sidebar2"]/div[1]/div[1]/div/ul/li[2]/ul/li[1]/a').click()
-    i_list = [9,10]
-    flag = False
-    try_cnt = 1
+def Hack(cookies):
+    data = {"Host": "dean.bjtu.edu.cn",
+            "Connection": "keep-alive",
+            "Accept": "*/*",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+            "Referer": "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en,zh-CN;q=0.9,zh;q=0.8"
+            }
+    res = requests.get("https://dean.bjtu.edu.cn/captcha/refresh/", cookies=cookies, headers=data)
+    #print(res.text[res.text.find("/captcha") + 15:-3])
+    keyvalue = res.text[res.text.find("/captcha") + 15:-3]
     i = 0
-    while not flag:
-        try:
-            # 2代表第一个框框
-            duoXuan(driver, i_list[i])
-            # / html / body / div[4] / div / div / div[3] / button[1]
-            driver.find_element_by_css_selector(
-                'body > div.bootbox.modal.in > div > div > div.modal-footer > button.btn.btn-sm.btn-info').click()
-            driver.find_element_by_xpath('//*[@id="select-submit-btn"]').click()
-            print("OK!")
-            print("You have try " + str(try_cnt) + " times.")
-        except Exception as e:
-            print(i)
-            print(e)
-            if i == len(i_list) - 1:
-                i = 0
-            else:
-                i += 1
-            driver.refresh()
-            try_cnt += 1
-            if try_cnt > try_max_count:
-                driver.quit()
-                main()
-            time.sleep(delta)
+    while i <= 100:
+
+        f = {'checkboxs': '83357', 'hashkey': keyvalue, 'answer': str(i)}
+        res2 = requests.post("https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=submit",cookies=cookies, data=f,headers=data)
+        if len(res2.text) != 41:
+            break;
+        i += 1
+    re=[keyvalue,i]
+    res1 = requests.get("https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/", cookies=cookies)
+    soup = BeautifulSoup(res1.text, 'html.parser')
+    nowclass = soup.find_all("tr")
+    t = 1
+    strnow = ''
+    while t < len(nowclass):
+        if str(nowclass[t]).find("大学生安全教育")!=-1:
+            strnow=str(nowclass[t])
+            num=strnow[strnow.find("data-pk")+9:strnow.find("data-pk")+15]
+            requests.post("https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=delete",cookies=cookies,data={"select_id":num})
+            break;
+        t+=1
+    return re
+def GetClass(cookies,num1):
+    fs=open('result.txt','w',encoding='utf-8')
+    data = {"Host": "dean.bjtu.edu.cn",
+            "Connection": "keep-alive",
+            "Accept": "*/*",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+            "Referer": "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en,zh-CN;q=0.9,zh;q=0.8"
+            }
+    res=requests.get("https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page="+num1,cookies=cookies,headers=data)
+    fs.write(res.text)
+    soup=BeautifulSoup(res.text,'html.parser')
+    #classes=soup.find_all(attrs={"name":"checkboxs","type":"checkbox","class":"checkbox"})
+    classess=soup.find_all("tr")
+    i=1
+    strlist=[]
+    while i<len(classess):
+        strlist.append(str(classess[i]))
+        i+=1
+    return strlist
+cookies={}#初始化cookies字典变量
+header = {"Host": "dean.bjtu.edu.cn",
+            "Connection": "keep-alive",
+            "Accept": "*/*",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+            "Referer": "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Language": "en,zh-CN;q=0.9,zh;q=0.8"
+            }
+cookies=getcookiefromchrome('dean.bjtu.edu.cn')
+print("请输入抢课页数")
+num1=input()
+print("请输入抢课序号")
+num2=input()
+i=0
+hacklist = Hack(cookies)
+keyvalue=hacklist[0]
+answer=hacklist[1]
+t0=time.time()
+while True:
+    classes=GetClass(cookies,num1)
+    index=classes[int(num2)-1].find('value')
+    if index!=-1:
+        f = {'checkboxs': classes[int(num2)-1][index+7:index+12], 'hashkey': keyvalue, 'answer': str(answer)}
+        res2=requests.post("https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=submit",cookies=cookies,data=f,headers=header)
+        print("Bingo!")
+        print(res2.text)
+        break
+    else:
+        i+=1
+        print(i)
+        if i%100==0:
+            speed=i/(time.time()-t0)
+            print('speed: {:.2f}/s'.format(speed))
+            hacklist = Hack(cookies)
+            keyvalue = hacklist[0]
+            answer = hacklist[1]
+            print(answer)
+os.system("pause")
+#print(Hack(cookies))
 
 
-def main():
-    chrome_options = Options()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-infobars')
-    driver = Firefox(executable_path='geckodriver', firefox_options=chrome_options)
-    search(driver)
-    XuanKe(driver)
-
-
-if __name__ == '__main__':
-    main()
+#
+# while
+#

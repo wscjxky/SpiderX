@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd9ab118-c84e-4ac7-96fa-010b2f2ee5c4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robclass/post_me_test.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robclass/post_me_test_16271187.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/robclass/post_me_test_16281011.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robclass/geckodriver.log" afterPath="$PROJECT_DIR$/robclass/geckodriver.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robclass/jwc.py" afterPath="$PROJECT_DIR$/robclass/jwc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robclass/post_me.py" afterPath="$PROJECT_DIR$/robclass/post_me.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robclass/main.py" afterPath="$PROJECT_DIR$/robclass/main.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/robclass/post_me_test.py" afterPath="$PROJECT_DIR$/robclass/post_me_test1_ruirui.py" />
     </list>
     <ignored path="SpiderX.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,15 +22,20 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/SpiderX$car.coverage" NAME="car Coverage Results" MODIFIED="1528866412804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/c" />
-    <SUITE FILE_PATH="coverage/SpiderX$post_me_test.coverage" NAME="post_me_test Coverage Results" MODIFIED="1529584903009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
-    <SUITE FILE_PATH="coverage/SpiderX$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1528627894201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhonogyida" />
+    <SUITE FILE_PATH="coverage/SpiderX$post_me_test_16271187.coverage" NAME="post_me_test_16271187 Coverage Results" MODIFIED="1529589462384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
     <SUITE FILE_PATH="coverage/SpiderX$fateadm_api.coverage" NAME="fateadm_api Coverage Results" MODIFIED="1529484109874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
     <SUITE FILE_PATH="coverage/SpiderX$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1528629924996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhongyida" />
     <SUITE FILE_PATH="coverage/SpiderX$jwc__1_.coverage" NAME="jwc (1) Coverage Results" MODIFIED="1529582178166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
-    <SUITE FILE_PATH="coverage/SpiderX$jwc.coverage" NAME="jwc Coverage Results" MODIFIED="1529491106391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Documents/WeChat Files/wscjxky/Files" />
     <SUITE FILE_PATH="coverage/SpiderX$post_me.coverage" NAME="post_me Coverage Results" MODIFIED="1529580164318" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
     <SUITE FILE_PATH="coverage/SpiderX$main.coverage" NAME="main Coverage Results" MODIFIED="1528780503033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
     <SUITE FILE_PATH="coverage/SpiderX$Main.coverage" NAME="Main Coverage Results" MODIFIED="1529580840947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Documents/WeChat Files/wscjxky/Files" />
+    <SUITE FILE_PATH="coverage/SpiderX$post_me_test_16281011.coverage" NAME="post_me_test_16281011 Coverage Results" MODIFIED="1529589923134" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
+    <SUITE FILE_PATH="coverage/SpiderX$post_me_test.coverage" NAME="post_me_test Coverage Results" MODIFIED="1529584956848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
+    <SUITE FILE_PATH="coverage/SpiderX$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1528627894201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhonogyida" />
+    <SUITE FILE_PATH="coverage/SpiderX$post_me_test1.coverage" NAME="post_me_test1 Coverage Results" MODIFIED="1529586490752" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
+    <SUITE FILE_PATH="coverage/SpiderX$post_me_test_16281016.coverage" NAME="post_me_test_16281016 Coverage Results" MODIFIED="1529587518876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
+    <SUITE FILE_PATH="coverage/SpiderX$jwc.coverage" NAME="jwc Coverage Results" MODIFIED="1529491106391" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Documents/WeChat Files/wscjxky/Files" />
+    <SUITE FILE_PATH="coverage/SpiderX$post_me_test1_ruirui.coverage" NAME="post_me_test1_ruirui Coverage Results" MODIFIED="1529589867102" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robclass" />
     <SUITE FILE_PATH="coverage/SpiderX$post_me__1_.coverage" NAME="post_me (1) Coverage Results" MODIFIED="1529470107473" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Documents/WeChat Files/wscjxky/Files" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -48,100 +54,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="post_me.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/robclass/post_me.py">
+      <file leaf-file-name="post_me_test1_ruirui.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robclass/post_me_test1_ruirui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="273" column="0" selection-start-line="273" selection-start-column="0" selection-end-line="283" selection-end-column="36" />
+            <state relative-caret-position="108">
+              <caret line="13" column="20" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="20" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
-                <element signature="e#709#754#0" expanded="false" />
-                <element signature="e#774#1679#0" expanded="false" />
-                <element signature="e#1727#1944#0" expanded="false" />
-                <element signature="e#2005#2105#0" expanded="false" />
-                <element signature="e#2145#2352#0" expanded="false" />
-                <element signature="e#2379#6111#0" expanded="false" />
-                <element signature="e#6141#7072#0" expanded="false" />
-                <element signature="e#8983#9411#0" expanded="false" />
-                <element signature="e#11479#12192#0" expanded="false" />
-                <element signature="e#12215#12970#0" expanded="false" />
-                <marker date="1529580380638" expanded="false" signature="8442:8965" ph="..." />
+                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#448#977#0" expanded="false" />
+                <element signature="e#994#1422#0" expanded="false" />
+                <element signature="e#1443#2024#0" expanded="false" />
+                <element signature="e#2047#2092#0" expanded="false" />
+                <element signature="e#2112#3017#0" expanded="false" />
+                <element signature="e#3065#3282#0" expanded="false" />
+                <element signature="e#3343#3443#0" expanded="false" />
+                <element signature="e#3483#3690#0" expanded="false" />
+                <element signature="e#3717#6376#0" expanded="false" />
+                <element signature="e#4092#4389#0" expanded="false" />
+                <element signature="e#4459#4975#0" expanded="false" />
+                <element signature="e#5067#5764#0" expanded="false" />
+                <element signature="e#5978#6376#0" expanded="false" />
+                <element signature="e#6406#7337#0" expanded="false" />
+                <element signature="e#8711#10258#0" expanded="false" />
+                <element signature="e#10287#10700#0" expanded="false" />
+                <element signature="e#10719#11432#0" expanded="false" />
+                <element signature="e#11455#12210#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/robclass/Main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="79" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
-                <marker date="1529580885286" expanded="true" signature="461:530" ph="select host_... cookies" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post_me_test.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/robclass/post_me_test.py">
+      <file leaf-file-name="post_me_test_16271187.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/robclass/post_me_test_16271187.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
               <folding>
-                <element signature="e#0#12#0" expanded="true" />
-                <element signature="e#460#989#0" expanded="false" />
-                <element signature="e#1006#1434#0" expanded="false" />
-                <element signature="e#1455#2036#0" expanded="false" />
-                <element signature="e#2158#2203#0" expanded="false" />
-                <element signature="e#2223#3128#0" expanded="false" />
-                <element signature="e#3176#3393#0" expanded="false" />
-                <element signature="e#3454#3554#0" expanded="false" />
-                <element signature="e#3594#3801#0" expanded="false" />
-                <element signature="e#3828#6487#0" expanded="false" />
-                <element signature="e#4203#4500#0" expanded="false" />
-                <element signature="e#4570#5086#0" expanded="false" />
-                <element signature="e#5178#5875#0" expanded="false" />
-                <element signature="e#6089#6487#0" expanded="false" />
-                <element signature="e#6517#7448#0" expanded="false" />
-                <element signature="e#10714#11127#0" expanded="false" />
-                <element signature="e#11146#11859#0" expanded="false" />
-                <element signature="e#11882#12637#0" expanded="false" />
-                <marker date="1529584902935" expanded="false" signature="12695:13220" ph="..." />
+                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#444#973#0" expanded="false" />
+                <element signature="e#990#1418#0" expanded="false" />
+                <element signature="e#1439#2020#0" expanded="false" />
+                <element signature="e#2043#2088#0" expanded="false" />
+                <element signature="e#2108#3013#0" expanded="false" />
+                <element signature="e#3061#3278#0" expanded="false" />
+                <element signature="e#3339#3439#0" expanded="false" />
+                <element signature="e#3479#3686#0" expanded="false" />
+                <element signature="e#3713#6372#0" expanded="false" />
+                <element signature="e#4088#4385#0" expanded="false" />
+                <element signature="e#4455#4971#0" expanded="false" />
+                <element signature="e#5063#5760#0" expanded="false" />
+                <element signature="e#5974#6372#0" expanded="false" />
+                <element signature="e#6402#7333#0" expanded="false" />
+                <element signature="e#8707#10254#0" expanded="false" />
+                <element signature="e#10283#10696#0" expanded="false" />
+                <element signature="e#10715#11428#0" expanded="false" />
+                <element signature="e#11451#12206#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="classcode" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/robclass/classcode">
+      <file leaf-file-name="post_me_test_16281011.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/robclass/post_me_test_16281011.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jwc.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/robclass/jwc.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="379" column="10" selection-start-line="379" selection-start-column="10" selection-end-line="379" selection-end-column="10" />
+            <state relative-caret-position="351">
+              <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
               <folding>
-                <element signature="e#0#30#0" expanded="true" />
-                <element signature="e#621#671#0" expanded="false" />
-                <element signature="e#694#739#0" expanded="false" />
-                <element signature="e#759#1664#0" expanded="false" />
-                <element signature="e#1712#1929#0" expanded="false" />
-                <element signature="e#1990#2090#0" expanded="false" />
-                <element signature="e#2130#2337#0" expanded="false" />
-                <element signature="e#2364#7608#0" expanded="false" />
-                <element signature="e#7638#8184#0" expanded="false" />
-                <element signature="e#8644#9169#0" expanded="false" />
-                <element signature="e#9210#9574#0" expanded="false" />
-                <element signature="e#9594#12128#0" expanded="false" />
+                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#443#972#0" expanded="false" />
+                <element signature="e#989#1417#0" expanded="false" />
+                <element signature="e#1438#2019#0" expanded="false" />
+                <element signature="e#2042#2087#0" expanded="false" />
+                <element signature="e#2107#3012#0" expanded="false" />
+                <element signature="e#3060#3277#0" expanded="false" />
+                <element signature="e#3338#3438#0" expanded="false" />
+                <element signature="e#3478#3685#0" expanded="false" />
+                <element signature="e#3712#6371#0" expanded="false" />
+                <element signature="e#4087#4384#0" expanded="false" />
+                <element signature="e#4454#4970#0" expanded="false" />
+                <element signature="e#5062#5759#0" expanded="false" />
+                <element signature="e#5973#6371#0" expanded="false" />
+                <element signature="e#6401#7332#0" expanded="false" />
+                <element signature="e#8706#10253#0" expanded="false" />
+                <element signature="e#10282#10695#0" expanded="false" />
+                <element signature="e#10714#11427#0" expanded="false" />
+                <element signature="e#11450#12205#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -179,6 +176,13 @@
         <option value="$PROJECT_DIR$/robclass/jwc.py" />
         <option value="$USER_HOME$/Documents/WeChat Files/wscjxky/Files/Main.py" />
         <option value="$PROJECT_DIR$/robclass/post_me_test.py" />
+        <option value="$PROJECT_DIR$/robclass/post_me_test1.py" />
+        <option value="$PROJECT_DIR$/robclass/post_me_test_16281016.py" />
+        <option value="$PROJECT_DIR$/robclass/16271187.txt" />
+        <option value="$PROJECT_DIR$/robclass/16321143.txt" />
+        <option value="$PROJECT_DIR$/robclass/post_me_test1_ruirui.py" />
+        <option value="$PROJECT_DIR$/robclass/post_me_test_16271187.py" />
+        <option value="$PROJECT_DIR$/robclass/post_me_test_16281011.py" />
       </list>
     </option>
   </component>
@@ -283,8 +287,8 @@
       <recent name="H:\SpiderX\butterfly" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.post_me_test">
-    <configuration default="false" name="post_me" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.post_me_test_16281011">
+    <configuration default="false" name="post_me_test1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -297,30 +301,12 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SpiderX" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/robclass/post_me.py" />
+      <option name="SCRIPT_NAME" value="H:\SpiderX\robclass\post_me_test1_ruirui.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="jwc" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/WeChat Files/wscjxky/Files" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="SpiderX" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Documents/WeChat Files/wscjxky/Files/jwc.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="jwc (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="post_me_test_16281016" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -333,12 +319,12 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SpiderX" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/robclass/jwc.py" />
+      <option name="SCRIPT_NAME" value="H:\SpiderX\robclass\post_me_test_16271187.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="post_me_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="post_me_test1_ruirui" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -351,25 +337,43 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SpiderX" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/robclass/post_me_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/robclass/post_me_test1_ruirui.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="post_me_test_16271187" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/WeChat Files/wscjxky/Files" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/robclass" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="SpiderX" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Documents/WeChat Files/wscjxky/Files/Main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/robclass/post_me_test_16271187.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="post_me_test_16281011" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/robclass" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SpiderX" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/robclass/post_me_test_16281011.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -583,19 +587,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.post_me" />
-      <item index="1" class="java.lang.String" itemvalue="Python.jwc" />
-      <item index="2" class="java.lang.String" itemvalue="Python.jwc (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.post_me_test" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Main" />
+      <item index="0" class="java.lang.String" itemvalue="Python.post_me_test1" />
+      <item index="1" class="java.lang.String" itemvalue="Python.post_me_test_16281016" />
+      <item index="2" class="java.lang.String" itemvalue="Python.post_me_test1_ruirui" />
+      <item index="3" class="java.lang.String" itemvalue="Python.post_me_test_16271187" />
+      <item index="4" class="java.lang.String" itemvalue="Python.post_me_test_16281011" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.post_me_test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.jwc (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Main" />
-        <item index="3" class="java.lang.String" itemvalue="Python.post_me" />
-        <item index="4" class="java.lang.String" itemvalue="Python.jwc" />
+        <item index="0" class="java.lang.String" itemvalue="Python.post_me_test_16281011" />
+        <item index="1" class="java.lang.String" itemvalue="Python.post_me_test1_ruirui" />
+        <item index="2" class="java.lang.String" itemvalue="Python.post_me_test_16271187" />
+        <item index="3" class="java.lang.String" itemvalue="Python.post_me_test_16281016" />
+        <item index="4" class="java.lang.String" itemvalue="Python.post_me_test1" />
       </list>
     </recent_temporary>
   </component>
@@ -676,7 +680,14 @@
       <option name="project" value="LOCAL" />
       <updated>1529578738317</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="inti">
+      <created>1529584922854</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1529584922854</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -719,41 +730,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/robclass/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhongyida/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/butterfly/all.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/butterfly/1.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/task.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -998,31 +974,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robclass/classcode">
+    <entry file="file://H:/python36/Lib/site-packages/requests/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        <state relative-caret-position="181">
+          <caret line="386" column="0" selection-start-line="386" selection-start-column="0" selection-end-line="386" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robclass/jwc.py">
+    <entry file="file://$PROJECT_DIR$/robclass/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="379" column="10" selection-start-line="379" selection-start-column="10" selection-end-line="379" selection-end-column="10" />
+        <state relative-caret-position="208">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="79" selection-end-column="18" />
           <folding>
-            <element signature="e#0#30#0" expanded="true" />
-            <element signature="e#621#671#0" expanded="false" />
-            <element signature="e#694#739#0" expanded="false" />
-            <element signature="e#759#1664#0" expanded="false" />
-            <element signature="e#1712#1929#0" expanded="false" />
-            <element signature="e#1990#2090#0" expanded="false" />
-            <element signature="e#2130#2337#0" expanded="false" />
-            <element signature="e#2364#7608#0" expanded="false" />
-            <element signature="e#7638#8184#0" expanded="false" />
-            <element signature="e#8644#9169#0" expanded="false" />
-            <element signature="e#9210#9574#0" expanded="false" />
-            <element signature="e#9594#12128#0" expanded="false" />
+            <element signature="e#0#49#0" expanded="true" />
+            <marker date="1529580885286" expanded="true" signature="461:530" ph="select host_... cookies" />
           </folding>
         </state>
       </provider>
@@ -1048,49 +1014,141 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://H:/python36/Lib/site-packages/requests/utils.py">
+    <entry file="file://$PROJECT_DIR$/robclass/jwc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="386" column="0" selection-start-line="386" selection-start-column="0" selection-end-line="386" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/robclass/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="79" selection-end-column="18" />
+        <state relative-caret-position="440">
+          <caret line="379" column="10" selection-start-line="379" selection-start-column="10" selection-end-line="379" selection-end-column="10" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <marker date="1529580885286" expanded="true" signature="461:530" ph="select host_... cookies" />
+            <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#621#671#0" expanded="false" />
+            <element signature="e#694#739#0" expanded="false" />
+            <element signature="e#759#1664#0" expanded="false" />
+            <element signature="e#1712#1929#0" expanded="false" />
+            <element signature="e#1990#2090#0" expanded="false" />
+            <element signature="e#2130#2337#0" expanded="false" />
+            <element signature="e#2364#7608#0" expanded="false" />
+            <element signature="e#7638#8184#0" expanded="false" />
+            <element signature="e#8644#9169#0" expanded="false" />
+            <element signature="e#9210#9574#0" expanded="false" />
+            <element signature="e#9594#12128#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/robclass/post_me_test.py">
+    <entry file="file://$PROJECT_DIR$/robclass/classcode">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/WeChat Files/wscjxky/Files/GetClass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+          <folding>
+            <marker date="1529586280415" expanded="true" signature="261:330" ph="select host_... cookies" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robclass/16271187.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robclass/16321143.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robclass/post_me_test_16271187.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#460#989#0" expanded="false" />
-            <element signature="e#1006#1434#0" expanded="false" />
-            <element signature="e#1455#2036#0" expanded="false" />
-            <element signature="e#2158#2203#0" expanded="false" />
-            <element signature="e#2223#3128#0" expanded="false" />
-            <element signature="e#3176#3393#0" expanded="false" />
-            <element signature="e#3454#3554#0" expanded="false" />
-            <element signature="e#3594#3801#0" expanded="false" />
-            <element signature="e#3828#6487#0" expanded="false" />
-            <element signature="e#4203#4500#0" expanded="false" />
-            <element signature="e#4570#5086#0" expanded="false" />
-            <element signature="e#5178#5875#0" expanded="false" />
-            <element signature="e#6089#6487#0" expanded="false" />
-            <element signature="e#6517#7448#0" expanded="false" />
-            <element signature="e#10714#11127#0" expanded="false" />
-            <element signature="e#11146#11859#0" expanded="false" />
-            <element signature="e#11882#12637#0" expanded="false" />
-            <marker date="1529584902935" expanded="false" signature="12695:13220" ph="..." />
+            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#444#973#0" expanded="false" />
+            <element signature="e#990#1418#0" expanded="false" />
+            <element signature="e#1439#2020#0" expanded="false" />
+            <element signature="e#2043#2088#0" expanded="false" />
+            <element signature="e#2108#3013#0" expanded="false" />
+            <element signature="e#3061#3278#0" expanded="false" />
+            <element signature="e#3339#3439#0" expanded="false" />
+            <element signature="e#3479#3686#0" expanded="false" />
+            <element signature="e#3713#6372#0" expanded="false" />
+            <element signature="e#4088#4385#0" expanded="false" />
+            <element signature="e#4455#4971#0" expanded="false" />
+            <element signature="e#5063#5760#0" expanded="false" />
+            <element signature="e#5974#6372#0" expanded="false" />
+            <element signature="e#6402#7333#0" expanded="false" />
+            <element signature="e#8707#10254#0" expanded="false" />
+            <element signature="e#10283#10696#0" expanded="false" />
+            <element signature="e#10715#11428#0" expanded="false" />
+            <element signature="e#11451#12206#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robclass/post_me_test1_ruirui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#448#977#0" expanded="false" />
+            <element signature="e#994#1422#0" expanded="false" />
+            <element signature="e#1443#2024#0" expanded="false" />
+            <element signature="e#2047#2092#0" expanded="false" />
+            <element signature="e#2112#3017#0" expanded="false" />
+            <element signature="e#3065#3282#0" expanded="false" />
+            <element signature="e#3343#3443#0" expanded="false" />
+            <element signature="e#3483#3690#0" expanded="false" />
+            <element signature="e#3717#6376#0" expanded="false" />
+            <element signature="e#4092#4389#0" expanded="false" />
+            <element signature="e#4459#4975#0" expanded="false" />
+            <element signature="e#5067#5764#0" expanded="false" />
+            <element signature="e#5978#6376#0" expanded="false" />
+            <element signature="e#6406#7337#0" expanded="false" />
+            <element signature="e#8711#10258#0" expanded="false" />
+            <element signature="e#10287#10700#0" expanded="false" />
+            <element signature="e#10719#11432#0" expanded="false" />
+            <element signature="e#11455#12210#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robclass/post_me_test_16281011.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#443#972#0" expanded="false" />
+            <element signature="e#989#1417#0" expanded="false" />
+            <element signature="e#1438#2019#0" expanded="false" />
+            <element signature="e#2042#2087#0" expanded="false" />
+            <element signature="e#2107#3012#0" expanded="false" />
+            <element signature="e#3060#3277#0" expanded="false" />
+            <element signature="e#3338#3438#0" expanded="false" />
+            <element signature="e#3478#3685#0" expanded="false" />
+            <element signature="e#3712#6371#0" expanded="false" />
+            <element signature="e#4087#4384#0" expanded="false" />
+            <element signature="e#4454#4970#0" expanded="false" />
+            <element signature="e#5062#5759#0" expanded="false" />
+            <element signature="e#5973#6371#0" expanded="false" />
+            <element signature="e#6401#7332#0" expanded="false" />
+            <element signature="e#8706#10253#0" expanded="false" />
+            <element signature="e#10282#10695#0" expanded="false" />
+            <element signature="e#10714#11427#0" expanded="false" />
+            <element signature="e#11450#12205#0" expanded="false" />
           </folding>
         </state>
       </provider>

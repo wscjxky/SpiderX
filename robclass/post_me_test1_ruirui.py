@@ -1,9 +1,7 @@
-import redis
 from bs4 import BeautifulSoup
 import time
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
-
 import base64
 import hashlib
 import json
@@ -16,12 +14,11 @@ username = '16321143'
 password = 'dabai2VK'
 FATEA_PRED_URL = "http://pred.fateadm.com"
 time_delay = 1
-# 试一下大学生安全教育
-# page_num = 31
+cookie_name = '16321143'
+cache_time = 1000
 # 课程号在第一个就是1
 # class_code = [1]
-page_num = 31
-class_code = [1]
+class_code = [290]
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
     ,
@@ -57,7 +54,6 @@ check_classheader = {"Host": "dean.bjtu.edu.cn",
                      "Accept-Encoding": "gzip, deflate, br",
                      "Accept-Language": "en,zh-CN;q=0.9,zh;q=0.8"
                      }
-DB = redis.Redis(host='47.94.251.202', port=6379, db=7, password='wscjxky', decode_responses=True)
 
 
 class TmpObj():
@@ -251,9 +247,10 @@ def TestFunc(imgdata):
     # api.Charge(card_id, card_key)
     return rsp.pred_rsp.value
 
-
-def get_Session(reset=False):
-    if not DB.get('cookies') and not reset:
+BCOOKIES={}
+def get_Session(reset=True):
+    print(reset)
+    if  reset:
         chrome_options = Options()
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('disable-infobars')
@@ -274,23 +271,14 @@ def get_Session(reset=False):
         handles = driver.window_handles
         driver.switch_to.window(handles[-1])
         cookie = driver.get_cookies()
-        BCOOKIES = {}
         for i in cookie:  # 添加cookie到CookieJar
             BCOOKIES[i["name"]] = i["value"]
-        DB.set('cookies', BCOOKIES, 600)
         print('reload' + str(BCOOKIES))
-
     else:
-        cookie = DB.get('cookies')
-        BCOOKIES = (eval(cookie))
+       pass
     ssrequest = requests.session()
     requests.utils.add_dict_to_cookiejar(ssrequest.cookies, BCOOKIES)
     return ssrequest.cookies
-    # 获取浏览器cookies
-    # BCOOKIES = {
-    #     'csrftoken':'J03JagXCbfyH9jHGGwL27HDadOPrgCaJsNIq68xXtDbW5cuL3LNtt22laPhfZSnn',
-    #     'sessionid':'1f36fnd964r5k24urh3kyh9j4losrdw5'
-    # }
 
 
 #
@@ -414,9 +402,9 @@ def post_request(cookies, class_code, hashkey, answer):
 
 
 def has_free(class_code, reset=False):
-    check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page='
+    check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
     cookies = get_Session(reset)
-    res = requests.get(check_url + str(page_num), cookies=cookies, headers=check_classheader)
+    res = requests.get(check_url, cookies=cookies, headers=check_classheader)
     soup = BeautifulSoup(res.text, 'html.parser')
     class_trs = soup.find_all("tr")
     class_tr = class_trs[class_code + 1]
@@ -431,11 +419,11 @@ def has_free(class_code, reset=False):
         return False
 
 
-
 if __name__ == '__main__':
     reset = False
     i = 0
-    retry_num=0
+    retry_num = 0
+    has_free(reset=True, class_code=class_code[i])
     while True:
         try:
             if i == len(class_code):
@@ -444,14 +432,12 @@ if __name__ == '__main__':
                 # break
                 continue
             else:
-                print('retry_time : ' +str(retry_num))
-                print('code ： '+str(i))
+                print('retry_time : ' + str(retry_num))
+                print('code ： ' + str(i))
                 i += 1
-                retry_num+=1
+                retry_num += 1
                 reset = False
         except Exception as e:
+            print(e)
             reset = True
             continue
-
-
-
