@@ -272,10 +272,23 @@ driver = Firefox(executable_path='geckodriver', firefox_options=chrome_options)
 wait = WebDriverWait(driver, 10)
 url = 'https://mis.bjtu.edu.cn/home/'
 URL = 'http://jwc.bjtu.edu.cn'
-username = '15281106'
-password = 'wscjxky123'
+username = '16321143'
+password = 'dabai2VK'
 
-
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
+    ,
+    'Referer': 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/'
+    ,
+    'Host': 'dean.bjtu.edu.cn',
+    'Pragma': 'no-cache',
+    'Connection': 'keep-alive',
+    'Accept':'image/webp,image/apng,image/*,*/*;q=0.8',
+    'Accept-Encoding':'gzip, deflate, br',
+    'Accept-Language':'zh-CN,zh;q=0.9',
+    'Cache-Control':'no-cache',
+    # "Connection": "close",
+}
 def login(url, username, password):
     driver.get(url)
     # time.sleep(1)
@@ -303,12 +316,14 @@ def solve():
     except:
         elem = driver.find_element_by_xpath('//*[@id="menu-toggler"]')
         elem.click()
-    class_code = [6, 4, 7, 3]
+    # class_code = [6, 4, 7, 3]
+    class_code = [6]
     driver.find_element_by_xpath('//*[@id="sidebar2"]/div[1]/div[1]/div/ul/li[2]/ul/li[1]/a').click()
     driver.switch_to.frame(driver.find_element_by_xpath('//*[@id="current"]/iframe'))
     # classn = '//*[@id="current"]/table/tbody/tr[18]/td[1]/label'
     input_css = '/html/body/form/input[1]'
     elem = WebDriverWait(driver, 1, 0.1).until(EC.presence_of_element_located((By.XPATH, input_css)))
+    # elem.send_keys('安全')
     elem.send_keys('网球')
     submit_btn = driver.find_element_by_xpath('/html/body/form/button')
     submit_btn.click()
@@ -329,7 +344,7 @@ def solve():
             confirm_btn.click()
             driver.switch_to.default_content()
             elem = driver.find_element_by_xpath('/html/body/div[4]/div/div/div[2]/div/div/img').get_attribute('src')
-            img_data = requests.get(elem)
+            img_data = requests.get(elem,headers=headers)
             ans = TestFunc(img_data.content)
             driver.find_element_by_xpath('/html/body/div[4]/div/div/div[2]/div/div/input[2]').send_keys(ans)
             driver.find_element_by_xpath('/html/body/div[4]/div/div/div[3]/button[1]').click()

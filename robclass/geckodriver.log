@@ -13746,3 +13746,107 @@ Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr
 JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
 Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
 [Parent 15940, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1529576339663	geckodriver	INFO	Listening on 127.0.0.1:12038
+1529576342774	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529576343830	Marionette	INFO	Listening on port 12054
+1529576344281	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 12240, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6100, Chrome_ChildThread] WARNING: pipe error: 232: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 513
+1529576495880	geckodriver	INFO	Listening on 127.0.0.1:12429
+1529576498985	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529576500055	Marionette	INFO	Listening on port 12443
+1529576500493	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 12340, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1529576594706	geckodriver	INFO	Listening on 127.0.0.1:12787
+1529576597821	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529576598852	Marionette	INFO	Listening on port 12801
+1529576599329	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 15404, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 15616, Chrome_ChildThread] WARNING: pipe error: 232: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 513
+1529576634721	geckodriver	INFO	Listening on 127.0.0.1:12961
+1529576637818	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529576638930	Marionette	INFO	Listening on port 12977
+1529576639326	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 11444, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1529576709484	geckodriver	INFO	Listening on 127.0.0.1:13229
+1529576712586	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529576713617	Marionette	INFO	Listening on port 13241
+1529576714102	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 15176, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1529577028636	geckodriver	INFO	Listening on 127.0.0.1:14153
+1529577031780	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "disable-infobars"]
+1529577032967	Marionette	INFO	Listening on port 14171
+1529577033288	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529577327257	geckodriver	INFO	Listening on 127.0.0.1:1115
+1529577330379	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "disable-infobars"]
+1529577331751	Marionette	INFO	Listening on port 1123
+1529577331901	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529578532695	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 6708, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Child 14380, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 14380, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chroUnable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 13480, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 13480, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 13632, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 13632, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 13480, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+NING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Child 3120, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 3120, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[GPU 14332, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1529578617510	geckodriver	INFO	Listening on 127.0.0.1:1903
+1529578620620	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "disable-infobars"]
+1529578621927	Marionette	INFO	Listening on port 1911
+1529578622135	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 16012, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 5068, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 5068, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 16012, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1529578661664	geckodriver	INFO	Listening on 127.0.0.1:2032
+1529578664779	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "disable-infobars"]
+1529578665956	Marionette	INFO	Listening on port 2040
+1529578666295	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined

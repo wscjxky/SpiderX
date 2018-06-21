@@ -23,8 +23,8 @@ import requests
 #
 # username = '16281117'
 # password = '111516'
-username = ''
-password = ''
+username = '15281106'
+password = 'wscjxky123'
 FATEA_PRED_URL = "http://pred.fateadm.com"
 time_delay=1
 
@@ -350,10 +350,9 @@ def post_met(ssrequest, class_code, hashkey, answer):
                        #                     }
                        data=data)
     print(class_code)
-
+    print(re.status_code)
     # print(data)
-    # re.close()
-    # print(re)
+    re.close()
 
 
 def getCode():
