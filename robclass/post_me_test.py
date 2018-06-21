@@ -1,20 +1,9 @@
+import redis
+from bs4 import BeautifulSoup
+import time
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
 
-# from .fateadm_api import TestFunc
-# 【80L145Q】VHDL及设计实践 81886
-# 【80L204Q】虚拟化与云计算 82578
-# 人工智能 83429  83129 82580
-# 机械学习 82182 82781
-# code_list = ['81886', '82578', '83429', '83129', '82580', '82182', '82781']
-# 试一下大学生安全教育
-
-code_list = ['83357']
-# code_list = ['84158', '84163', '84118', '84135']
-#
-# code_list = ['82532', '83194', '83009']
-
-# code_list = ['84114', '84177', '84161']
 import base64
 import hashlib
 import json
@@ -23,10 +12,53 @@ import requests
 #
 # username = '16281117'
 # password = '111516'
-username = '15281106'
-password = 'wscjxky123'
+username = '16321143'
+password = 'dabai2VK'
 FATEA_PRED_URL = "http://pred.fateadm.com"
-time_delay=1
+time_delay = 1
+# 试一下大学生安全教育
+# page_num = 31
+# 课程号在第一个就是1
+# class_code = [1]
+page_num = 31
+class_code = [1]
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
+    ,
+    'Referer': 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/'
+    ,
+    'Host': 'dean.bjtu.edu.cn',
+    'Pragma': 'no-cache',
+    'Connection': 'keep-alive',
+    'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Accept-Language': 'zh-CN,zh;q=0.9',
+    'Cache-Control': 'no-cache',
+    # "Connection": "close",
+}
+headers_image = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
+    ,
+    'Referer': 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/'
+    ,
+    'Host': 'dean.bjtu.edu.cn',
+    'X-Requested-With': 'XMLHttpRequest',
+    'Pragma': 'no-cache',
+    'Connection': 'keep-alive',
+    'Cache-Control': 'no-cache'
+    # "Connection": "close",
+}
+check_classheader = {"Host": "dean.bjtu.edu.cn",
+                     "Connection": "keep-alive",
+                     "Accept": "*/*",
+                     "X-Requested-With": "XMLHttpRequest",
+                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+                     "Referer": "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/",
+                     "Accept-Encoding": "gzip, deflate, br",
+                     "Accept-Language": "en,zh-CN;q=0.9,zh;q=0.8"
+                     }
+DB = redis.Redis(host='47.94.251.202', port=6379, db=7, password='wscjxky', decode_responses=True)
+
 
 class TmpObj():
     def __init__(self):
@@ -165,14 +197,6 @@ class FateadmApi():
         return rsp
 
     #
-    # 从文件进行验证码识别
-    #
-    def PredictFromFile(self, pred_type, file_name, head_info=""):
-        with open(file_name, "rb") as f:
-            data = f.read()
-        return self.Predict(pred_type, data, head_info)
-
-    #
     # 识别失败，进行退款请求
     # 注意:
     #    Predict识别接口，仅在ret_code == 0时才会进行扣款，才需要进行退款请求，否则无需进行退款操作
@@ -194,29 +218,6 @@ class FateadmApi():
         url = self.host + "/api/capjust"
         rsp = HttpRequest(url, param)
 
-        return rsp
-
-    #
-    # 充值接口
-    #
-    def Charge(self, cardid, cardkey):
-        tm = str(int(time.time()))
-        sign = CalcSign(self.usr_id, self.usr_key, tm)
-        csign = CalcCardSign(cardid, cardkey, tm, self.usr_key)
-        param = {
-            "user_id": self.usr_id,
-            "timestamp": tm,
-            "sign": sign,
-            'cardid': cardid,
-            'csign': csign
-        }
-        url = self.host + "/api/charge"
-        rsp = HttpRequest(url, param)
-        if rsp.ret_code == 0:
-            LOG("charge succ ret: {} request_id: {} pred: {} err: {}".format(rsp.ret_code, rsp.request_id,
-                                                                             rsp.pred_rsp.value, rsp.err_msg))
-        else:
-            LOG("charge failed ret: {} err: {}".format(rsp.ret_code, rsp.err_msg.encode('utf-8')))
         return rsp
 
 
@@ -251,68 +252,45 @@ def TestFunc(imgdata):
     return rsp.pred_rsp.value
 
 
-def get_Session():
-    chrome_options = Options()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('disable-infobars')
-    driver = Firefox(executable_path='geckodriver', firefox_options=chrome_options)
-    url = 'https://mis.bjtu.edu.cn/home/'
-    driver.get(url)
-    driver.maximize_window()
-    elem = driver.find_element_by_css_selector('#id_loginname')
-    elem.send_keys(username)
-    elem = driver.find_element_by_xpath('//*[@id="id_password"]')
-    elem.send_keys(password)
-    elem = driver.find_element_by_xpath('//*[@id="form1"]/div/div/button')
-    elem.click()
-    elem = driver.find_element_by_xpath(
-        '//*[@id="wrap"]/div[2]/div[2]/div/div[2]/div/div/table/tbody/tr[2]/td[1]/div/div/h5/a')
-    elem.click()
-    time.sleep(1)
-    handles = driver.window_handles
-    driver.switch_to.window(handles[-1])
-    cookie = driver.get_cookies()
+def get_Session(reset=False):
+    if not DB.get('cookies') and not reset:
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('disable-infobars')
+        driver = Firefox(executable_path='geckodriver', firefox_options=chrome_options)
+        url = 'https://mis.bjtu.edu.cn/home/'
+        driver.get(url)
+        driver.maximize_window()
+        elem = driver.find_element_by_css_selector('#id_loginname')
+        elem.send_keys(username)
+        elem = driver.find_element_by_xpath('//*[@id="id_password"]')
+        elem.send_keys(password)
+        elem = driver.find_element_by_xpath('//*[@id="form1"]/div/div/button')
+        elem.click()
+        elem = driver.find_element_by_xpath(
+            '//*[@id="wrap"]/div[2]/div[2]/div/div[2]/div/div/table/tbody/tr[2]/td[1]/div/div/h5/a')
+        elem.click()
+        time.sleep(1)
+        handles = driver.window_handles
+        driver.switch_to.window(handles[-1])
+        cookie = driver.get_cookies()
+        BCOOKIES = {}
+        for i in cookie:  # 添加cookie到CookieJar
+            BCOOKIES[i["name"]] = i["value"]
+        DB.set('cookies', BCOOKIES, 600)
+        print('reload' + str(BCOOKIES))
 
+    else:
+        cookie = DB.get('cookies')
+        BCOOKIES = (eval(cookie))
+    ssrequest = requests.session()
+    requests.utils.add_dict_to_cookiejar(ssrequest.cookies, BCOOKIES)
+    return ssrequest.cookies
     # 获取浏览器cookies
     # BCOOKIES = {
     #     'csrftoken':'J03JagXCbfyH9jHGGwL27HDadOPrgCaJsNIq68xXtDbW5cuL3LNtt22laPhfZSnn',
     #     'sessionid':'1f36fnd964r5k24urh3kyh9j4losrdw5'
     # }
-    BCOOKIES = {}
-    for i in cookie:  # 添加cookie到CookieJar
-        BCOOKIES[i["name"]] = i["value"]
-        print(i["name"], i["value"])
-    ssrequest = requests.session()
-    requests.utils.add_dict_to_cookiejar(ssrequest.cookies, BCOOKIES)
-    return ssrequest, driver
-
-
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
-    ,
-    'Referer': 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/'
-    ,
-    'Host': 'dean.bjtu.edu.cn',
-    'Pragma': 'no-cache',
-    'Connection': 'keep-alive',
-    'Accept':'image/webp,image/apng,image/*,*/*;q=0.8',
-    'Accept-Encoding':'gzip, deflate, br',
-    'Accept-Language':'zh-CN,zh;q=0.9',
-    'Cache-Control':'no-cache',
-    # "Connection": "close",
-}
-headers_image = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
-    ,
-    'Referer': 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/'
-    ,
-    'Host': 'dean.bjtu.edu.cn',
-    'X-Requested-With': 'XMLHttpRequest',
-    'Pragma': 'no-cache',
-    'Connection': 'keep-alive',
-    'Cache-Control': 'no-cache'
-    # "Connection": "close",
-}
 
 
 #
@@ -359,15 +337,15 @@ def post_met(ssrequest, class_code, hashkey, answer):
     re.close()
 
 
-def getCode():
+def getCode(cookies):
     re = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/',
-                      cookies=ssr.cookies,
+                      cookies=cookies,
                       headers=headers_image,
                       )
     json_data = re.json()
     hashkey = json_data['key']
     print(json_data)
-    img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],headers=headers)
+    img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'], headers=headers)
     answer = TestFunc(img_data.content)
     return hashkey, answer
 
@@ -415,63 +393,65 @@ def download():
         time_end = time.time()
 
 
+def post_request(cookies, class_code, hashkey, answer):
+    data = {'checkboxs': class_code,
+            'hashkey': hashkey,
+            'answer': answer
+            }
+    re = requests.post('https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=submit',
+                       cookies=cookies,
+                       headers=headers_image,
+                       data=data)
+    # if len(re.text) != 41:
+    #     return True
+    print((re.text))
+    print((re.content))
+
+    print(class_code)
+    print(re.status_code)
+    # print(data)
+    re.close()
+
+
+def has_free(class_code, reset=False):
+    check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page='
+    cookies = get_Session(reset)
+    res = requests.get(check_url + str(page_num), cookies=cookies, headers=check_classheader)
+    soup = BeautifulSoup(res.text, 'html.parser')
+    class_trs = soup.find_all("tr")
+    class_tr = class_trs[class_code + 1]
+    has_free = class_tr.find('input')
+    if has_free:
+        print('ok')
+        class_code = has_free.attrs['value']
+        hashkey, answer = getCode(cookies=cookies)
+        post_request(cookies=cookies, class_code=class_code, hashkey=hashkey, answer=answer)
+        return True
+    else:
+        return False
+
+
+
 if __name__ == '__main__':
-    import time
+    reset = False
+    i = 0
+    retry_num=0
+    while True:
+        try:
+            if i == len(class_code):
+                i = 0
+            if has_free(reset=reset, class_code=class_code[i]):
+                # break
+                continue
+            else:
+                print('retry_time : ' +str(retry_num))
+                print('code ： '+str(i))
+                i += 1
+                retry_num+=1
+                reset = False
+        except Exception as e:
+            reset = True
+            continue
 
-    ssr, driver = get_Session()
-    post_met(ssr, code_list[0], 'asdasd12312asdzxcasd', 2)
-    # global hashkey, answer, driver, ssr
-    # ssr, driver = get_Session()
-    # driver.quit()
-    # hashkey, answer = getCode()
-    # time_start = time.time()
-    # time_start1 = time.time()
-    # while True:
-    #     try:
-    #         time_end = time.time()
-    #         time_end1 = time.time()
-    #         cost_time = time_end - time_start
-    #         cost_time1 = time_end1 - time_start1
-    #         print(cost_time)
-    #         if cost_time > 120:
-    #             print('reset code ' + str(cost_time))
-    #             hashkey, answer = getCode()
-    #             time_start = time.time()
-    #         if cost_time1 > 1000:
-    #             print('reset driver ' + str(cost_time1))
-    #             ssr, driver = get_Session()
-    #             driver.quit()
-    #             time_start1 = time.time()
-    #         for i in code_list:
-    #             post_met(ssr, i, hashkey, answer)
-    #     except:
-    #         pass
 
-# if __name__ == '__main__':
-#     # ssr, driver = get_Session()
-#     # post_met(ssr)
-#     import time
-#     global ssr
-#     ssr, driver = get_Session()
-#     # driver.quit()
-#     post_met(ssr, code_list[0])
-#     time_start = time.time()
-#     # while True:
-#     #     try:
-#     #         # time.sleep(random.randint(0, 1))
-#     #         time_end = time.time()
-#     #         cost_time = time_end - time_start
-#     #         # if cost_time > 1000:
-#     #         for i in code_list:
-#     #             post_met(ssr, i)
-#     #     # 超过最大链接数
-#     #     except Exception as e:
-#     #         try:
-#     #             driver.quit()
-#     #         except:
-#     #             print('a')
-#     #         finally:
-#     #             ssr, driver = get_Session()
-#     #             driver.quit()
-#     #             time_start = time.time()
-#     #             cost_time = 0
+

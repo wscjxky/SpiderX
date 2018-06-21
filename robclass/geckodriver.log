@@ -13850,3 +13850,127 @@ Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr
 1529578666295	Marionette	WARN	TLS certificate errors will be ignored for this session
 Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
 JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 11776, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1529579512004	geckodriver	INFO	Listening on 127.0.0.1:7092
+1529579514873	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "disable-infobars"]
+1529579516723	Marionette	INFO	Listening on port 7106
+1529579516885	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 5412, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1529580019751	geckodriver	INFO	Listening on 127.0.0.1:7891
+1529580022828	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "disable-infobars"]
+1529580024056	Marionette	INFO	Listening on port 7903
+1529580024336	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529580995186	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 7976, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 7976, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529580164513	geckodriver	INFO	Listening on 127.0.0.1:9247
+1529580167573	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529580168701	Marionette	INFO	Listening on port 9280
+1529580169080	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529580703768	geckodriver	INFO	Listening on 127.0.0.1:13168
+1529580706575	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529580708948	Marionette	INFO	Listening on port 13184
+1529580709689	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529581952720	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+tte	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529580849142	Marionette	INFO	Listening on port 14055
+1529580849466	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529582122794	geckodriver	INFO	Listening on 127.0.0.1:3655
+1529582125638	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529582127117	Marionette	INFO	Listening on port 3667
+1529582127155	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529582179544	geckodriver	INFO	Listening on 127.0.0.1:3822
+1529582182636	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "disable-infobars"]
+1529582183817	Marionette	INFO	Listening on port 3834
+1529582184148	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529583108029	geckodriver::marionette	ERROR	Failed to kill browser process
+ckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529582274504	Marionette	INFO	Listening on port 4545
+1529582274923	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529582492582	geckodriver	INFO	Listening on 127.0.0.1:6208
+1529582495564	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529582497550	Marionette	INFO	Listening on port 6242
+1529582497590	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529583180360	geckodriver	INFO	Listening on 127.0.0.1:11170
+1529583183179	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529583184734	Marionette	INFO	Listening on port 11182
+1529583185189	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+1529583191918	geckodriver	INFO	Listening on 127.0.0.1:11232
+1529583195055	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529583196242	Marionette	INFO	Listening on port 11244
+1529583196564	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529584034246	geckodriver	INFO	Listening on 127.0.0.1:12641
+1529584037326	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529584038421	Marionette	INFO	Listening on port 12653
+1529584038831	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+1529584885226	geckodriver	INFO	Listening on 127.0.0.1:14765
+1529584903408	geckodriver	INFO	Listening on 127.0.0.1:14797
+1529584906519	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529584907588	Marionette	INFO	Listening on port 14809
+1529584908025	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined

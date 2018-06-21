@@ -18,7 +18,7 @@ import urllib
 import json
 import string
 import requests
-
+from bs4 import BeautifulSoup
 FATEA_PRED_URL = "http://pred.fateadm.com"
 
 
@@ -361,7 +361,26 @@ def main():
     login(url, username, password)
     solve()
 
-
+keyu_headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
+    ,
+    'Referer': 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/'
+    ,
+    'Host': 'dean.bjtu.edu.cn',
+    'Pragma': 'no-cache',
+    'Connection': 'keep-alive',
+    'Accept':'image/webp,image/apng,image/*,*/*;q=0.8',
+    'Accept-Encoding':'gzip, deflate, br',
+    'Accept-Language':'zh-CN,zh;q=0.9',
+    'Cache-Control':'no-cache',
+    # "Connection": "close",
+}
 if __name__ == '__main__':
     main()
+    # url='https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school'
+    # res=requests.get(url,headers=keyu_headers)
+    # print(res.text)
+    # res2 = requests.post("https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=submit",
+    #                      cookies=cookies, data=f, headers=data)
+
     # '//*[@id="selected-container"]/table/tbody/tr[2]/td[3]'
