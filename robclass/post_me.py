@@ -23,10 +23,10 @@ import requests
 #
 # username = '16281117'
 # password = '111516'
-username = '15281106'
-password = 'wscjxky123'
+username = ''
+password = ''
 FATEA_PRED_URL = "http://pred.fateadm.com"
-
+time_delay=1
 
 class TmpObj():
     def __init__(self):
@@ -318,6 +318,7 @@ headers_image = {
 #
 
 def post_met(ssrequest, class_code, hashkey, answer):
+    time.sleep(time_delay)
     # 验证
     # print(requests.get('https://dean.bjtu.edu.cn/notice/item/',
     #                    cookies=ssrequest.cookies,
@@ -349,7 +350,7 @@ def post_met(ssrequest, class_code, hashkey, answer):
                        #                     }
                        data=data)
     print(class_code)
-    time.sleep(4)
+
     # print(data)
     # re.close()
     # print(re)
@@ -417,29 +418,28 @@ if __name__ == '__main__':
     ssr, driver = get_Session()
     driver.quit()
     hashkey, answer = getCode()
-    post_met(ssr, code_list[0], hashkey, answer)
-    # time_start = time.time()
-    # time_start1 = time.time()
-    # while True:
-    #     try:
-    #         time_end = time.time()
-    #         time_end1 = time.time()
-    #         cost_time = time_end - time_start
-    #         cost_time1 = time_end1 - time_start1
-    #         print(cost_time)
-    #         if cost_time > 120:
-    #             print('reset code ' + str(cost_time))
-    #             hashkey, answer = getCode()
-    #             time_start = time.time()
-    #         if cost_time1 > 1000:
-    #             print('reset driver ' + str(cost_time1))
-    #             ssr, driver = get_Session()
-    #             driver.quit()
-    #             time_start1 = time.time()
-    #         for i in code_list:
-    #             post_met(ssr, i, hashkey, answer)
-    #     except:
-    #         pass
+    time_start = time.time()
+    time_start1 = time.time()
+    while True:
+        try:
+            time_end = time.time()
+            time_end1 = time.time()
+            cost_time = time_end - time_start
+            cost_time1 = time_end1 - time_start1
+            print(cost_time)
+            if cost_time > 120:
+                print('reset code ' + str(cost_time))
+                hashkey, answer = getCode()
+                time_start = time.time()
+            if cost_time1 > 1000:
+                print('reset driver ' + str(cost_time1))
+                ssr, driver = get_Session()
+                driver.quit()
+                time_start1 = time.time()
+            for i in code_list:
+                post_met(ssr, i, hashkey, answer)
+        except:
+            pass
 
 # if __name__ == '__main__':
 #     # ssr, driver = get_Session()
