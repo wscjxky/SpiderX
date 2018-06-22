@@ -320,7 +320,7 @@ def post_met(ssrequest, class_code, hashkey, answer):
         # {"msg": "\u9a8c\u8bc1\u7801\u9519\u8bef"}
         pass
     print((re.text))
-    print(class_code)
+
     print(re.status_code)
     # print(data)
     re.close()
@@ -396,7 +396,7 @@ def post_request(cookies, class_code, hashkey, answer):
     print((re.text))
     print((re.content))
 
-    print(class_code)
+
     print(re.status_code)
     # print(data)
     re.close()
@@ -413,6 +413,8 @@ def has_free(class_code, reset=False):
     class_trs = soup.find_all("tr")
     class_tr = class_trs[class_code ]
     has_free = class_tr.find('input')
+    class_name = class_tr.find_all('td')[2].text
+    print(class_name)
     if has_free:
         print('ok')
         class_code = has_free.attrs['value']

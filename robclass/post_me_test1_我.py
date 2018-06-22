@@ -319,7 +319,7 @@ def post_met(ssrequest, class_code, hashkey, answer):
         # {"msg": "\u9a8c\u8bc1\u7801\u9519\u8bef"}
         pass
     print((re.text))
-    print(class_code)
+
     print(re.status_code)
     # print(data)
     re.close()

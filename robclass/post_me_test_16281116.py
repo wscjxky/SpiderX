@@ -6,7 +6,6 @@ import base64
 import hashlib
 import json
 import requests
-
 # username = '16281117'
 # password = '111516'
 username = '16281116'
@@ -17,7 +16,7 @@ cookie_name = '16271187'
 cache_time = 1000
 # 课程号在第一个就是1
 # class_code = [1]
-class_code = [ 292]
+class_code = [ 15,77]
 retry_max = 1200
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
@@ -275,7 +274,7 @@ def get_Session():
     print('reload' + str(BCOOKIES))
     ssrequest = requests.session()
     requests.utils.add_dict_to_cookiejar(ssrequest.cookies, BCOOKIES)
-    driver.close()
+    driver.quit()
     return ssrequest.cookies
 
 
@@ -317,7 +316,7 @@ def post_met(ssrequest, class_code, hashkey, answer):
         # {"msg": "\u9a8c\u8bc1\u7801\u9519\u8bef"}
         pass
     print((re.text))
-    print(class_code)
+
     print(re.status_code)
     # print(data)
     re.close()
@@ -338,7 +337,7 @@ def getCode(cookies):
 
 def main():
     ssr, driver = get_Session()
-    driver.close()
+    driver.quit()
     re = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/',
                       cookies=ssr.cookies,
                       headers=headers_image,
@@ -360,12 +359,12 @@ def download():
     time_start = time.time()
     time_end = time.time()
     ssr, driver = get_Session()
-    driver.close()
+    driver.quit()
     while True:
         cost_time = time_end - time_start
         if cost_time > 1000:
             ssr, driver = get_Session()
-            driver.close()
+            driver.quit()
         re = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/',
                           cookies=ssr.cookies,
                           headers=headers_image,
@@ -402,7 +401,7 @@ def post_request(cookies, class_code, hashkey, answer):
 def has_free(class_code, reset=False):
     global cookies
     print(reset)
-    check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
+    check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?kkxsh&kch&kxh&kclbdm=20&action=load&iframe=others&submit&has_advance_query&page=1&perpage=500'
     if reset:
         cookies = get_Session()
     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
@@ -410,6 +409,8 @@ def has_free(class_code, reset=False):
     class_trs = soup.find_all("tr")
     class_tr = class_trs[class_code]
     has_free = class_tr.find('input')
+    class_name = class_tr.find_all('td')[2].text
+    print(class_name)
     if has_free:
         print('ok')
         class_code = has_free.attrs['value']
@@ -429,6 +430,8 @@ if __name__ == '__main__':
         try:
             if retry_num > retry_max:
                 reset = True
+                retry_num = 0
+
                 continue
             if i == len(class_code):
                 i = 0
