@@ -412,6 +412,8 @@ def has_free(class_code, reset=False):
     class_trs = soup.find_all("tr")
     class_tr = class_trs[class_code]
     has_free = class_tr.find('input')
+    class_name = class_tr.find_all('td')[2].text
+    print(class_name)
     if has_free:
         print('ok')
         class_code = has_free.attrs['value']

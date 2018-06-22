@@ -17,7 +17,8 @@ cookie_name = '16271187'
 cache_time = 1000
 # 课程号在第一个就是1
 # class_code = [1]
-class_code = [291,292,293]
+# class_code = [291,292,293]
+class_code=[267]
 retry_max = 1200
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36'
@@ -392,8 +393,6 @@ def post_request(cookies, class_code, hashkey, answer):
     #     return True
     print((re.text))
     print((re.content))
-
-    print(class_code)
     print(re.status_code)
     # print(data)
     re.close()
@@ -410,6 +409,7 @@ def has_free(class_code, reset=False):
     class_trs = soup.find_all("tr")
     class_tr = class_trs[class_code]
     has_free = class_tr.find('input')
+    print(class_tr.text)
     if has_free:
         print('ok')
         class_code = has_free.attrs['value']
