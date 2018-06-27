@@ -15958,3 +15958,288 @@ JavaScript error: resource:///modules/ContentMetaHandler.jsm, line 155: NS_ERROR
 Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
 JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
 JavaScript error: resource:///modules/ContentMetaHandler.jsm, line 155: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIMessageSender.sendAsyncMessage]
+1529646374165	geckodriver	INFO	Listening on 127.0.0.1:3289
+1529646377273	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529646378747	Marionette	INFO	Listening on port 3303
+1529646378795	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+JavaScript error: resource:///modules/ContentMetaHandler.jsm, line 155: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIMessageSender.sendAsyncMessage]
+1529647023508	geckodriver	INFO	Listening on 127.0.0.1:5399
+1529647026091	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529647027420	Marionette	INFO	Listening on port 5413
+1529647027609	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+fatal runtime error: allocator memory exhausted
+fatal runtime error: allocator memory exhausted
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: , line 0: uncaught exception: out of memory
+[Parent 21828, Gecko_IOThread] WARNING: file z:/build/build/src/ipc/chromium/src/base/process_util_win.cc, line 188
+1529647269118	geckodriver	INFO	Listening on 127.0.0.1:5959
+1529647272206	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529647273374	Marionette	INFO	Listening on port 5969
+1529647273716	Marionette	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: Failed buffer for 0, 0, 1366, 768
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: chrome://browser/content/tab-content.js, line 896: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+JavaScript error: , line 0: uncaught exception: out of memory
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 28340, Gecko_IOThread] WARNING: file z:/build/build/src/ipc/chromium/src/base/process_util_win.cc, line 188
+1529647284268	geckodriver	INFO	Listening on 127.0.0.1:6040
+1529647287305	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529647289209	geckodriver	INFO	Listening on 127.0.0.1:6061
+1529647292314	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529647293420	Marionette	INFO	Listening on port 6071
+1529647293823	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is u1529647303JavaScript error: resource:///modules/Conten1529647304137	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Loc[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+is.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+JavaScript error: resource:///modules/ContentMetaHandler.jsm, line 155: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIMessageSender.sendAsyncMessage]
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 26900, Gecko_IOThread] WARNING: file z:/build/build/src/ipc/chromium/src/base/process_util_win.cc, line 188
+1529647376987	geckodriver::marionette	ERROR	Failed to kill browser process
+1529647397953	geckodriver	INFO	Listening on 127.0.0.1:6543
+1529647401071	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529647402387	Marionette	INFO	Listening on port 6551
+1529647402580	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=1529647422780	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable1529647425164	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529647426Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+JavaScript error: resource:///modules/ContentMetaHandler.jsm, line 155: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIMessageSender.sendAsyncMessage]
+1529647446426	geckodriver	INFO	Listening on 127.0.0.1:6959
+1529647449497	geckodriver::marionette	INFO	Starting browser1529647450810	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mo152961529647452192	Marionette	INFO	Listening on port 6998
+1529647452333	Marionette	WARUnable to read VR Path Registry from C:\Users\AdministratorUnable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+JavaScript error: resource:///modules/ContentMetaHandler.jsm, line 155: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIMessageSender.sendAsyncMessage]
+1529647513175	geckodriver	INFO	Listening on 127.0.0.1:7338
+1529647516240	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529647517397	Marionette	INFO	Listening on port 7359
+1529647517748	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+JavaScript error: resource:///modules/ContentMetaHandler.jsm, line 155: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIMessageSender.sendAsyncMessage]
+1529648206376	geckodriver	INFO	Listening on 127.0.0.1:10069
+1529648209428	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529648210604	Marionette	INFO	Listening on port 10087
+1529648210939	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery-ui/jquery.bgiframe-2.1.pack.js line 10 > eval, line 1: TypeError: $.browser is undefined
+JavaScript error: resource:///modules/ContentMetaHandler.jsm, line 155: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIMessageSender.sendAsyncMessage]
+1529648415706	addons.productaddons	WARN	Failed downloading XML, status: 0, reason: error
+1529648427547	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+disable-infobars"]
+*** You are running in headless mode.
+1529648366263	Marionette	INFO	Listening on port 10554
+1529648366638	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529648415702	addons.productaddons	WARN	Failed downloading XML, status: 0, reason: error
+1529648422169	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+irefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529648386314	Marionette	INFO	Listening on port 10603
+1529648386644	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529648415701	addons.productaddons	WARN	Failed downloading XML, status: 0, reason: error
+1529648439712	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1529662748007	geckodriver	INFO	Listening on 127.0.0.1:6264
+1529662750939	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662752719	Marionette	INFO	Listening on port 6350
+1529662752960	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529662766853	geckodriver	INFO	Listening on 127.0.0.1:6544
+1529662769895	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662771121	Marionette	INFO	Listening on port 6573
+1529662771407	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529662782078	geckodriver	INFO	Listening on 127.0.0.1:6674
+1529662785134	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662786679	Marionette	INFO	Listening on port 6693
+1529662787142	Marionette	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: Failed buffer for 210, 268, 712, 147
+[GFX1-]: Failed buffer for 210, 268, 712, 147
+te	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662798658	Marionette	INFO	Listening on port 6766
+1529662799117	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery/jquery.min.js, line 2: NS_ERROR_NOT_INITIALIZED: 
+e running in headless mode.
+1529662803933	Marionette	INFO	Listening on port 6831
+1529662804352	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529662814705	geckodriver	INFO	Listening on 127.0.0.1:6960
+1529662817764	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662819319	Marionette	INFO	Listening on port 6986
+1529662819772	Marionette	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+wser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662837236	Marionette	INFO	Listening on port 7099
+1529662837977	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529662838035	geckodriver	INFO	Listening on 127.0.0.1:7125
+1529662841084	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662842686	Marionette	INFO	Listening on port 7161
+1529662843099	Marionette	WARN	TLS certificate errors will be ignored for this session
+Unable to read VR Path Registry from C:\Users\Administrator\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://mis.bjtu.edu.cn/static/lib/jquery/jquery.min.js, line 2: NS_ERROR_NOT_INITIALIZED: 
+e running in headless mode.
+1529662857154	Marionette	INFO	Listening on port 7259
+1529662857450	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529662869038	geckodriver	INFO	Listening on 127.0.0.1:7361
+1529662872136	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662873663	Marionette	INFO	Listening on port 7393
+1529662874145	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529662881704	geckodriver	INFO	Listening on 127.0.0.1:7454
+1529662884751	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662886831	Marionette	INFO	Listening on port 7462
+152961529662888765	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+s"]
+*** You are running in headless mode.
+1529662890792	Marionette	INFO	Listening on port 7523
+1529662891871	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529662902527	geckodriver	INFO	Listening on 127.0.0.1:7656
+1529662905572	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662907545	Marionette	INFO	Listening on port 7668
+1529662907598	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529662918692	geckodriver	INFO	Listening on 127.0.0.1:7777
+1529662921742	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662923696	Marionette	INFO	Listening on port 7789
+1529662923751	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529662929585	geckodriver	INFO	Listening on 127.0.0.1:7842
+1529662932636	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662934532	Marionette	INFO	Listening on port 7876
+1529662934647	Marionette	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+5
+1529662938535	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662940530	Marionette	INFO	Listening on port 7939
+1529662940615	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529662951471	geckodriver	INFO	Listening on 127.0.0.1:8037
+1529662954477	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529662976728	geckodriver	INFO	Listening on 127.0.0.1:8131
+1529662979833	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529818059023	geckodriver	INFO	Listening on 127.0.0.1:9944
+1529818062140	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529818064073	Marionette	INFO	Listening on port 9952
+1529818064188	Marionette	WARN	TLS certificate errors will be ignored for this session
+1529818070642	geckodriver	INFO	Listening on 127.0.0.1:9972
+1529818073778	geckodriver::marionette	INFO	Starting browser D:\firefox\firefox.exe with args ["-marionette", "--headless", "disable-infobars"]
+*** You are running in headless mode.
+1529818075022	Marionette	INFO	Listening on port 9980
+1529818075292	Marionette	WARN	TLS certificate errors will be ignored for this session
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15008C,name=PBrowser::Msg_UpdateNativeWindowHandle) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x15007F,name=PBrowser::Msg_Destroy) Channel error: cannot send/recv
+
