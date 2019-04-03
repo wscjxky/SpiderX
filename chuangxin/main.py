@@ -10,24 +10,21 @@ import re
 username = '15281106'
 password = 'wscjxky123'
 
-
 def get_session(ssr):
     login_url = 'http://jwc.bjtu.edu.cn:82/LoginAjax.aspx?callback=jQuery172006346453567623689_1554310429909&' \
                 'username=%s&password=%s&type=1&_=1554310449634' % (username, password)
+    ssr_url='http://jwc.bjtu.edu.cn:82/NoMasterJumpPage.aspx?URL=jwcJybs&FPC=page:jwcJybs'
+    locate_url='http://202.112.159.147/getIndexPage'
     user_val = ssr.get(login_url).text
     id = re.search('LoginInUIA":"(.+)",', user_val).group(1)
     uid = re.search('UserName":"(.+)"', user_val).group(1)
-    ver_url = 'http://jwc.bjtu.edu.cn/Admin/UserInfo/Login.aspx?' \
-              'LoginInUI=%s&UserName=%s' % (urllib.parse.urlencode(id), uid)
-    val_res = ssr.get(ver_url).text
-    print(val_res)
+    ver_url = 'http://jwc.bjtu.edu.cn/Admin/UserInfo/Login.aspx?LoginInUIA=%s&UserName=%s&LoginFor=' % (id, uid)
+    ssr.get(ver_url).text
+    ssr.get(ssr_url).text
+    ssr.get(locate_url).text
+    return dict(ssr.cookies)['SESSION']
 
-    res = ssr.get('http://jwc.bjtu.edu.cn:82/Welcome.aspx')
-
-    pass
-
-
-def get_courses():
+def get_courses(session):
     data_dict = {
         'start': 0,
         'length': 100,
@@ -35,8 +32,10 @@ def get_courses():
         'isCanJoin': 1,
         'isSignUp': 0,
     }
+    headers['Cookie']='SESSION=%s'%session
     response = requests.post(base_url + 'credit/loadCreditChairList',
                              data=data_dict, headers=headers)
+    print(response.text)
     course = json.loads(response.text)
     course_id = course['data'][0]['id']
     course_start_time = course['data'][0]['signUpStartDate']
@@ -59,8 +58,7 @@ def sign_courses(course_id):
 
 if __name__ == '__main__':
     ssr = requests.session()
-    ssr = get_session(ssr)
-# course = get_courses()
-# course_id, start_time = get_courses()
+    session = get_session(ssr)
+    course_id, start_time = get_courses(session)
 # result = sign_courses(course_id)
 # print(result)
