@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>tsq的课时计算表</title>
+
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+
+    <link href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <meta charset="UTF-8">
+    <title>课时计算</title>
+    <script src="https://cdn.bootcss.com/xlsx/0.14.1/xlsx.full.min.js"></script>
+    <link href="https://cdn.bootcss.com/aui/7.6.0-beta-5/aui/css/aui.css" rel="stylesheet">
+</head>
+<style>
+    th{
+        font-size: 10px;
+    }
+    table{
+      margin-top: 10%
+    }
+</style>
+<h1 style="text-align: center"></h1>
+<body>
+<div style="margin-top: 10%; text-align:center" >
+    <a href=""  style="font-size: 5px" class="am-icon-btn am-icon-facebook">刷新</a>
+
+</div>
+
+<div style="margin-top: 5%;text-align: center" >
+
+<div  style="float: left ;margin-left: 10%" class="am-form-group am-form-file">
+    <button type="button" class="am-btn am-btn-danger am-btn-sm">
+        <i class="am-icon-cloud-upload"></i>上传主班文件</button>
+    <input id="zhuban" type="file">
+    <div id="file-list"></div>
+
+
+</div>
+    <div  class="am-form-group am-form-file">
+        <button type="button" class="am-btn am-btn-danger am-btn-sm">
+            <i class="am-icon-cloud-upload"></i>上传配班文件</button>
+        <input id="peiban" type="file">
+        <div id="file1-list"></div>
+
+    </div>
+</div>
+
+<table  class="am-table am-table am-table-bordered am-table-radius am-table-striped">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>课程性质</th>
+        <th>应到</th>
+        <th>实到</th>
+        <th>课时</th>
+        <th>课时费</th>
+        <th>总计课时费</th>
+    </tr>
+    </thead>
+    <tbody  id="process">
+
+    </tbody>
+</table>
+<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+
+<table id="result" class="am-table am-table-bordered am-table-radius am-table-striped">
+    <thead>
+    <tr>
+        <th>1人(课)</th>
+        <th>5人(课)</th>
+        <th>8人(课)</th>
+        <th>9人(课)</th>
+        <th>体验(课)</th>
+        <th>总计课时费</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td id="1"></td>
+        <td id="5"></td>
+        <td id="8"> </td>
+        <td id="9"> </td>
+        <td id="tiyan"> </td>
+        <td id="sum"> </td>
+    </tr>
+
+    </tbody>
+</table>
+
+<script src="main.js"></script>
+</body>
+</html>
