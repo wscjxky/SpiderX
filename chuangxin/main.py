@@ -60,5 +60,5 @@ if __name__ == '__main__':
     ssr = requests.session()
     session = get_session(ssr)
     course_id, start_time = get_courses(session)
-# result = sign_courses(course_id)
-# print(result)
+    result = sign_courses(course_id)
+    print(result)
