@@ -1,0 +1,17 @@
+Accept: */*
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7
+Cache-Control: no-cache
+Connection: keep-alive
+Content-Length: 813
+Content-type: text/xml; charset=UTF-8
+Cookie: JSESSIONID=6F18BA5DBBAE9BEFE8D95B3098D1A1C5; UM_distinctid=16a2db02c812b7-0f6e1b01c7f98c-3e7e045d-1fa400-16a2db02c8349c; CNZZDATA3708966=cnzz_eid%3D837579402-1555511164-http%253A%252F%252Fwww.phsciencedata.cn%252F%26ntime%3D1555511164
+Host: www.phsciencedata.cn
+Origin: http://www.phsciencedata.cn
+Pragma: no-cache
+Referer: http://www.phsciencedata.cn/Share/frameset?__report=ReportAgeYear.rptdesign&years=2016&diseaseId=17
+request-type: SOAP
+SOAPAction: ""
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36
+X-Prototype-Version: 1.4.0
+X-Requested-With: XMLHttpRequest
