@@ -68,22 +68,35 @@ from time import time, strftime, localtime, sleep
 # # 打印结果如： 10〒/wjx/join/complete.aspx?q=4725800&JoinID=353793885&jidx=60
 # # 拼好链接访问即可看到投票结果 http://www.sojump.com/wjx/join/complete.aspx?q=38991650&JoinID=102681627295&jidx=202....
 import requests
+
 while True:
-    with open('a','r')as f :
-        dic={}
-        ls=f.readlines()
-        for l in ls:
-            l=l.strip('\n')
-            arr=(l.split(':'))
-            dic[arr[0]]=arr[1][1:]
+    # with open('a', 'r')as f:
+    #     dic = {}
+    #     ls = f.readlines()
+    #     for l in ls:
+    #         l = l.strip('\n')
+    #         arr = (l.split(':'))
+    #         dic[arr[0]] = arr[1][1:]
     t = str(int(time() * 1000))
     starttime = strftime("%Y/%m/%d %H:%M:%S", localtime())
-    print(t,starttime)
-    headers={'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br', 'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7', 'Connection': 'keep-alive', 'Content-Length': '296', 'Content-Type': 'application/x-www-form-urlencoded', 'Host': 'www.wjx.cn', 'Origin': 'https//www.wjx.cn', 'Referer': 'https://www.wjx.cn/jq/38991650.aspx', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'}
-    data={'submitdata':'1$1}2$2}3$3}4$3}5$3}6$%s}7$%s}8$%s}9$%s}10$6}11$%s}12$6}13$%s}14$7}15$7}16$1}17$7}18$6}19$7}20$6}21$7}22$7}23$6}24$7}25$7}26$%s}27$6}28$6}29$%s}30$6}31$6}32$%s}33$7'%(random.randint(1,9),random.randint(5,7),random.randint(5,7),random.randint(5,7),random.randint(5,7),random.randint(5,7),random.randint(5,7),random.randint(5,7),random.randint(5,7))}
-    url='https://www.wjx.cn/joinnew/processjq.ashx?submittype=1&' \
-        'curID=38991650&t=1557283230944&starttime=2019%2F5%2F8%2011%3A36%3A10&ktimes=259&rn=3671054053.89243871&hlv=1&jqnonce=e1200fd1-1de3-4ad6-a767-5686480d1793&jqsign=l8%3B99om8%248ml%3A%24%3Dhm%3F%24h%3E%3F%3E%24%3C%3F1%3F%3D19m8%3E0%3A'
+    headers = {'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br',
+               'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7', 'Connection': 'keep-alive',
+               'Content-Length': '296', 'Content-Type': 'application/x-www-form-urlencoded', 'Host': 'www.wjx.cn',
+               'Origin': 'https//www.wjx.cn', 'Referer': 'https://www.wjx.cn/jq/38991650.aspx',
+               'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'}
+    print(t, starttime)
+    data = {
+        'submitdata': '1$1}2$2}3$3}4$%s}5$%s}6$%s}7$%s}8$%s}9$%s}10$6}11$%s}12$6}13$%s}14$7}15$7}16$1}17$7}18$6}19$7}20$6}21$7}22$7}23$6}24$7}25$7}26$%s}27$%s}28$%s}29$%s}30$%s}31$%s}32$%s}33$7' % (
+            random.randint(1, 3),random.randint(1, 3),
+            random.randint(1, 9), random.randint(5, 7), random.randint(5, 7), random.randint(5, 7), random.randint(5, 7),
+        random.randint(5, 7), random.randint(5, 7), random.randint(5, 7), random.randint(5, 7),
+        random.randint(5, 7), random.randint(5, 7), random.randint(5, 7), random.randint(5, 7)
+        )}
+    url = 'https://www.wjx.cn/joinnew/processjq.ashx?submittype=1&c' \
+          'urID=38991650&t=1557325836441&starttime=2019%2F5%2F8%2022%3A29%3A15&ktime' \
+          's=439&rn=3749632772.27185810&hlv=1&jqnonce=835f44e6-604a-45a0-96ac-bcaf0d9759ad&jqsign' \
+          '=1%3A%3Co%3D%3Dl%3F%24%3F9%3Dh%24%3D%3Ch9%240%3Fhj%24kjho9m0%3E%3C0hm'
     print(url)
-    res=requests.post((url),(data),headers=headers)
+    res = requests.post((url), (data), headers=headers)
     print(res.text)
     sleep(70)
