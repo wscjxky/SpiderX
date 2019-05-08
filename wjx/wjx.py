@@ -86,8 +86,8 @@ while True:
                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'}
     print(t, starttime)
     data = {
-        'submitdata': '1$1}2$2}3$3}4$%s}5$%s}6$%s}7$%s}8$%s}9$%s}10$6}11$%s}12$6}13$%s}14$7}15$7}16$1}17$7}18$6}19$7}20$6}21$7}22$7}23$6}24$7}25$7}26$%s}27$%s}28$%s}29$%s}30$%s}31$%s}32$%s}33$7' % (
-            random.randint(1, 3),random.randint(1, 3),
+        'submitdata': '1$%s}2$2}3$3}4$%s}5$%s}6$%s}7$%s}8$%s}9$%s}10$6}11$%s}12$6}13$%s}14$7}15$7}16$1}17$7}18$6}19$7}20$6}21$7}22$7}23$6}24$7}25$7}26$%s}27$%s}28$%s}29$%s}30$%s}31$%s}32$%s}33$7' % (
+            random.randint(1,2),random.randint(1, 3),random.randint(1, 3),
             random.randint(1, 9), random.randint(5, 7), random.randint(5, 7), random.randint(5, 7), random.randint(5, 7),
         random.randint(5, 7), random.randint(5, 7), random.randint(5, 7), random.randint(5, 7),
         random.randint(5, 7), random.randint(5, 7), random.randint(5, 7), random.randint(5, 7)
