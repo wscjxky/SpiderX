@@ -1,27 +1,3 @@
-# #!/usr/bin/env python3
-# # -*- coding: utf-8 -*-
-#
-# """
-# 自动填问卷星（http://www.sojump.com）
-# 单项选择
-# """
-#
-# # 抓包软件： $ sudo apt-get install tshark
-# # 打开页面如： http://www.sojump.com/jq/4725800.aspx
-# # 随便填写，但不要提交
-# # $ sudo tshark -V -i eth0 -f tcp -Y http.request.method=="POST"
-# # －V 是解析包的所有信息并打印出来， －i 选择设备接口， -f 抓包过滤， -Y 显示过滤
-# # 打印出HTTP POST请求包的所有内容
-# # 需要的内容：[Full request URI: http://www.sojump.com/handler/processjq.ashx?
-# # submittype=1&curID=186257&t=1428725165556&starttime=2015%2F4%2F11%2012%3A01%3A20&rn=1932211292]
-# # [HTTP request 1/1] xxx
-# # submitdata=1%241%7D2%242%7D3%243%7D4%241%7D5%242%7D6%243
-# # 将上述内容解码（http://tool.chinaz.com/Tools/URLEncode.aspx）
-# # 得到 submitdata=1$1}2$2}3$3}4$1}5$2}6$3
-#
-# # 举例： http://www.sojump.com/jq/4725800.aspx
-#
-#
 import random
 from urllib import request, parse
 from time import time, strftime, localtime, sleep
@@ -68,6 +44,53 @@ from urllib.parse import quote
 # # 打印结果如： 10〒/wjx/join/complete.aspx?q=4725800&JoinID=353793885&jidx=60
 # # 拼好链接访问即可看到投票结果 http://www.sojump.com/wjx/join/complete.aspx?q=38991650&JoinID=102681627295&jidx=202....
 import requests
+import js2py
+import re
+
+
+def encodeURI(string):
+    js_res = js2py.eval_js('''function eval_data(string){
+       return  encodeURIComponent(string);}''')
+    return js_res(string)
+
+
+def getsign():
+    import requests
+    curID = 39164517
+    submittype = 1
+    data = requests.get('https://www.wjx.cn/jq/%s.aspx?from=timeline' % curID)
+    hlv = 1
+    data = data.text
+    jqnonce = re.search('jqnonce="(.*?)"', data).group(1)
+    rndnum = re.search('rndnum="(.*?)"', data).group(1)
+    starttime = re.search('starttime="(.*?)"', data).group(1)
+    t = (str(int(time() * 1000)))
+    js_res = js2py.eval_js('''
+    function gen(jqnonce, ktimes) {
+        var c, d, e, b = ktimes % 10;
+        var a = jqnonce;
+        for (0 == b && (b = 1), c = [], d = 0; d < a.length; d++) e = a.charCodeAt(d) ^ b,
+            c.push(String.fromCharCode(e));
+        var jqsign = (c.join(""));
+        return jqsign;
+    }
+    ''')
+    ktimes = 58
+    jqsign = js_res(jqnonce, ktimes)
+    params = {'submittype': submittype,
+              'curID': curID,
+              't': t,
+              'ktimes': ktimes,
+              'rn': rndnum,
+              'hlv': hlv,
+              'jqnonce': jqnonce,
+              'starttime': starttime,
+              'jqsign': jqsign}
+    print(params)
+    url = 'https://www.wjx.cn/joinnew/processjq.ashx?from=timeline&%s' \
+          % (parse.urlencode(params))
+    print(url)
+    return url
 
 
 with open('headers', 'r')as f:
@@ -77,30 +100,12 @@ with open('headers', 'r')as f:
         l = l.strip('\n')
         arr = (l.split(':'))
         dic[arr[0]] = arr[1][1:]
-    headers =dic
-with open('param', 'r')as f:
-    dic = {}
-    ls = f.readlines()
-    for l in ls:
-        l = l.strip('\n')
-        arr = (l.split(': '))
-        dic[arr[0]] = arr[1]
-    params = parse.urlencode(dic)
-    params=params.replace('+',"%20")
+    headers = dic
 t = (str(int(time() * 1000)))
 proxies = {
-'http': 'http://113.251.223.19:8123','https':'111.226.228.202:8118'
+    'http': 'http://113.251.223.19:8123', 'https': '111.226.228.202:8118'
 }
-starttime = (strftime("%Y/%m/%d %H:%M:%S", localtime()))
-times={
-    't':t,
-    'starttime':starttime
-}
-times=parse.urlencode(times)
-print(t)
 data = {'submitdata': '1$1'}
-
-url = 'https://www.wjx.cn/joinnew/processjq.ashx?%s&%s'%(params,times)
-print(url)
+url = getsign()
 res = requests.post((url), parse.urlencode(data), headers=headers)
 print(res.text)
