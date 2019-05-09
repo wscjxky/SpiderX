@@ -1,4 +1,11 @@
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7
+Connection: keep-alive
+Content-Length: 296
 Content-Type: application/x-www-form-urlencoded
+Cookie: acw_tc=707c9fdd15572024754043089e125b24e2ea3d156ac7ca30e9192bea19968c; .ASPXANONYMOUS=BzzSNx071QEkAAAAYjY3ZjUzZTktZjNiNi00MWMwLTk0OWItYzMzYjdiZThhZmFmN284ihfPbCLZcbIPZeZGmR1Z_9o1; spiderregkey=baidu.com%c2%a7%e7%9b%b4%e8%be%be%c2%a71; UM_distinctid=16a90801dc40-0dba045e357b59-3f770c5a-bdd80-16a90801dc8173; crudat=2018-07-24 00:43:13; WjxUser=UserName=17051005994; _cnzz_CV4478442=%E7%94%A8%E6%88%B7%E7%89%88%E6%9C%AC%7C%E5%85%8D%E8%B4%B9%E7%89%88%7C1557363664810; jac38991650=81819271; CNZZDATA4478442=cnzz_eid%3D2059160988-1557197738-https%253A%252F%252Fwww.baidu.com%252F%26ntime%3D1557395796; Hm_lvt_21be24c80829bd7a683b2c536fcf520b=1557202477,1557338228,1557396395; Hm_lpvt_21be24c80829bd7a683b2c536fcf520b=1557396395
+Host: www.wjx.cn
 Origin: https://www.wjx.cn
-Referer: https://www.wjx.cn/jq/39164517.aspx
+Referer: https://www.wjx.cn/jq/38991650.aspx
 User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36
