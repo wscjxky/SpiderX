@@ -68,8 +68,12 @@ from urllib.parse import quote
 # # 打印结果如： 10〒/wjx/join/complete.aspx?q=4725800&JoinID=353793885&jidx=60
 # # 拼好链接访问即可看到投票结果 http://www.sojump.com/wjx/join/complete.aspx?q=38991650&JoinID=102681627295&jidx=202....
 import requests
-
-while True:
+import os,sys
+def restart_program():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+count=0
+while count<20:
     # with open('a', 'r')as f:
     #     dic = {}
     #     ls = f.readlines()
@@ -88,17 +92,14 @@ while True:
                'Origin': 'https//www.wjx.cn', 'Referer': 'https://www.wjx.cn/jq/38991650.aspx',
                'User-Agent': 'Mozilla/5.0 (Linux;u;Android 4.2.2;zh-cn;) AppleWebKit/534.46 (KHTML,like Gecko) Version/5.1 Mobile Safari/10600.6.3 '}
     data = {
-        'submitdata': '1$2}2$2}3$3}4$1}5$%s}6$%s}7$%s}8$%s}9$%s}10$6}11$%s}12$6}13$%s}14$7}15$7}16$1}17$7}18$6}19$7}20$6}21$7}22$7}23$6}24$7}25$7}26$%s}27$%s}28$%s}29$%s}30$%s}31$%s}32$%s}33$7' % (
-             random.randint(1, 2),  random.randint(1, 2), random.randint(6, 7), random.randint(6, 7), random.randint(6, 7), random.randint(6, 7),
+        'submitdata': '1$%s}2$2}3$3}4$%s}5$%s}6$%s}7$%s}8$%s}9$%s}10$6}11$%s}12$6}13$%s}14$7}15$7}16$1}17$7}18$6}19$7}20$6}21$7}22$7}23$6}24$7}25$7}26$%s}27$%s}28$%s}29$%s}30$%s}31$%s}32$%s}33$7' % (
+              random.randint(1, 2),random.randint(1, 3),random.randint(1, 2),  random.randint(1, 2), random.randint(6, 7), random.randint(6, 7), random.randint(6, 7), random.randint(6, 7),
         random.randint(6, 7), random.randint(6, 7), random.randint(6, 7), random.randint(6, 7),
         random.randint(6, 7), random.randint(6, 7), random.randint(6, 7), random.randint(6, 7)
         )}
-    url = 'https://www.wjx.cn/joinnew/processjq.ashx?submittype=1&source=directphone&curID='\
-    '38991650&t=1557361102700&starttime=2019%2F5%2F9%208%3A10%3A46&ktimes=166&rn=3671054072.39690614&hlv=1'\
-    '&jqnonce=630c4d5c-9b83-4617-b9b4-18805f270443&jqsign=056e2b3e%2B%3Fd%3E5%2B2071%2Bd%3Fd2%2B7%3E%3E63%60416225'
-    # %('1557361102700','2019%2F5%2F9%208%3A10%3A46','3671054072.39690614'
-#  ,'630c4d5c-9b83-4617-b9b4-18805f270443','056e2b3e+?d>5+2071+d?d2+7>>63`416225')
-    print(url)
+    url = 'https://www.wjx.cn/joinnew/processjq.ashx?from=timeline&'\
+    'submittype=1&curID=38991650&'\
+    't=1557421045857&starttime=2019%2F5%2F10%200%3A57%3A20&ktimes=7&rn=3749632772&hlv=1&jqnonce=1dde50df-d3fe-4316-8b3e-df313c2ea3d1&jqsign=6ccb27ca*c4ab*3461*%3Fe4b*ca464d5bf4c6'
     res = requests.post((url), parse.urlencode(data), headers=headers)
     print(res.text)
     sleep(70)
