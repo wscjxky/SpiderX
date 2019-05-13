@@ -1,6 +1,5 @@
 import requests
 import json
-
 import time
 def get_fans():
     for page in range(11):
