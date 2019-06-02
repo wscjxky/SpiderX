@@ -147,17 +147,18 @@ def has_free(kecheng_code, xuhao):
 
 if __name__ == '__main__':
 
-    # username = str(input("輸入學號："))
-    # password = str(input("輸入mis密碼："))
-    # kecheng_code = input("輸入課程號，逗号隔开：").spilt(',')
-    # kecheng_code = [str(i) for i in kecheng_code]
-    # xuhao = input("輸入序号，逗号隔开：").spilt(',')
-    # xuhao = [str(i) for i in xuhao]
+    username = str(input("輸入學號："))
+    password = str(input("輸入mis密碼："))
 
-    username = '18251076'
-    password = '10962905'
-    kecheng_code = ['85L074T']
-    xuhao = ["11"]
+    kecheng_code = input("輸入課程號，逗号隔开：").split(',')
+    kecheng_code = [str(i) for i in kecheng_code]
+    xuhao = input("輸入序号，逗号隔开：").split(',')
+    xuhao = [str(i) for i in xuhao]
+
+    # username = '18251076'
+    # password = '10962905'
+    # kecheng_code = ['85L074T']
+    # xuhao = ["11"]
     time_delay = 0.5
     retry_max = 1000
     reset = False
