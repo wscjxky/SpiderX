@@ -10,7 +10,6 @@ import requests
 import time
 from multiprocessing import Process,Pool
 
-from retrying import retry
 from win32.win32crypt import CryptUnprotectData
 def getcookiefromchrome(host='.oschina.net'):
     cookiepath=os.environ['LOCALAPPDATA']+r"\Google\Chrome\User Data\Default\Cookies"

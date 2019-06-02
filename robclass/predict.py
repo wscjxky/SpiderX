@@ -202,28 +202,7 @@ class FateadmApi():
 
 
 def TestFunc(imgdata):
-    pd_id = "103797"  # 用户信息页可以查询到pd信息
-    pd_key = "B9G8DxjiEK7U8Gr+dVS93rJyL2P5gtoH"
-    app_id = "303997"  # 开发者分成用的账号，在开发者中心可以查询到
-    app_key = "o8SL2OUcncoCeYCDuN7PhS/54Ns/wepQ"
-    # 识别类型，
-    # 具体类型可以查看官方网站的价格页选择具体的类型，不清楚类型的，可以咨询客服
-    pred_type = "40300"
-    api = FateadmApi(app_id, app_key, pd_id, pd_key)
-    bal = api.QueryBalc()
 
-    # #如果不是通过文件识别，则调用Predict接口
-    # file_name       = imgurl+".jpg"
-    # rsp             = api.PredictFromFile( pred_type, file_name)
-    rsp = api.Predict(pred_type, imgdata)
-    print('code : ' + rsp.pred_rsp.value)
-    #
-    # just_flag    = False
-    # if just_flag :
-    #     if rsp.ret_code == 0:
-    #         #识别的结果如果与预期不符，可以调用这个接口将预期不符的订单退款
-    #         # 退款仅在正常识别出结果后，无法通过网站验证的情况，请勿非法或者滥用，否则可能进行封号处理
-    #         api.Justice( rsp.request_id)
 
     # card_id         = "123"
     # card_key        = "123"

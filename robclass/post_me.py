@@ -1,21 +1,14 @@
 import os
-
-from selenium.webdriver import Firefox
+from selenium.webdriver import Chrome
 from selenium.webdriver.firefox.options import Options
-
-
 # 人工智能 83429  83129 82580
-
-
 # code_list = ['87010']
 code_list = ['87065','87050']
-
-
 from  predict import *
 # 200959
 # 16281112
-username = '18251134'
-password = '85399028'
+username = '15281106'
+password = 'wscjxky123'
 time_delay = 2
 
 headers = {
@@ -53,7 +46,7 @@ def get_Session():
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
-    driver = Firefox(executable_path='geckodriver', firefox_options=chrome_options)
+    driver = Chrome(executable_path='chromedriver.exe', chrome_options=chrome_options)
     url = 'https://mis.bjtu.edu.cn/home/'
     driver.get(url)
     driver.maximize_window()
@@ -64,7 +57,7 @@ def get_Session():
     elem = driver.find_element_by_xpath('//*[@id="form1"]/div/div/button')
     elem.click()
     elem = driver.find_element_by_xpath(
-        '//*[@id="wrap"]/div[2]/div[2]/div/div[2]/div/div/table/tbody/tr[2]/td[1]/div/div/h5/a')
+        '//*[@id="wrap"]/div[2]/div[2]/div/div[2]/div/div/table/tbody/tr[2]/td[6]/div/div/h5/a')
     elem.click()
     time.sleep(1)
     handles = driver.window_handles
@@ -89,46 +82,39 @@ def get_Session():
 
 def post_met(ssrequest, class_code, hashkey, answer):
     time.sleep(time_delay)
-    # 验证
-    # print(requests.get('https://dean.bjtu.edu.cn/notice/item/',
-    #                    cookies=ssrequest.cookies,
-    #                    # headers=headers
-    #                    ))
-    # time.sleep(random.randint(0, 1))
-    # requests.adapters.DEFAULT_RETRIES = 2
-    # s = requests.session()
-    # s.keep_alive = False
     data = {'checkboxs': class_code,
             'hashkey': hashkey,
             'answer': answer
             }
-    # data = {
-    #     'checkboxs': class_code,
-    #     'hashkey': '7c271f0fbc2f832f5598b98bf7c807ee29c09501',
-    #     'answer': int(answer)
-    # }
     re = requests.post('https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=submit',
                        cookies=ssrequest.cookies,
                        headers=headers_image,
-                       # data={
-                       #     'select_id': 135194
-                       #  }
-                       # re = requests.post('https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=submit',
-                       #                    cookies=ssrequest.cookies,
-                       #                    data={
-                       #                        'select_id': 135193
-                       #                     }
                        data=data)
     if len(re.text) != 41:
-        # {"msg": "\u9a8c\u8bc1\u7801\u9519\u8bef"}
         pass
-    # print(re.text)
-    # print(class_code)
     print(re.status_code)
     print(data)
     re.close()
 
 
+just_flag = False
+
+def predict(imgdata):
+    global just_flag
+    pd_id = "103797"  # 用户信息页可以查询到pd信息
+    pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
+    app_id = "303997"  # 开发者分成用的账号，在开发者中心可以查询到
+    app_key = "o8SL2OUcncoCeYCDuN7PhS/54Ns/wepQ"
+    pred_type = "40300"
+    api = FateadmApi(app_id, app_key, pd_id, pd_key)
+    rsp = api.Predict(pred_type, imgdata)
+    print(rsp.err_msg)
+    print('code : ' + rsp.pred_rsp.value)
+    # if just_flag :
+    #      if rsp.ret_code == 0:
+    # #         #识别的结果如果与预期不符，可以调用这个接口将预期不符的订单退款
+    # #         # 退款仅在正常识别出结果后，无法通过网站验证的情况，请勿非法或者滥用，否则可能进行封号处理
+    #          api.Justice( rsp.request_id)
 def getCode():
     re = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/',
                       cookies=ssr.cookies,
@@ -142,7 +128,7 @@ def getCode():
         print('发现大事情联系我')
     with open('image/' + json_data['image_url'][len('/captcha/image/'):-1] + '.jpg', 'wb')as f:
         f.write(img_data.content)
-    answer = TestFunc(img_data.content)
+    answer = predict(img_data.content)
     with open('image.json', 'a')as f:
         f.write(hashkey + ' ' + answer + '\n')
     return hashkey, answer
@@ -159,11 +145,7 @@ def main():
     hashkey = json_data['key']
     print(json_data)
     img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'])
-    # '/captcha/image/1e92c5121600c54ae93ee46e7887a887cc6a015d/'
-    # img_data = requests.get('https://dean.bjtu.edu.cn/captcha/image/c6a3e2848e7ebe216b12d5e4bfdeb6ddbe4ccfbf/')
     answer = TestFunc(img_data.content)
-    # print(json_data)
-    # print(hashkey)
     for i in code_list:
         post_met(ssr, i, hashkey, answer)
 
