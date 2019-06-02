@@ -7,12 +7,11 @@ import requests
 from selenium.webdriver.chrome.options import Options
 
 from chaojiying import Chaojiying_Client
-
 chaojiying = Chaojiying_Client('wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
 from config import FateadmApi, robclass_headers, headers, headers_image, check_classheader
 
 
-pd_id = "103797"  # 用户信息页可以查询到pd信息
+pd_id = "103797"
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
 app_id = "303997"  # 开发者分成用的账号，在开发者中心可以查询到
 app_key = "o8SL2OUcncoCeYCDuN7PhS/54Ns/wepQ"
