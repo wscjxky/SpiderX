@@ -22,7 +22,7 @@ def get_Session():
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
     driver = Chrome(executable_path='/home/rabbit/Documents/SpiderX-master/robclass/SpiderX/robclass/chromedriver',
-                    chrome_options=chrome_options)
+                    options=chrome_options)
     url = 'https://mis.bjtu.edu.cn/home/'
     driver.get(url)
     driver.maximize_window()
@@ -184,7 +184,7 @@ if __name__ == '__main__':
                 break
                 # continue
             else:
-                if retry_num % 200 == 0:
+                if retry_num % 50 == 0:
                     print('retry_time : ' + str(retry_num))
                     i += 1
                     retry_num += 1
