@@ -6,7 +6,12 @@ import json
 import requests
 from selenium.webdriver.chrome.options import Options
 
+from chaojiying import Chaojiying_Client
+
+chaojiying = Chaojiying_Client('wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
 from config import FateadmApi, robclass_headers, headers, headers_image, check_classheader
+
+from robclass.chaojiying import Chaojiying_Client
 
 pd_id = "103797"  # 用户信息页可以查询到pd信息
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
@@ -21,7 +26,7 @@ def get_Session():
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
-    driver = Chrome(executable_path='/home/rabbit/Documents/SpiderX-master/robclass/SpiderX/robclass/chromedriver',
+    driver = Chrome(executable_path='chromedriver.exe',
                     options=chrome_options)
     url = 'https://mis.bjtu.edu.cn/home/'
     driver.get(url)
@@ -39,7 +44,7 @@ def get_Session():
     handles = driver.window_handles
     driver.switch_to.window(handles[-1])
     cookie = driver.get_cookies()
-    while len(cookie)<=1:
+    while len(cookie) <= 1:
         get_Session()
     for i in cookie:  # 添加cookie到CookieJar
         BCOOKIES[i["name"]] = i["value"]
@@ -53,46 +58,6 @@ def get_Session():
 
 
 # from requests_html import HTMLSession
-
-def test_post():
-    cookies = get_Session()
-    hashkey, answer, req_id = getCode(cookies)
-    data = {'checkboxs': 90177,
-            'hashkey': hashkey,
-            'answer': answer
-            }
-    result = requests.post('https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=submit',
-                           cookies=cookies,
-                           headers=robclass_headers,
-                           allow_redirects=False,
-                           data=data)
-    result = result.headers['Set-Cookie']
-    message = result[result.find('[['):result.find(']]') + 2]
-    res = str(json.loads(eval("'" + message + "'")))
-    print(res)
-    if "选课成功" in res:
-        return 200
-    elif "课堂无课余量" in res:
-        return 404
-    elif "验证码" in res:
-        api.Justice(req_id)
-        return 403
-
-    else:
-        return 500
-
-
-def getCode(cookies):
-    re = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/',
-                      cookies=cookies,
-                      headers=headers_image,
-                      )
-    json_data = re.json()
-    hashkey = json_data['key']
-    print(json_data)
-    img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'], headers=headers)
-    answer, req_id = api.Predict(pred_type, img_data.content)
-    return hashkey, answer, req_id
 
 
 def post_request(cookies, class_code, hashkey, answer, req_id):
@@ -120,7 +85,7 @@ def post_request(cookies, class_code, hashkey, answer, req_id):
         return 500
 
 
-def has_free(kecheng_code, xuhao):
+def has_free(kecheng_code, xuhao, pred_type='pp'):
     global cookies
     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
     # sess=HTMLSession()
@@ -142,7 +107,16 @@ def has_free(kecheng_code, xuhao):
                         print("有课余量：")
                         print(class_name)
                         print(class_code)
-                        hashkey, answer, req_id = getCode(cookies=cookies)
+                        res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
+                                           headers=headers_image)
+                        json_data = res.json()
+                        hashkey = json_data['key']
+                        print(json_data)
+                        img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'], headers=headers)
+                        if pred_type == 'pp':
+                            answer, req_id = api.Predict(pred_type, img_data.content)
+                        else:
+                            answer, req_id = chaojiying.PostPic(img_data.content, 2003)
                         result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey, answer=answer,
                                               req_id=req_id)
                         if result == 200:
@@ -151,16 +125,16 @@ def has_free(kecheng_code, xuhao):
 
 
 if __name__ == '__main__':
-    with open('rob_data.txt','r')as f:
-        ls=f.readlines()
+    with open('rob_data.txt', 'r')as f:
+        ls = f.readlines()
         for line in ls:
-            line=line.strip('\n')
-            data=line.split(' ')
-            username=data[0]
-            password=data[1]
-            kecheng_code=data[2].split(',')
-            xuhao=data[3].split(',')
-    print(username,password,kecheng_code,xuhao)
+            line = line.strip('\n')
+            data = line.split(' ')
+            username = data[0]
+            password = data[1]
+            kecheng_code = data[2].split(',')
+            xuhao = data[3].split(',')
+    print(username, password, kecheng_code, xuhao)
     # username = '18251076'
     # password = '10962905'
     # kecheng_code = ['85L074T']
@@ -170,7 +144,6 @@ if __name__ == '__main__':
     reset = False
     i = 0
     retry_num = 0
-    # test_post()
     cookies = get_Session()
     while True:
         try:
@@ -181,11 +154,10 @@ if __name__ == '__main__':
                 continue
             if i == len(kecheng_code):
                 i = 0
-            if has_free(kecheng_code=kecheng_code[i], xuhao=xuhao[i]):
+            if has_free(kecheng_code=kecheng_code[i], xuhao=xuhao[i], pred_type='cjy'):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
                 break
-                # continue
             else:
                 if retry_num % 50 == 0:
                     print('retry_time : ' + str(retry_num))

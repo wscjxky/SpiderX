@@ -12,11 +12,11 @@ robclass_headers = {'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate, br',
                         'no-cache', 'Connection': 'keep-alive', 'Content-Type':
                         'application/x-www-form-urlencoded; charset=UTF-8',
                     'Host': 'dean.bjtu.edu.cn',
-                    'Origin': 'https://dean.bjtu.edu.cn', 'Pragma': 'no-cache', 'Referer': 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=cross',
+                    'Origin': 'https://dean.bjtu.edu.cn', 'Pragma': 'no-cache',
+                    'Referer': 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=cross',
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                                   'Chrome/74.0.3729.169 Safari/537.36', 'X-Requested-With': 'XMLHttpRequest'
                     }
-
 
 # with open('robclass_header.txt', 'r')as f:
 #     ls = f.readlines()
@@ -154,7 +154,7 @@ class FateadmApi():
         code = rsp.pred_rsp.value
         if code == '' or len(code) < 3:
             self.Justice(rsp.request_id)
-        return code,rsp.request_id
+        return code, rsp.request_id
 
     #
     # 识别失败，进行退款请求
@@ -179,3 +179,5 @@ class FateadmApi():
         rsp = HttpRequest(url, param)
 
         return rsp
+
+
