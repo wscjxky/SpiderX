@@ -149,7 +149,6 @@ if __name__ == '__main__':
 
     username = str(input("輸入學號："))
     password = str(input("輸入mis密碼："))
-
     kecheng_code = input("輸入課程號，逗号隔开：").split(',')
     kecheng_code = [str(i) for i in kecheng_code]
     xuhao = input("輸入序号，逗号隔开：").split(',')
