@@ -60,7 +60,11 @@ def get_Session():
 # from requests_html import HTMLSession
 
 
-def post_request(cookies, class_code, hashkey, answer, req_id):
+def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', count=0):
+    while count < 50:
+        check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
+        res = requests.get(check_url, cookies=cookies, headers=check_classheader)
+        count += 1
     data = {'checkboxs': class_code,
             'hashkey': hashkey,
             'answer': answer
@@ -70,6 +74,11 @@ def post_request(cookies, class_code, hashkey, answer, req_id):
                        headers=robclass_headers,
                        allow_redirects=False,
                        data=data)
+    if re.status_code == 503:
+        print(re.status_code)
+        print("重新提交抢课请求")
+        time.sleep(0.5)
+        post_request(cookies, class_code, hashkey, answer, req_id, pred_type, 50)
     re = re.headers['Set-Cookie']
     message = re[re.find('[['):re.find(']]') + 2]
     res = str(json.loads(eval("'" + message + "'")))
@@ -79,7 +88,10 @@ def post_request(cookies, class_code, hashkey, answer, req_id):
     elif "课堂无课余量" in res:
         return 404
     elif "验证码" in res:
-        api.Justice(req_id)
+        if pred_type == 'pp':
+            api.Justice(req_id)
+        else:
+            chaojiying.ReportError(req_id)
         return 403
     else:
         return 500
@@ -114,11 +126,13 @@ def has_free(kecheng_code, xuhao, pred_type='pp'):
                         print(json_data)
                         img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'], headers=headers)
                         if pred_type == 'pp':
-                            answer, req_id = api.Predict(pred_type, img_data.content)
+                            pred_type = 'pp'
+                            answer, req_id = api.Predict(40300, img_data.content)
                         else:
+                            pred_type = 'cjy'
                             answer, req_id = chaojiying.PostPic(img_data.content, 2003)
                         result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey, answer=answer,
-                                              req_id=req_id)
+                                              req_id=req_id, pred_type=pred_type)
                         if result == 200:
                             return True
     return False
@@ -139,8 +153,8 @@ if __name__ == '__main__':
     # password = '10962905'
     # kecheng_code = ['85L074T']
     # xuhao = ["11"]
-    time_delay = 0.5
-    retry_max = 1000
+    time_delay = 0.1
+    retry_max = 50000
     reset = False
     i = 0
     retry_num = 0
@@ -150,7 +164,7 @@ if __name__ == '__main__':
             if retry_num > retry_max:
                 reset = True
                 retry_num = 0
-                cookies = get_Session()
+                # cookies = get_Session()
                 continue
             if i == len(kecheng_code):
                 i = 0
@@ -159,7 +173,7 @@ if __name__ == '__main__':
                 print("搶課完成" + str(kecheng_code[i]))
                 break
             else:
-                if retry_num % 50 == 0:
+                if retry_num % 200 == 0:
                     print('retry_time : ' + str(retry_num))
                 i += 1
                 retry_num += 1
