@@ -166,24 +166,24 @@ if __name__ == '__main__':
     # test_post()
     cookies = get_Session()
     while True:
-        # try:
-        if retry_num > retry_max:
-            reset = True
-            retry_num = 0
-            cookies = get_Session()
+        try:
+            if retry_num > retry_max:
+                reset = True
+                retry_num = 0
+                cookies = get_Session()
+                continue
+            if i == len(kecheng_code):
+                i = 0
+            if has_free(kecheng_code=kecheng_code[i], xuhao=xuhao[i]):
+                print(username, password)
+                print("搶課完成" + str(kecheng_code[i]))
+                break
+                # continue
+            else:
+                print('retry_time : ' + str(retry_num))
+                i += 1
+                retry_num += 1
+                reset = False
+        except Exception as e:
+            print(e)
             continue
-        if i == len(kecheng_code):
-            i = 0
-        if has_free(kecheng_code=kecheng_code[i], xuhao=xuhao[i]):
-            print(username, password)
-            print("搶課完成" + str(kecheng_code[i]))
-            break
-            # continue
-        else:
-            print('retry_time : ' + str(retry_num))
-            i += 1
-            retry_num += 1
-            reset = False
-            # except Exception as e:
-            #     print(e)
-            #     continue
