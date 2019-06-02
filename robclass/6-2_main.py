@@ -6,7 +6,7 @@ import json
 import requests
 from selenium.webdriver.chrome.options import Options
 
-from robclass.config import FateadmApi, robclass_headers, headers, headers_image, check_classheader
+from config import FateadmApi, robclass_headers, headers, headers_image, check_classheader
 
 pd_id = "103797"  # 用户信息页可以查询到pd信息
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
@@ -21,7 +21,8 @@ def get_Session():
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
-    driver = Chrome(executable_path='chromedriver.exe', chrome_options=chrome_options)
+    driver = Chrome(executable_path='/home/rabbit/Documents/SpiderX-master/robclass/SpiderX/robclass/chromedriver',
+                    chrome_options=chrome_options)
     url = 'https://mis.bjtu.edu.cn/home/'
     driver.get(url)
     driver.maximize_window()
@@ -115,7 +116,7 @@ def post_request(cookies, class_code, hashkey, answer, req_id):
     else:
         return 500
 
-from requests_html import  HTMLSession
+
 def has_free(kecheng_code, xuhao):
     global cookies
     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
@@ -125,35 +126,38 @@ def has_free(kecheng_code, xuhao):
     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
     soup = BeautifulSoup(res.text, 'html.parser')
     table = soup.find('div', id='current')
-    class_trs = table.find_all('tr')[1:]
-    for tr in class_trs:
-        if kecheng_code in tr.text:
-            has_free = tr.find('input')
-            if has_free:
-                class_code = has_free["value"].strip()
-                class_name = tr.find('div', class_='hide').text.strip()
-                class_name = re.search("】(.*)", class_name).group(1)
-                if xuhao in class_name:
-                    print("有课余量：")
-                    print(class_name)
-                    print(class_code)
-                    hashkey, answer, req_id = getCode(cookies=cookies)
-                    result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey, answer=answer,
-                                          req_id=req_id)
-                    if result == 200:
-                        return True
+    if table:
+        class_trs = table.find_all('tr')[1:]
+        for tr in class_trs:
+            if kecheng_code in tr.text:
+                has_free = tr.find('input')
+                if has_free:
+                    class_code = has_free["value"].strip()
+                    class_name = tr.find('div', class_='hide').text.strip()
+                    class_name = re.search("】(.*)", class_name).group(1)
+                    if xuhao in class_name:
+                        print("有课余量：")
+                        print(class_name)
+                        print(class_code)
+                        hashkey, answer, req_id = getCode(cookies=cookies)
+                        result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey, answer=answer,
+                                              req_id=req_id)
+                        if result == 200:
+                            return True
     return False
 
 
 if __name__ == '__main__':
-
-    username = str(input("輸入學號："))
-    password = str(input("輸入mis密碼："))
-    kecheng_code = input("輸入課程號，逗号隔开：").split(',')
-    kecheng_code = [str(i) for i in kecheng_code]
-    xuhao = input("輸入序号，逗号隔开：").split(',')
-    xuhao = [str(i) for i in xuhao]
-
+    with open('rob_data.txt','r')as f:
+        ls=f.readlines()
+        for line in ls:
+            line=line.strip('\n')
+            data=line.split(' ')
+            username=data[0]
+            password=data[1]
+            kecheng_code=data[2].split(',')
+            xuhao=data[3].split(',')
+    print(username,password,kecheng_code,xuhao)
     # username = '18251076'
     # password = '10962905'
     # kecheng_code = ['85L074T']
@@ -180,10 +184,11 @@ if __name__ == '__main__':
                 break
                 # continue
             else:
-                print('retry_time : ' + str(retry_num))
-                i += 1
-                retry_num += 1
-                reset = False
+                if retry_num % 200 == 0:
+                    print('retry_time : ' + str(retry_num))
+                    i += 1
+                    retry_num += 1
+                    reset = False
         except Exception as e:
             print(e)
             continue
