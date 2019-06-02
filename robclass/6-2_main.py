@@ -11,7 +11,6 @@ from chaojiying import Chaojiying_Client
 chaojiying = Chaojiying_Client('wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
 from config import FateadmApi, robclass_headers, headers, headers_image, check_classheader
 
-from robclass.chaojiying import Chaojiying_Client
 
 pd_id = "103797"  # 用户信息页可以查询到pd信息
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
