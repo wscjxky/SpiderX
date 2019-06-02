@@ -39,9 +39,12 @@ def get_Session():
     handles = driver.window_handles
     driver.switch_to.window(handles[-1])
     cookie = driver.get_cookies()
+    while len(cookie)<=1:
+        get_Session()
     for i in cookie:  # 添加cookie到CookieJar
         BCOOKIES[i["name"]] = i["value"]
     print('reload' + str(BCOOKIES))
+
     ssrequest = requests.session()
     requests.utils.add_dict_to_cookiejar(ssrequest.cookies, BCOOKIES)
     driver.close()
@@ -186,9 +189,9 @@ if __name__ == '__main__':
             else:
                 if retry_num % 50 == 0:
                     print('retry_time : ' + str(retry_num))
-                    i += 1
-                    retry_num += 1
-                    reset = False
+                i += 1
+                retry_num += 1
+                reset = False
         except Exception as e:
             print(e)
             continue
