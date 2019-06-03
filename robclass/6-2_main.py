@@ -59,10 +59,10 @@ def get_Session():
 
 
 def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', count=0):
-    while count < 50:
-        check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
-        res = requests.get(check_url, cookies=cookies, headers=check_classheader)
-        count += 1
+    # while count < 50:
+    #     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
+    #     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
+    #     count += 1
     data = {'checkboxs': class_code,
             'hashkey': hashkey,
             'answer': answer
@@ -89,7 +89,8 @@ def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', c
         if pred_type == 'pp':
             api.Justice(req_id)
         else:
-            chaojiying.ReportError(req_id)
+            res=chaojiying.ReportError(req_id)
+            print(res)
         return 403
     else:
         return 500
@@ -102,6 +103,8 @@ def has_free(kecheng_code, xuhao, pred_type='pp'):
     # res=sess.get(check_url, cookies=cookies, headers=check_classheader)
     # print(res.text)
     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
+    if res.status_code==503:
+        time.sleep(1)
     soup = BeautifulSoup(res.text, 'html.parser')
     table = soup.find('div', id='current')
     if table:
@@ -166,7 +169,7 @@ if __name__ == '__main__':
                 continue
             if i == len(kecheng_code):
                 i = 0
-            if has_free(kecheng_code=kecheng_code[i], xuhao=xuhao[i], pred_type='cjy'):
+            if has_free(kecheng_code=kecheng_code[i], xuhao=xuhao[i], pred_type='cjy6'):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
                 break
