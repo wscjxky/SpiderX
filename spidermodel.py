@@ -326,3 +326,54 @@ song文件夹用于爬取歌词
 #             cond.release()
 #             time.sleep(3)
 #             print threading.currentThread().getName(),  " quit"
+
+
+# 线程池的使用
+#
+# def req(img, im):
+#     global code
+#     session = HTMLSession()
+#     ss = session.get('https://www.baidu.com/')
+#     code = img
+#
+#
+# import threadpool
+#
+# poolsize = 100
+# pool = threadpool.ThreadPool(poolsize)
+# parm = [1, 2]
+# parm1 = [2, 3]
+# rs = threadpool.makeRequests(req, [(parm, None), (parm1, None)])
+# [pool.putRequest(req) for req in rs]
+# pool.wait()
+# print(code)
+
+
+#代理ip的使用
+# https://github.com/jhao104/proxy_pool
+# import requests
+#
+# from robclass.config import headers_image
+#
+#
+# def get_proxy():
+#     return (requests.get("http://127.0.0.1:5010/get/").content).decode('utf8')
+#
+#
+# def delete_proxy(proxy):
+#     requests.get("http://127.0.0.1:5010/delete/?proxy={}".format(proxy))
+#
+#
+# # ip地址查询的全代码
+# import requests
+#
+# proxy = get_proxy()
+# print(proxy)
+# url = 'http://httpbin.org/get'
+# res = requests.get(url,
+#                    headers=headers_image,
+#                    proxies={"http": "http://{}".format(proxy)}
+#                    )
+#
+# content = res.text
+# print(content)

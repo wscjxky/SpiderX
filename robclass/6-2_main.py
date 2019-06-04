@@ -7,9 +7,9 @@ import requests
 from selenium.webdriver.chrome.options import Options
 
 from chaojiying import Chaojiying_Client
+
 chaojiying = Chaojiying_Client('wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
 from config import FateadmApi, robclass_headers, headers, headers_image, check_classheader
-
 
 pd_id = "103797"
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
@@ -43,6 +43,7 @@ def get_Session():
     driver.switch_to.window(handles[-1])
     cookie = driver.get_cookies()
     while len(cookie) <= 1:
+        time.sleep(2)
         get_Session()
     for i in cookie:  # 添加cookie到CookieJar
         BCOOKIES[i["name"]] = i["value"]
@@ -56,7 +57,6 @@ def get_Session():
 
 
 # from requests_html import HTMLSession
-
 
 def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', count=0):
     # while count < 50:
@@ -75,7 +75,7 @@ def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', c
     if re.status_code == 503:
         print(re.status_code)
         print("重新提交抢课请求")
-        time.sleep(0.5)
+        time.sleep(0.3)
         post_request(cookies, class_code, hashkey, answer, req_id, pred_type, 50)
     re = re.headers['Set-Cookie']
     message = re[re.find('[['):re.find(']]') + 2]
@@ -89,58 +89,75 @@ def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', c
         if pred_type == 'pp':
             api.Justice(req_id)
         else:
-            res=chaojiying.ReportError(req_id)
+            res = chaojiying.ReportError(req_id)
             print(res)
         return 403
     else:
         return 500
 
 
-def has_free(kecheng_code, xuhao, pred_type='pp'):
+def get_proxy():
+    return requests.get("http://127.0.0.1:5010/get/").content.decode('utf8')
+
+
+def delete_proxy(proxy):
+    requests.get("http://127.0.0.1:5010/delete/?proxy={}".format(proxy))
+
+
+def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
     global cookies
     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
     # sess=HTMLSession()
     # res=sess.get(check_url, cookies=cookies, headers=check_classheader)
     # print(res.text)
-    res = requests.get(check_url, cookies=cookies, headers=check_classheader)
-    if res.status_code==503:
-        time.sleep(1)
+    res = requests.get(check_url, cookies=cookies, headers=check_classheader,
+                       proxies={"http": "http://{}".format(proxy)}
+                       )
+    if res.status_code == 503:
+        # proxy = get_proxy()
+        # delete_proxy(proxy)
+        # print('换ip：%s' % proxy)
+        time.sleep(0.9)
+        # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
     soup = BeautifulSoup(res.text, 'html.parser')
     table = soup.find('div', id='current')
     if table:
         class_trs = table.find_all('tr')[1:]
         for tr in class_trs:
-            if kecheng_code in tr.text:
-                has_free = tr.find('input')
-                if has_free:
-                    class_code = has_free["value"].strip()
-                    class_name = tr.find('div', class_='hide').text.strip()
-                    class_name = re.search("】(.*)", class_name).group(1)
-                    if xuhao in class_name:
-                        print("有课余量：")
-                        print(class_name)
-                        print(class_code)
-                        res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
-                                           headers=headers_image)
-                        json_data = res.json()
-                        hashkey = json_data['key']
-                        print(json_data)
-                        img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'], headers=headers)
-                        if pred_type == 'pp':
-                            pred_type = 'pp'
-                            answer, req_id = api.Predict(40300, img_data.content)
-                        else:
-                            pred_type = 'cjy'
-                            answer, req_id = chaojiying.PostPic(img_data.content, 2003)
-                        result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey, answer=answer,
-                                              req_id=req_id, pred_type=pred_type)
-                        if result == 200:
-                            return True
+            for index_kecheng, k_code in enumerate(kecheng_code):
+                if k_code in tr.text:
+                    has_free = tr.find('input')
+                    if has_free:
+                        class_code = has_free["value"].strip()
+                        class_name = tr.find('div', class_='hide').text.strip()
+                        class_name = re.search("】(.*)", class_name).group(1)
+                        if xuhao[index_kecheng] in class_name:
+                            print("有课余量：")
+                            print(class_name)
+                            print(class_code)
+                            res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
+                                               headers=headers_image)
+                            json_data = res.json()
+                            hashkey = json_data['key']
+                            print(json_data)
+                            img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],
+                                                    headers=headers)
+                            if pred_type == 'pp':
+                                pred_type = 'pp'
+                                answer, req_id = api.Predict(40300, img_data.content)
+                            else:
+                                pred_type = 'cjy'
+                                answer, req_id = chaojiying.PostPic(img_data.content, 2003)
+                            result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
+                                                  answer=answer,
+                                                  req_id=req_id, pred_type=pred_type)
+                            if result == 200:
+                                return True
     return False
 
 
 if __name__ == '__main__':
-    with open('rob_data.txt', 'r')as f:
+    with open('rob_data.txt', 'r',encoding='utf8')as f:
         ls = f.readlines()
         for line in ls:
             line = line.strip('\n')
@@ -162,6 +179,7 @@ if __name__ == '__main__':
     cookies = get_Session()
     while True:
         try:
+            time.sleep(time_delay)
             if retry_num > retry_max:
                 reset = True
                 retry_num = 0
@@ -169,7 +187,7 @@ if __name__ == '__main__':
                 continue
             if i == len(kecheng_code):
                 i = 0
-            if has_free(kecheng_code=kecheng_code[i], xuhao=xuhao[i], pred_type='cjy6'):
+            if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='cjy'):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
                 break
