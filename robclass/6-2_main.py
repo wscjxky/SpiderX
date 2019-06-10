@@ -10,7 +10,6 @@ from chaojiying import Chaojiying_Client
 
 chaojiying = Chaojiying_Client('wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
 from config import FateadmApi, robclass_headers, headers, headers_image, check_classheader
-
 pd_id = "103797"
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
 app_id = "303997"  # 开发者分成用的账号，在开发者中心可以查询到
@@ -33,7 +32,7 @@ def get_Session():
     elem.send_keys(username)
     elem = driver.find_element_by_xpath('//*[@id="id_password"]')
     elem.send_keys(password)
-    elem = driver.find_element_by_xpath('//*[@id="form1"]/div/div/button')
+    elem = driver.find_element_by_xpath('//*[@id="login"]/dl/dd[2]/div/div[3]/button')
     elem.click()
     elem = driver.find_element_by_xpath(
         '//*[@id="wrap"]/div[2]/div[2]/div/div[2]/div/div/table/tbody/tr[1]/td[6]/div/div/h5/a')
@@ -105,7 +104,7 @@ def delete_proxy(proxy):
 
 
 def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
-    global cookies
+    global cookies,error_503
     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
     # sess=HTMLSession()
     # res=sess.get(check_url, cookies=cookies, headers=check_classheader)
@@ -117,7 +116,11 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
         # proxy = get_proxy()
         # delete_proxy(proxy)
         # print('换ip：%s' % proxy)
-        time.sleep(0.9)
+        time.sleep(1)
+        error_503+=1
+        if error_503%30==0:
+            print(error_503)
+        # print(503)
         # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
     soup = BeautifulSoup(res.text, 'html.parser')
     table = soup.find('div', id='current')
@@ -171,6 +174,7 @@ if __name__ == '__main__':
     # password = '10962905'
     # kecheng_code = ['85L074T']
     # xuhao = ["11"]
+    error_503 = 0
     time_delay = 0.1
     retry_max = 50000
     reset = False
