@@ -135,8 +135,9 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                 if k_code in tr.text:
                     has_free = tr.find('input')
                     if has_free:
+                        print(tr)
                         class_code = has_free["value"].strip()
-                        class_name = tr.find('div', class_='hide').text.strip()
+                        class_name = tr.find('div', class_='ellipsis').text.strip()
                         class_name = re.search("】(.*)", class_name).group(1)
                         if xuhao[index_kecheng] in class_name:
                             print("有课余量：")
@@ -169,7 +170,7 @@ if __name__ == '__main__':
         for line in ls:
             if line != '':
                 line = line.strip('\n')
-                data = line.split(' ')
+                data = line.split (' ')
                 username = data[0]
                 password = data[1]
                 kecheng_code = data[2].split(',')
@@ -210,5 +211,6 @@ if __name__ == '__main__':
                 retry_num += 1
                 reset = False
         except Exception as e:
+            raise (e)
             print(e)
             continue
