@@ -162,19 +162,18 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                             print(json_data)
                             img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],
                                                     headers=headers)
-                            answer, req_id = api.Predict(40300, img_data.content)
+                            answer, req_id = chaojiying.PostPic(img_data.content, 2003)
                             print(answer)
                             result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                   answer=answer,
                                                   req_id=req_id, pred_type='cjy')
 
                             if result == 403:
-                                answer, req_id = chaojiying.PostPic(img_data.content, 2003)
+                                answer, req_id = api.Predict(40300, img_data.content)
                                 print(answer)
                                 result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                       answer=answer,
                                                       req_id=req_id, pred_type='pp')
-
                             if result == 200:
                                 return True
     return False
@@ -208,6 +207,7 @@ if __name__ == '__main__':
     cookies = get_Session()
     while True:
         try:
+            time.sleep(0.1)
             if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='cjy'):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
