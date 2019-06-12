@@ -22,9 +22,9 @@ api = FateadmApi(app_id, app_key, pd_id, pd_key)
 def get_Session():
     BCOOKIES = {}
     chrome_options = Options()
-    # chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
-    driver = Chrome(executable_path='chromedriver.exe',
+    driver = Chrome(executable_path='chromedriver',
                     options=chrome_options)
     url = 'https://mis.bjtu.edu.cn/home/'
     driver.get(url)
@@ -211,6 +211,6 @@ if __name__ == '__main__':
                 retry_num += 1
                 reset = False
         except Exception as e:
-            raise (e)
+            # raise (e)
             print(e)
             continue
