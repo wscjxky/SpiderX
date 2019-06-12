@@ -6,6 +6,7 @@ from selenium.webdriver import Chrome
 import json
 import requests
 from selenium.webdriver.chrome.options import Options
+import os
 
 from chaojiying import Chaojiying_Client
 
@@ -153,7 +154,7 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                             except:
                                 import os
                                 duration = 1  # second
-                                freq = 440  # Hz
+                                freq = 500  # Hz
                                 os.system(
                                     'play --no-show-progress --null --channels 1 synth %s sine %f' % (duration, freq))
                             print(class_name)
