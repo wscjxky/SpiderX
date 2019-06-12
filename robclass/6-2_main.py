@@ -10,6 +10,7 @@ from chaojiying import Chaojiying_Client
 
 chaojiying = Chaojiying_Client('wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
 from config import FateadmApi, robclass_headers, headers, headers_image, check_classheader
+
 pd_id = "103797"
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
 app_id = "303997"  # 开发者分成用的账号，在开发者中心可以查询到
@@ -21,7 +22,7 @@ api = FateadmApi(app_id, app_key, pd_id, pd_key)
 def get_Session():
     BCOOKIES = {}
     chrome_options = Options()
-    chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
     driver = Chrome(executable_path='chromedriver.exe',
                     options=chrome_options)
@@ -41,9 +42,11 @@ def get_Session():
     handles = driver.window_handles
     driver.switch_to.window(handles[-1])
     cookie = driver.get_cookies()
-    while len(cookie) <= 1:
-        time.sleep(2)
-        get_Session()
+    # time.sleep(1)
+    assert  len(cookie) == 2
+    # while len(cookie) <= 1:
+    #     time.sleep(2)
+    #     get_Session()
     for i in cookie:  # 添加cookie到CookieJar
         BCOOKIES[i["name"]] = i["value"]
     print('reload' + str(BCOOKIES))
@@ -104,7 +107,7 @@ def delete_proxy(proxy):
 
 
 def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
-    global cookies,error_503
+    global cookies, error_503
     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
     # sess=HTMLSession()
     # res=sess.get(check_url, cookies=cookies, headers=check_classheader)
@@ -117,13 +120,14 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
         # delete_proxy(proxy)
         # print('换ip：%s' % proxy)
         time.sleep(1)
-        error_503+=1
-        if error_503%30==0:
+        error_503 += 1
+        print(error_503)
+        if error_503 % 30 == 0:
             print(error_503)
-        # print(503)
-        # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
+            # print(503)
+            # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
     soup = BeautifulSoup(res.text, 'html.parser')
-    table = soup.find('div', id='current')
+    table = soup.find('div', id='container')
     if table:
         class_trs = table.find_all('tr')[1:]
         for tr in class_trs:
@@ -160,16 +164,20 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
 
 
 if __name__ == '__main__':
-    with open('rob_data.txt', 'r',encoding='utf8')as f:
+    with open('rob_data.txt', 'r', encoding='utf8')as f:
         ls = f.readlines()
         for line in ls:
-            line = line.strip('\n')
-            data = line.split(' ')
-            username = data[0]
-            password = data[1]
-            kecheng_code = data[2].split(',')
-            xuhao = data[3].split(',')
-    print(username, password, kecheng_code, xuhao)
+            if line != '':
+                line = line.strip('\n')
+                data = line.split(' ')
+                username = data[0]
+                password = data[1]
+                kecheng_code = data[2].split(',')
+                xuhao = data[3].split(',')
+                name = data[4].split(',')
+    assert len(kecheng_code) == len(xuhao)
+    print(len(kecheng_code), len(xuhao))
+    print(username, password, kecheng_code, xuhao,name)
     # username = '18251076'
     # password = '10962905'
     # kecheng_code = ['85L074T']
@@ -196,7 +204,7 @@ if __name__ == '__main__':
                 print("搶課完成" + str(kecheng_code[i]))
                 break
             else:
-                if retry_num % 200 == 0:
+                if retry_num % 20 == 0:
                     print('retry_time : ' + str(retry_num))
                 i += 1
                 retry_num += 1
