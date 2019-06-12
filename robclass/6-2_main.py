@@ -146,7 +146,8 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                         else:
                             class_name = tr.find('div', class_='hide').text.strip()
                             class_name = re.search("】(.*)", class_name).group(1)
-                            ok=True
+                            if xuhao[index_kecheng] in class_name:
+                                ok = True
                         if ok:
                             print("有课余量：")
                             print(class_name)
@@ -192,7 +193,7 @@ if __name__ == '__main__':
     # kecheng_code = ['85L074T']
     # xuhao = ["11"]
     error_503 = 0
-    time_delay = 0.1
+    time_delay = 0.2
     retry_max = 50000
     reset = False
     i = 0
@@ -200,7 +201,7 @@ if __name__ == '__main__':
     cookies = get_Session()
     while True:
         try:
-            # time.sleep(time_delay)
+            time.sleep(time_delay)
             if retry_num > retry_max:
                 reset = True
                 retry_num = 0
