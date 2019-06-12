@@ -136,19 +136,14 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                 if k_code in tr.text:
                     has_free = tr.find('input')
                     if has_free:
-                        ok = False
                         class_code = has_free["value"].strip()
-                        class_name = tr.find('div', class_='ellipsis').text.strip()
-                        class_name = re.search("】(.*)", class_name).group(1)
-
-                        if xuhao[index_kecheng] in class_name:
-                            ok = True
+                        class_name = tr.find('div', class_='ellipsis')
+                        if class_name:
+                            class_name =class_name.text.strip()
                         else:
                             class_name = tr.find('div', class_='hide').text.strip()
-                            class_name = re.search("】(.*)", class_name).group(1)
-                            if xuhao[index_kecheng] in class_name:
-                                ok = True
-                        if ok:
+                        class_name = re.search("】(.*)", class_name).group(1)
+                        if  xuhao[index_kecheng] in class_name:
                             print("有课余量：")
                             print(class_name)
                             print(class_code)
@@ -221,6 +216,6 @@ if __name__ == '__main__':
                 retry_num += 1
                 reset = False
         except Exception as e:
-            # raise (e)
+            raise (e)
             print(e)
             continue
