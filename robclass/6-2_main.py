@@ -84,7 +84,7 @@ def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', c
     re = re.headers['Set-Cookie']
     message = re[re.find('[['):re.find(']]') + 2]
     res = str(json.loads(eval("'" + message + "'")))
-    print(res)
+    print(pred_type+res)
     if "选课成功" in res:
         return 200
     elif "课堂无课余量" in res:
@@ -94,7 +94,6 @@ def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', c
             api.Justice(req_id)
         else:
             res = chaojiying.ReportError(req_id)
-            print(res)
         return 403
     else:
         return 500
@@ -137,11 +136,11 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                         class_code = has_free["value"].strip()
                         class_name = tr.find('div', class_='ellipsis')
                         if class_name:
-                            class_name =class_name.text.strip()
+                            class_name = class_name.text.strip()
                         else:
                             class_name = tr.find('div', class_='hide').text.strip()
                         class_name = re.search("】(.*)", class_name).group(1)
-                        if  xuhao[index_kecheng] in class_name:
+                        if xuhao[index_kecheng] in class_name:
                             print("有课余量：")
                             try:
                                 import winsound
@@ -164,24 +163,18 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                             img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],
                                                     headers=headers)
                             answer, req_id = api.Predict(40300, img_data.content)
+                            print(answer)
                             result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                   answer=answer,
-                                                  req_id=req_id, pred_type='pp')
-                            if result==403:
+                                                  req_id=req_id, pred_type='cjy')
+
+                            if result == 403:
                                 answer, req_id = chaojiying.PostPic(img_data.content, 2003)
+                                print(answer)
                                 result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                       answer=answer,
-                                                      req_id=req_id, pred_type='cjy')
-                                if result == 403:
-                                    answer, req_id = api.Predict(40300, img_data.content)
-                                    result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
-                                                          answer=answer,
-                                                          req_id=req_id, pred_type='pp')
-                                    if result == 403:
-                                        answer, req_id = chaojiying.PostPic(img_data.content, 2003)
-                                        result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
-                                                              answer=answer,
-                                                              req_id=req_id, pred_type='cjy')
+                                                      req_id=req_id, pred_type='pp')
+
                             if result == 200:
                                 return True
     return False
@@ -221,7 +214,7 @@ if __name__ == '__main__':
                 break
             else:
                 if retry_num % 20 == 0:
-                    print(str(time.strftime("%H:%M:%S"))+'  retry_time : ' + str(retry_num))
+                    print(str(time.strftime("%H:%M:%S")) + '  retry_time : ' + str(retry_num))
                 i += 1
                 retry_num += 1
                 reset = False
