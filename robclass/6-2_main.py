@@ -200,7 +200,7 @@ if __name__ == '__main__':
     cookies = get_Session()
     while True:
         try:
-            time.sleep(time_delay)
+            # time.sleep(time_delay)
             if retry_num > retry_max:
                 reset = True
                 retry_num = 0
