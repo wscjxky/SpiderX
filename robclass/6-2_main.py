@@ -43,7 +43,7 @@ def get_Session():
     driver.switch_to.window(handles[-1])
     cookie = driver.get_cookies()
     # time.sleep(1)
-    assert  len(cookie) == 2
+    assert len(cookie) == 2
     # while len(cookie) <= 1:
     #     time.sleep(2)
     #     get_Session()
@@ -135,14 +135,13 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                 if k_code in tr.text:
                     has_free = tr.find('input')
                     if has_free:
-                        ok=False
+                        ok = False
                         class_code = has_free["value"].strip()
                         class_name = tr.find('div', class_='ellipsis').text.strip()
                         class_name = re.search("】(.*)", class_name).group(1)
 
-
                         if xuhao[index_kecheng] in class_name:
-                            ok=True
+                            ok = True
                         else:
                             class_name = tr.find('div', class_='hide').text.strip()
                             class_name = re.search("】(.*)", class_name).group(1)
@@ -179,7 +178,7 @@ if __name__ == '__main__':
         for line in ls:
             if line != '':
                 line = line.strip('\n')
-                data = line.split (' ')
+                data = line.split(' ')
                 username = data[0]
                 password = data[1]
                 kecheng_code = data[2].split(',')
@@ -187,7 +186,7 @@ if __name__ == '__main__':
                 name = data[4].split(',')
     assert len(kecheng_code) == len(xuhao)
     print(len(kecheng_code), len(xuhao))
-    print(username, password, kecheng_code, xuhao,name)
+    print(username, password, kecheng_code, xuhao, name)
     # username = '18251076'
     # password = '10962905'
     # kecheng_code = ['85L074T']
