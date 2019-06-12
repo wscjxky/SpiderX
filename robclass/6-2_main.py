@@ -163,15 +163,25 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                             print(json_data)
                             img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],
                                                     headers=headers)
-                            if pred_type == 'pp':
-                                pred_type = 'pp'
-                                answer, req_id = api.Predict(40300, img_data.content)
-                            else:
-                                pred_type = 'cjy'
-                                answer, req_id = chaojiying.PostPic(img_data.content, 2003)
+                            answer, req_id = api.Predict(40300, img_data.content)
                             result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                   answer=answer,
-                                                  req_id=req_id, pred_type=pred_type)
+                                                  req_id=req_id, pred_type='pp')
+                            if result==403:
+                                answer, req_id = chaojiying.PostPic(img_data.content, 2003)
+                                result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
+                                                      answer=answer,
+                                                      req_id=req_id, pred_type='cjy')
+                                if result == 403:
+                                    answer, req_id = api.Predict(40300, img_data.content)
+                                    result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
+                                                          answer=answer,
+                                                          req_id=req_id, pred_type='pp')
+                                    if result == 403:
+                                        answer, req_id = chaojiying.PostPic(img_data.content, 2003)
+                                        result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
+                                                              answer=answer,
+                                                              req_id=req_id, pred_type='cjy')
                             if result == 200:
                                 return True
     return False
