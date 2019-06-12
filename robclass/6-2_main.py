@@ -1,3 +1,4 @@
+import datetime
 import re
 from bs4 import BeautifulSoup
 import time
@@ -210,11 +211,12 @@ if __name__ == '__main__':
                 i = 0
             if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='cjy'):
                 print(username, password)
+
                 print("搶課完成" + str(kecheng_code[i]))
                 break
             else:
                 if retry_num % 20 == 0:
-                    print('retry_time : ' + str(retry_num))
+                    print(str(time.strftime("%H:%M:%S"))+'  retry_time : ' + str(retry_num))
                 i += 1
                 retry_num += 1
                 reset = False
