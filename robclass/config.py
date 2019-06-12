@@ -133,17 +133,18 @@ user_agent = [
 #         user_agent.append(l)
 # print(user_agent)
 def get_user_agent():
-    return random.choice(user_agent)
-check_classheader={
-    "Host": "dean.bjtu.edu.cn",
-    "Connection": "keep-alive",
-    "Accept": "*/*",
-    "X-Requested-With": "XMLHttpRequest",
-    "User-Agent": get_user_agent(),
-    "Referer": "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Accept-Language": "en,zh-CN;q=0.9,zh;q=0.8"
-}
+    u=random.choice(user_agent)
+    check_classheader = {
+        "Host": "dean.bjtu.edu.cn",
+        "Connection": "keep-alive",
+        "Accept": "*/*",
+        "X-Requested-With": "XMLHttpRequest",
+        "User-Agent": u,
+        "Referer": "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects/",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Language": "en,zh-CN;q=0.9,zh;q=0.8"
+    }
+    return check_classheader
 
 class TmpObj():
     def __init__(self):

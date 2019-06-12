@@ -11,7 +11,7 @@ import os
 from chaojiying import Chaojiying_Client
 
 chaojiying = Chaojiying_Client('wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
-from config import FateadmApi, robclass_headers, headers, headers_image, check_classheader
+from config import FateadmApi, robclass_headers, headers, headers_image, get_user_agent
 
 pd_id = "103797"
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
@@ -111,10 +111,7 @@ def delete_proxy(proxy):
 def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
     global cookies, error_503
     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
-    # sess=HTMLSession()
-    # res=sess.get(check_url, cookies=cookies, headers=check_classheader)
-    # print(res.text)
-    res = requests.get(check_url, cookies=cookies, headers=check_classheader,
+    res = requests.get(check_url, cookies=cookies, headers=get_user_agent(),
                        proxies={"http": "http://{}".format(proxy)}
                        )
     if res.status_code == 503:
@@ -208,17 +205,8 @@ if __name__ == '__main__':
     cookies = get_Session()
     while True:
         try:
-            time.sleep(time_delay)
-            if retry_num > retry_max:
-                reset = True
-                retry_num = 0
-                # cookies = get_Session()
-                continue
-            if i == len(kecheng_code):
-                i = 0
             if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='cjy'):
                 print(username, password)
-
                 print("搶課完成" + str(kecheng_code[i]))
                 break
             else:
