@@ -211,6 +211,5 @@ if __name__ == '__main__':
                 retry_num += 1
                 reset = False
         except Exception as e:
-            raise (e)
             print(e)
             continue
