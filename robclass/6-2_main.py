@@ -145,6 +145,17 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                         class_name = re.search("】(.*)", class_name).group(1)
                         if  xuhao[index_kecheng] in class_name:
                             print("有课余量：")
+                            try:
+                                import winsound
+                                duration = 1000  # millisecond
+                                freq = 500  # Hz
+                                winsound.Beep(freq, duration)
+                            except:
+                                import os
+                                duration = 1  # second
+                                freq = 440  # Hz
+                                os.system(
+                                    'play --no-show-progress --null --channels 1 synth %s sine %f' % (duration, freq))
                             print(class_name)
                             print(class_code)
                             res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
@@ -216,6 +227,6 @@ if __name__ == '__main__':
                 retry_num += 1
                 reset = False
         except Exception as e:
-            raise (e)
+            # raise (e)
             print(e)
             continue
