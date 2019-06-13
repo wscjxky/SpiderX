@@ -195,6 +195,8 @@ if __name__ == '__main__':
                 kecheng_code = data[2].split(',')
                 xuhao = data[3].split(',')
                 name = data[4].split(',')
+                if "#" in username:
+                    continue
     assert len(kecheng_code) == len(xuhao)
     print(len(kecheng_code), len(xuhao))
     print(username, password, kecheng_code, xuhao, name)
