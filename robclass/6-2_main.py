@@ -28,21 +28,28 @@ def get_Session():
     chrome_options.add_argument('disable-infobars')
     driver = Chrome(executable_path='chromedriver',
                     options=chrome_options)
-    url = 'https://mis.bjtu.edu.cn/home/'
+    url = 'http://jwc.bjtu.edu.cn'
     driver.get(url)
     driver.maximize_window()
-    elem = driver.find_element_by_css_selector('#id_loginname')
+    elem = driver.find_element_by_xpath('/html/body/div[3]/table/tbody/tr[1]/td[1]/div/div[1]/span/a[1]')
+    elem.click()
+    time.sleep(0.8)
+    elem = driver.find_element_by_xpath('//*[@id="TextBoxUserName"]')
     elem.send_keys(username)
-    elem = driver.find_element_by_xpath('//*[@id="id_password"]')
+    elem = driver.find_element_by_xpath('//*[@id="TextBoxPassword"]')
     elem.send_keys(password)
-    elem = driver.find_element_by_xpath('//*[@id="login"]/dl/dd[2]/div/div[3]/button')
+    elem = driver.find_element_by_xpath('//*[@id="rbUserCenter"]')
     elem.click()
     elem = driver.find_element_by_xpath(
-        '//*[@id="wrap"]/div[2]/div[2]/div/div[2]/div/div/table/tbody/tr[1]/td[6]/div/div/h5/a')
+        '//*[@id="ButtonLogin"]')
     elem.click()
     time.sleep(1)
+
+    elem= driver.find_element_by_xpath('//*[@id="ctl00_ctl00_ctl00_ctl00_placeHolderContent_placeHolderContent_placeHolderMenuBar_navMenu_tvNavMenut0"]')
+    elem.click()
     handles = driver.window_handles
     driver.switch_to.window(handles[-1])
+    # time.sleep(10)
     cookie = driver.get_cookies()
     # time.sleep(1)
     assert len(cookie) == 2
