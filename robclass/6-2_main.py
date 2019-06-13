@@ -212,14 +212,14 @@ if __name__ == '__main__':
     cookies = get_Session()
     while True:
         try:
-            time.sleep(0.1)
+            time.sleep(0.8)
             if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='cjy'):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
                 break
             else:
                 if retry_num % 20 == 0:
-                    print(str(time.strftime("%H:%M:%S")) + '  retry_time : ' + str(retry_num))
+                    print(name[0]+" "+str(time.strftime("%H:%M:%S")) + '  retry_time : ' + str(retry_num))
                 i += 1
                 retry_num += 1
                 reset = False
