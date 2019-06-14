@@ -9,7 +9,11 @@ from selenium.webdriver.chrome.options import Options
 import os
 
 from chaojiying import Chaojiying_Client
+from chaoren import *
 
+chaoren_client = Chaoren()
+chaoren_client.data['username'] = 'wscjxky'  # 修改为打码账号
+chaoren_client.data['password'] = 'wscjxky123'  # 修改为打码密码
 chaojiying = Chaojiying_Client('wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
 from config import FateadmApi, robclass_headers, headers, headers_image, get_user_agent
 
@@ -45,7 +49,8 @@ def get_Session():
     elem.click()
     time.sleep(1)
 
-    elem= driver.find_element_by_xpath('//*[@id="ctl00_ctl00_ctl00_ctl00_placeHolderContent_placeHolderContent_placeHolderMenuBar_navMenu_tvNavMenut0"]')
+    elem = driver.find_element_by_xpath(
+        '//*[@id="ctl00_ctl00_ctl00_ctl00_placeHolderContent_placeHolderContent_placeHolderMenuBar_navMenu_tvNavMenut0"]')
     elem.click()
     handles = driver.window_handles
     driver.switch_to.window(handles[-1])
@@ -91,7 +96,7 @@ def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', c
     re = re.headers['Set-Cookie']
     message = re[re.find('[['):re.find(']]') + 2]
     res = str(json.loads(eval("'" + message + "'")))
-    print(pred_type+res)
+    print(pred_type + res)
     if "选课成功" in res:
         return 200
     elif "课堂无课余量" in res:
@@ -99,8 +104,10 @@ def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', c
     elif "验证码" in res:
         if pred_type == 'pp':
             api.Justice(req_id)
-        else:
+        elif pred_type == 'cjy':
             res = chaojiying.ReportError(req_id)
+        else:
+            chaoren_client.report_err(req_id)
         return 403
     else:
         return 500
@@ -160,7 +167,8 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                                     duration = 1  # second
                                     freq = 500  # Hz
                                     os.system(
-                                        'play --no-show-progress --null --channels 1 synth %s sine %f' % (duration, freq))
+                                        'play --no-show-progress --null --channels 1 synth %s sine %f' % (
+                                        duration, freq))
                                 print(class_name)
                                 print(class_code)
                                 res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
@@ -170,18 +178,25 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                                 print(json_data)
                                 img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],
                                                         headers=headers)
-
-                                answer, req_id = chaojiying.PostPic(img_data.content, 2003)
-                                print(answer)
+                                res = chaoren_client.recv_byte(img_data.content)
+                                answer, req_id = res[u'result'], res[u'imgId']
+                                print(answer,req_id)
                                 result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                       answer=answer,
-                                                      req_id=req_id, pred_type='cjy')
+                                                      req_id=req_id, pred_type='chaoren')
+                                print(answer)
                                 if result == 403:
-                                    print(answer)
-                                    answer, req_id = api.Predict(40300, img_data.content)
+                                    answer, req_id = chaojiying.PostPic(img_data.content, 2003)
+
                                     result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                           answer=answer,
-                                                          req_id=req_id, pred_type='pp')
+                                                          req_id=req_id, pred_type='cjy')
+                                    if result == 403:
+                                        print(answer)
+                                        answer, req_id = api.Predict(40300, img_data.content)
+                                        result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
+                                                              answer=answer,
+                                                              req_id=req_id, pred_type='pp')
 
                                 if result == 200:
                                     return True
@@ -219,14 +234,14 @@ if __name__ == '__main__':
     cookies = get_Session()
     while True:
         try:
-            time.sleep(0.5)
+            time.sleep(0.3)
             if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='cjy'):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
                 break
             else:
                 if retry_num % 20 == 0:
-                    print(name[0]+" "+str(time.strftime("%H:%M:%S")) + '  retry_time : ' + str(retry_num))
+                    print(name[0] + " " + str(time.strftime("%H:%M:%S")) + '  retry_time : ' + str(retry_num))
                 i += 1
                 retry_num += 1
                 reset = False
