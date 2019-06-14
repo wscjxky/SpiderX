@@ -180,7 +180,7 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                                                         headers=headers)
                                 res = chaoren_client.recv_byte(img_data.content)
                                 answer, req_id = res[u'result'], res[u'imgId']
-                                print(answer,req_id)
+                                print(answer)
                                 result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                       answer=answer,
                                                       req_id=req_id, pred_type='chaoren')
