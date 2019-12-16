@@ -66,3 +66,9 @@ class YDMHttp:
 # yundama.report(req_id)
 
 ######################################################################
+#
+# a=input("输入验证码:")
+# pic=open('temp.png','wb')
+# pic.write(img_data)
+#
+# print(a)

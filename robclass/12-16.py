@@ -140,6 +140,20 @@ def get_proxy():
 def delete_proxy(proxy):
     requests.get("http://127.0.0.1:5010/delete/?proxy={}".format(proxy))
 
+def make_noise():
+    try:
+        import winsound
+        duration = 1000  # millisecond
+        freq = 500  # Hz
+        winsound.Beep(freq, duration)
+    except:
+        import os
+
+        duration = 1  # second
+        freq = 500  # Hz
+        os.system(
+            'play --no-show-progress --null --channels 1 synth %s sine %f' % (
+                duration, freq))
 
 def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
     global cookies, error_503
@@ -185,18 +199,7 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
                                 "】(.*)", class_name).group(1)
                             if xuhao[index_kecheng] in class_name:
                                 print("有课余量：")
-                                try:
-                                    import winsound
-                                    duration = 1000  # millisecond
-                                    freq = 500  # Hz
-                                    winsound.Beep(freq, duration)
-                                except:
-                                    import os
-                                    duration = 1  # second
-                                    freq = 500  # Hz
-                                    os.system(
-                                        'play --no-show-progress --null --channels 1 synth %s sine %f' % (
-                                            duration, freq))
+                                make_noise()
                                 print(class_name)
                                 print(class_code)
                                 res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
