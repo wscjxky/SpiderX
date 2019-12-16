@@ -1,3 +1,5 @@
+import threadpool
+from config import FateadmApi, robclass_headers, headers, headers_image, get_user_agent
 import re
 from bs4 import BeautifulSoup
 from selenium.webdriver import Chrome
@@ -8,15 +10,14 @@ from chaoren import *
 
 import sys
 sys.path.append('./')
-
+STOP_FLAG = 0
 THREAD_FLAG = False
 sleep_time_503 = 2
 chaoren_client = Chaoren()
 chaoren_client.data['username'] = 'wscjxky'  # 修改为打码账号
 chaoren_client.data['password'] = 'wscjxky123'  # 修改为打码密码
-chaojiying = Chaojiying_Client('wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
-from config import FateadmApi, robclass_headers, headers, headers_image, get_user_agent
-import threadpool
+chaojiying = Chaojiying_Client(
+    'wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
 
 yundama = YDMHttp()
 
@@ -38,7 +39,8 @@ def get_Session():
     url = 'http://jwc.bjtu.edu.cn'
     driver.get(url)
     driver.maximize_window()
-    elem = driver.find_element_by_xpath('/html/body/div[3]/table/tbody/tr[1]/td[1]/div/div[1]/span/a[1]')
+    elem = driver.find_element_by_xpath(
+        '/html/body/div[3]/table/tbody/tr[1]/td[1]/div/div[1]/span/a[1]')
     elem.click()
     time.sleep(0.8)
     elem = driver.find_element_by_xpath('//*[@id="TextBoxUserName"]')
@@ -84,7 +86,7 @@ def post_request(cookies, class_code, hashkey, img_data, pred_type="ydm"):
     #     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
     #     count += 1
     if pred_type == "ydm":
-        answer, req_id = yundama.decode(img_data, 2003, 20)
+        req_id, answer = yundama.decode(img_data, 2003, 20)
     elif pred_type == "chaoren":
         res = chaoren_client.recv_byte(img_data)
         answer, req_id = res[u'result'], res[u'imgId']
@@ -177,8 +179,10 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
                             if class_name:
                                 class_name = class_name.text.strip()
                             else:
-                                class_name = tr.find('div', class_='hide').text.strip()
-                            class_name = re.search("】(.*)", class_name).group(1)
+                                class_name = tr.find(
+                                    'div', class_='hide').text.strip()
+                            class_name = re.search(
+                                "】(.*)", class_name).group(1)
                             if xuhao[index_kecheng] in class_name:
                                 print("有课余量：")
                                 try:
@@ -219,13 +223,21 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
     except Exception as e:
         print(e)
     return False
+
+
 class Finish(SyntaxWarning):
     pass
+
 def callback(request, result):
+    global STOP_FLAG
     print(result)
-    if result==200:
-        raise Finish
+    STOP_FLAG += 1
+    if result == 200:
+        raise Success
+    elif result == 500:
+        raise Success
 def start_threading(cookies, class_code, hashkey, img_data, pred_type):
+    global STOP_FLAG
     device_list = ['pp', 'cjy', 'chaoren', 'ydm']  # 需要处理的设备个数
     task_pool = threadpool.ThreadPool(5)  # 5是线程池中线程的个数
     request_list = []  # 存放任务列表
@@ -233,14 +245,19 @@ def start_threading(cookies, class_code, hashkey, img_data, pred_type):
     for device in device_list:
         lst_vars = [cookies, class_code, hashkey, img_data, device]
         request_list.append((lst_vars, None))
-    requests = threadpool.makeRequests(post_request, request_list,callback=callback)
-    [task_pool.putRequest(req) for req in requests]
+    requests = threadpool.makeRequests(
+        post_request, request_list, callback=callback)
+    [task_pool.putRequest(req, block=True, timeout=20) for req in requests]
     while True:
         try:
+            print(f"STOP_FLAG:{STOP_FLAG}")
+            if STOP_FLAG >= 4:
+                STOP_FLAG = 0
+                return False
             task_pool.wait()
-        except Finish as e:
+        except Success as e:
             print(e)
-            break
+            return 200
 
 if __name__ == '__main__':
     with open('rob_data.txt', 'r', encoding='utf8')as f:
@@ -282,7 +299,8 @@ if __name__ == '__main__':
                 break
             else:
                 if retry_num % 20 == 0:
-                    print(name[0] + " " + str(time.strftime("%H:%M:%S")) + '  retry_time : ' + str(retry_num))
+                    print(name[0] + " " + str(time.strftime("%H:%M:%S")
+                                              ) + '  retry_time : ' + str(retry_num))
                 i += 1
                 retry_num += 1
                 reset = False

@@ -1,24 +1,25 @@
+import threadpool
 from config import FateadmApi, robclass_headers, headers, headers_image, get_user_agent
-import datetime
 import re
 from bs4 import BeautifulSoup
-import time
 from selenium.webdriver import Chrome
-import json
-import requests
 from selenium.webdriver.chrome.options import Options
-import os
-
+from YDM import *
 from chaojiying import Chaojiying_Client
 from chaoren import *
-from YDM import *
 
+import sys
+sys.path.append('./')
+STOP_FLAG = 0
+THREAD_FLAG = False
 sleep_time_503 = 2
 chaoren_client = Chaoren()
 chaoren_client.data['username'] = 'wscjxky'  # 修改为打码账号
 chaoren_client.data['password'] = 'wscjxky123'  # 修改为打码密码
 chaojiying = Chaojiying_Client(
     'wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
+
+yundama = YDMHttp()
 
 pd_id = "103797"
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
@@ -78,11 +79,21 @@ def get_Session():
 
 # from requests_html import HTMLSession
 
-def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', count=0):
+def post_request(cookies, class_code, hashkey, img_data, pred_type="ydm"):
+    global THREAD_FLAG
     # while count < 50:
     #     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
     #     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
     #     count += 1
+    if pred_type == "ydm":
+        req_id, answer = yundama.decode(img_data, 2003, 20)
+    elif pred_type == "chaoren":
+        res = chaoren_client.recv_byte(img_data)
+        answer, req_id = res[u'result'], res[u'imgId']
+    elif pred_type == "pp":
+        answer, req_id = api.Predict(40300, img_data)
+    elif pred_type == "cjy":
+        answer, req_id = chaojiying.PostPic(img_data, 2003)
     data = {'checkboxs': class_code,
             # 'is_cross':True
             'hashkey': hashkey,
@@ -97,14 +108,17 @@ def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', c
         print(re.status_code)
         print("重新提交抢课请求")
         time.sleep(0.3)
-        post_request(cookies, class_code, hashkey,
-                     answer, req_id, pred_type, 50)
-    print(re)
-    re = re.headers['Set-Cookie']
-    message = re[re.find('[['):re.find(']]') + 2]
-    res = str(json.loads(eval("'" + message + "'")))
-    print(pred_type + res)
+        post_request(cookies, class_code, hashkey, img_data, pred_type)
+    try:
+        re = re.headers['Set-Cookie']
+        message = re[re.find('[['):re.find(']]') + 2]
+        res = str(json.loads(eval("'" + message + "'")))
+        print(pred_type + "请求：" + str(data))
+        print(res)
+    except:
+        return 403
     if "选课成功" in res:
+        THREAD_FLAG = True
         return 200
     elif "课堂无课余量" in res:
         return 404
@@ -112,9 +126,9 @@ def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', c
         if pred_type == 'pp':
             api.Justice(req_id)
         elif pred_type == 'cjy':
-            res = chaojiying.ReportError(req_id)
+            chaojiying.ReportError(req_id)
         elif pred_type == 'ydm':
-            res = YDMHttp.report(req_id)
+            yundama.report(req_id)
         else:
             chaoren_client.report_err(req_id)
         return 403
@@ -130,7 +144,7 @@ def delete_proxy(proxy):
     requests.get("http://127.0.0.1:5010/delete/?proxy={}".format(proxy))
 
 
-def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
+def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
     global cookies, error_503
     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
     res = requests.get(check_url, cookies=cookies, headers=get_user_agent(),
@@ -143,26 +157,74 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
         time.sleep(sleep_time_503)
         error_503 += 1
         if error_503 % 30 == 0:
-            print(f"503次数:{error_503}")
+            print(
+                "503次数:{}" + str(error_503))
             print(error_503)
+            return False
             # print(503)
             # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
+    soup = BeautifulSoup(res.text, 'html.parser')
+    # 任选课的table
+    # table = soup.find('div', id='container')
+    # 专业课的table
+    table = soup.find('div', id='current')
 
-    res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
-                       headers=headers_image)
-    json_data = res.json()
-    hashkey = json_data['key']
-    img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],
-                            headers=headers)
-    print(img_data.content)
-    # answer, req_id = api.Predict(40300, img_data.content)
-    yundama = YDMHttp()
-    req_id, answer = yundama.decode(img_data.content, 2003, 15)
-    print(answer)
-    result = post_request(cookies=cookies, class_code=93205, hashkey=hashkey,
-                            answer=answer,
-                            req_id=req_id, pred_type='ydm')
+    try:
+        class_code = "91941"
+        res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
+                           headers=headers_image)
+        json_data = res.json()
+        hashkey = json_data['key']
+        print(json_data)
+        img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],
+                                headers=headers)
+        result = start_threading(cookies=cookies, class_code=class_code, hashkey=hashkey,
+                                 img_data=img_data.content, pred_type=pred_type)
+        if result == 200:
+            return True
+        else:
+            return False
+    except Exception as e:
+        print(e)
+    return False
 
+
+class Success(SyntaxWarning):
+    pass
+
+
+def callback(request, result):
+    global STOP_FLAG
+    print(result)
+    STOP_FLAG += 1
+    if result == 200:
+        raise Success
+    # elif result == 500:
+    #     raise Success
+
+
+def start_threading(cookies, class_code, hashkey, img_data, pred_type):
+    global STOP_FLAG
+    device_list = ['pp', 'cjy', 'chaoren', 'ydm']  # 需要处理的设备个数
+    task_pool = threadpool.ThreadPool(5)  # 5是线程池中线程的个数
+    request_list = []  # 存放任务列表
+    # 首先构造任务列表
+    for device in device_list:
+        lst_vars = [cookies, class_code, hashkey, img_data, device]
+        request_list.append((lst_vars, None))
+    requests = threadpool.makeRequests(
+        post_request, request_list, callback=callback)
+    [task_pool.putRequest(req, block=True, timeout=1) for req in requests]
+    while True:
+        try:
+            print(f"STOP_FLAG:{STOP_FLAG}")
+            if STOP_FLAG >= 4:
+                STOP_FLAG = 0
+                return False
+            task_pool.wait()
+        except Success as e:
+            print(e)
+            return 200
 
 
 if __name__ == '__main__':
@@ -193,9 +255,13 @@ if __name__ == '__main__':
     retry_num = 0
     cookies = get_Session()
     while True:
-        # try:
-            time.sleep(0.5)
-            if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='pp'):
+        if THREAD_FLAG:
+            print(username, password)
+            print("搶課完成" + str(kecheng_code[i]))
+            break
+        try:
+            time.sleep(1)
+            if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='chaoren'):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
                 break
@@ -206,7 +272,7 @@ if __name__ == '__main__':
                 i += 1
                 retry_num += 1
                 reset = False
-        # except Exception as e:
-        #     raise (e)
-        #     print(e)
-        #     continue
+        except Exception as e:
+            # raise (e)
+            print(e)
+            continue
