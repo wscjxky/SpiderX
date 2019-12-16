@@ -10,7 +10,7 @@ import os
 
 from chaojiying import Chaojiying_Client
 from chaoren import *
-
+503_sleep_time = 2
 chaoren_client = Chaoren()
 chaoren_client.data['username'] = 'wscjxky'  # 修改为打码账号
 chaoren_client.data['password'] = 'wscjxky123'  # 修改为打码密码
@@ -131,10 +131,10 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
         # proxy = get_proxy()
         # delete_proxy(proxy)
         # print('换ip：%s' % proxy)
-        time.sleep(1)
+        time.sleep(503_sleep_time)
         error_503 += 1
-        print(error_503)
         if error_503 % 30 == 0:
+            print(f"503次数:{error_503}")
             print(error_503)
             # print(503)
             # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
@@ -234,7 +234,7 @@ if __name__ == '__main__':
     cookies = get_Session()
     while True:
         try:
-            time.sleep(0.1)
+            time.sleep(0.5)
             if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='cjy'):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
