@@ -274,7 +274,7 @@ if __name__ == '__main__':
             print("搶課完成" + str(kecheng_code[i]))
             break
         try:
-            time.sleep(0.5)
+            time.sleep(1)
             if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='chaoren'):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
