@@ -8,7 +8,7 @@ from chaoren import *
 import sys
 sys.path.append('./')
 THREAD_FLAG = False
-sleep_time_503 = 1
+sleep_time_503 = 2
 chaoren_client = Chaoren()
 chaoren_client.data['username'] = 'wscjxky'  # 修改为打码账号
 chaoren_client.data['password'] = 'wscjxky123'  # 修改为打码密码
