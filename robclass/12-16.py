@@ -9,6 +9,7 @@ from chaojiying import Chaojiying_Client
 from chaoren import *
 
 import sys
+
 sys.path.append('./')
 STOP_FLAG = 0
 THREAD_FLAG = False
@@ -85,52 +86,58 @@ def post_request(cookies, class_code, hashkey, img_data, pred_type="ydm"):
     #     check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
     #     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
     #     count += 1
-    if pred_type == "ydm":
-        req_id, answer = yundama.decode(img_data, 2003, 20)
-    elif pred_type == "chaoren":
-        res = chaoren_client.recv_byte(img_data)
-        answer, req_id = res[u'result'], res[u'imgId']
-    elif pred_type == "pp":
-        answer, req_id = api.Predict(40300, img_data)
-    elif pred_type == "cjy":
-        answer, req_id = chaojiying.PostPic(img_data, 2003)
-    data = {'checkboxs': class_code,
-            # 'is_cross':True
-            'hashkey': hashkey,
-            'answer': answer
-            }
-    re = requests.post('https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=submit',
-                       cookies=cookies,
-                       headers=robclass_headers,
-                       allow_redirects=False,
-                       data=data)
-    if re.status_code == 503:
-        print(re.status_code)
-        print("重新提交抢课请求")
-        time.sleep(0.3)
-        post_request(cookies, class_code, hashkey, img_data, pred_type)
-    re = re.headers['Set-Cookie']
-    message = re[re.find('[['):re.find(']]') + 2]
-    res = str(json.loads(eval("'" + message + "'")))
-    print(pred_type + "请求：" + str(data))
-    print(res)
-    if "选课成功" in res:
-        THREAD_FLAG = True
-        return 200
-    elif "课堂无课余量" in res:
-        return 404
-    elif "验证码" in res:
-        if pred_type == 'pp':
-            api.Justice(req_id)
-        elif pred_type == 'cjy':
-            chaojiying.ReportError(req_id)
-        elif pred_type == 'ydm':
-            yundama.report(req_id)
+    try:
+
+        if pred_type == "ydm":
+            req_id, answer = yundama.decode(img_data, 2003, 20)
+        elif pred_type == "chaoren":
+            res = chaoren_client.recv_byte(img_data)
+            answer, req_id = res[u'result'], res[u'imgId']
+        elif pred_type == "pp":
+            answer, req_id = api.Predict(40300, img_data)
+        elif pred_type == "cjy":
+            answer, req_id = chaojiying.PostPic(img_data, 2003)
+        data = {'checkboxs': class_code,
+                # 'is_cross':True
+                'hashkey': hashkey,
+                'answer': answer
+                }
+        re = requests.post('https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=submit',
+                           cookies=cookies,
+                           headers=robclass_headers,
+                           allow_redirects=False,
+                           data=data)
+        if re.status_code == 503:
+            print(re.status_code)
+            print("重新提交抢课请求")
+            time.sleep(0.3)
+            post_request(cookies, class_code, hashkey, img_data, pred_type)
+        re = re.headers['Set-Cookie']
+        message = re[re.find('[['):re.find(']]') + 2]
+        res = str(json.loads(eval("'" + message + "'")))
+        print(pred_type + "请求：" + str(data))
+        print(res)
+        if "选课成功" in res:
+            THREAD_FLAG = True
+            return 200
+        elif "课堂无课余量" in res:
+            return 404
+        elif "验证码" in res:
+            if pred_type == 'pp':
+                api.Justice(req_id)
+            elif pred_type == 'cjy':
+                chaojiying.ReportError(req_id)
+            elif pred_type == 'ydm':
+                yundama.report(req_id)
+            else:
+                chaoren_client.report_err(req_id)
+            return 403
+            # 完全错误，比如有类似的课了
         else:
-            chaoren_client.report_err(req_id)
+            return 500
+    except Exception as e:
+        print("139postreq bug ：" + str(e))
         return 403
-    else:
-        return 500
 
 
 def get_proxy():
@@ -139,6 +146,7 @@ def get_proxy():
 
 def delete_proxy(proxy):
     requests.get("http://127.0.0.1:5010/delete/?proxy={}".format(proxy))
+
 
 def make_noise():
     try:
@@ -154,6 +162,7 @@ def make_noise():
         os.system(
             'play --no-show-progress --null --channels 1 synth %s sine %f' % (
                 duration, freq))
+
 
 def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
     global cookies, error_503
@@ -220,7 +229,7 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
                                 else:
                                     return False
         else:
-            if("503" in res.text):
+            if ("503" in res.text):
                 time.sleep(sleep_time_503)
                 print(503)
     except Exception as e:
@@ -228,8 +237,9 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
     return False
 
 
-class Finish(SyntaxWarning):
+class Success(SyntaxWarning):
     pass
+
 
 def callback(request, result):
     global STOP_FLAG
@@ -239,6 +249,8 @@ def callback(request, result):
         raise Success
     elif result == 500:
         raise Success
+
+
 def start_threading(cookies, class_code, hashkey, img_data, pred_type):
     global STOP_FLAG
     device_list = ['pp', 'cjy', 'chaoren', 'ydm']  # 需要处理的设备个数
@@ -251,16 +263,16 @@ def start_threading(cookies, class_code, hashkey, img_data, pred_type):
     requests = threadpool.makeRequests(
         post_request, request_list, callback=callback)
     [task_pool.putRequest(req, block=True, timeout=20) for req in requests]
-    while True:
-        try:
-            print(f"STOP_FLAG:{STOP_FLAG}")
-            if STOP_FLAG >= 4:
-                STOP_FLAG = 0
-                return False
-            task_pool.wait()
-        except Success as e:
-            print(e)
-            return 200
+    try:
+        # print(f"STOP_FLAG:{STOP_FLAG}")
+        # if STOP_FLAG >= 4:
+        #     STOP_FLAG = 0
+        #     return False
+        task_pool.wait()
+    except Success as e:
+        print(e)
+        return 200
+
 
 if __name__ == '__main__':
     with open('rob_data.txt', 'r', encoding='utf8')as f:
