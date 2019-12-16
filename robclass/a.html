@@ -1,0 +1,5783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta charset="utf-8" />
+  <title>北京交通大学教务管理信息系统</title>
+  <meta name="description" content="overview &amp; stats" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+  <link rel="stylesheet" href="/static/lib/ace1.4/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/lib/ace1.4/components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="/static/lib/ace1.4/components/chosen/chosen.min.css" />
+  <link rel="stylesheet" href="/static/lib/ace1.4/components/jquery.gritter/css/jquery.gritter.min.css" />
+  <link rel="stylesheet" href="/static/lib/ace1.4/components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css" />
+  <link rel="stylesheet" href="/static/lib/ace1.4/components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />
+
+  <link rel="stylesheet" href="/static/lib/ace1.4/dist/css/ace-fonts.min.css" />
+  <link rel="stylesheet" href="/static/lib/ace1.4/dist/css/ace.min.css" class="ace-main-stylesheet" />
+
+  <!--[if lte IE 9]>
+  <link rel="stylesheet" href="/static/lib/ace1.4/dist/css/ace-part2.min.css" class="ace-main-stylesheet" />
+  <link rel="stylesheet" href="/static/lib/ace1.4/dist/css/ace-ie.min.css" />
+  <![endif]-->
+  <link rel="stylesheet" href="/static/lib/ace1.4/dist/css/ace-skins.min.css" />
+  <link rel="stylesheet" href="/static/css/base.css?v=2.5.3" />
+
+  <script src="/static/lib/ace1.4/components/jquery.1x/dist/jquery.min.js"></script>
+  <script src="/static/lib/jquery/jquery.query.js"></script>
+  <script src="/static/lib/jquery/jquery.validate.min.js"></script>
+  <script src="/static/lib/jquery/jquery.validate.ext.js"></script>
+
+  <script type="text/javascript">
+    // jinja i18n默认实现
+    function gettext(msgid) { return msgid;}
+  </script>
+
+</head>
+
+<body class="no-skin">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-container" id="navbar-container">
+      <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+        <i class="ace-icon fa fa-navicon white bigger-150"></i>
+      </button>
+      <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler2" data-target="#sidebar2">
+        <i class="ace-icon fa fa-dashboard white bigger-150"></i>
+      </button>
+
+      <div class="navbar-header pull-left ace-navbar-brand">
+        <a href="#" class="navbar-brand">
+          <small>
+            <i class="fa fa-leaf"></i>&nbsp; 北京交通大学教务管理信息系统
+          </small>
+        </a>
+      </div>
+
+      <div class="navbar-buttons navbar-header pull-right" role="navigation">
+        <ul class="nav ace-nav">
+          <li class="light-blue">
+            <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+              <img class="nav-user-photo" style="height:32px;"
+                   src="/static/lib/ace1.4/assets/avatars/user.jpg"/>
+              <span class="user-info" style="line-height:17px;">
+                <small>欢迎您，</small>李雯璐
+              </span>
+              <i class="ace-icon fa fa-caret-down"></i>
+            </a>
+
+            <ul style="width:125px;"
+              class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+              <li class="divider"></li>
+              <li>
+                <a href="/client/logout/">
+                  <i class="ace-icon fa fa-power-off"></i>
+                  退出
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-buttons -->
+    </div> <!-- /.navbar-container -->
+  </div><!-- /.navbar-->
+
+  <div  class="main-container">
+    <div id="sidebar" style="margin-top: 0;"
+      class="sidebar sidebar-fixed h-sidebar navbar-collapse collapse">
+      <ul class="nav nav-list">
+        <li>
+          <a href="#"  style="width:42px;">
+            <span class="menu-text"></span>
+          </a>
+        </li>
+
+
+
+                <li>
+                  <a href="/notice/item/">
+                    <span class="menu-text ">
+                      <i class="menu-icon bigger-120 fa fa-globe"></i> 通知公告
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/schoolcensus/schoolcensus/stuupdate/">
+                    <span class="menu-text ">
+                      <i class="menu-icon bigger-120 fa fa-graduation-cap"></i> 学生信息
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/course_selection/courseselect/stuschedule/">
+                    <span class="menu-text ">
+                      <i class="menu-icon bigger-120 fa fa-calendar"></i> 课程选课
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/examine/examplanstudent/stulist/">
+                    <span class="menu-text ">
+                      <i class="menu-icon bigger-120 fa fa-area-chart"></i> 考务成绩
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/teaching_assessment/stu/list/">
+                    <span class="menu-text ">
+                      <i class="menu-icon bigger-120 fa fa-balance-scale"></i> 评学
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/classroom/timeholdresult/room_stat/">
+                    <span class="menu-text ">
+                      <i class="menu-icon bigger-120 fa fa-bank"></i> 教室资源
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/schoolcensus/schooltraininfo/studylist/">
+                    <span class="menu-text ">
+                      <i class="menu-icon bigger-120 fa fa-tasks"></i> 学业进度
+                    </span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/transfer_major/transcollege/">
+                    <span class="menu-text ">
+                      <i class="menu-icon bigger-120 fa fa-share-alt"></i> 转专业和大类分流
+                    </span>
+                  </a>
+                </li>
+
+
+      </ul>
+    </div>
+
+    <div class="main-content" style="margin-top: 50px;">
+      <div class="main-content-inner">
+        <!-- .sidebar-2 -->
+        <div id="sidebar2" class="sidebar sidebar-fixed navbar-collapse collapse">
+          <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+            <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+              欢迎您，
+              <strong class="green">
+                李雯璐
+              </strong>
+            </div>
+          </div>
+
+          <ul class="nav nav-list">
+
+
+
+    <li class="open">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-check-square-o"></i>
+            <span class="menu-text">信息查询</span>
+        </a>
+        <ul class="submenu nav-hide">
+
+                <li>
+                    <a href="/course_selection/courseselect/stuschedule/">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <span class="menu-text">本学期课表</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/course_selection/courseselect/list_arrange/">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <span class="menu-text">全校开设课堂</span>
+                    </a>
+                </li>
+
+        </ul>
+    </li>
+
+    <li class="open">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-check-square-o"></i>
+            <span class="menu-text">选课</span>
+        </a>
+        <ul class="submenu nav-hide">
+
+                <li>
+                    <a href="/course_selection/courseselecttask/selects/">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <span class="menu-text">网上选课</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/course_selection/courseselecttask/schedule/">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <span class="menu-text">选课课表</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/course_selection/courseselecttask/conflict/">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <span class="menu-text">冲突课程</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/course_selection/courseselecttask/remains/">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <span class="menu-text">课余量查询</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/course_selection/courseselecttask/stoped/">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <span class="menu-text">停开课查询</span>
+                    </a>
+                </li>
+
+        </ul>
+    </li>
+
+    <li class="open">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-check-square-o"></i>
+            <span class="menu-text">免听</span>
+        </a>
+        <ul class="submenu nav-hide">
+
+                <li>
+                    <a href="/course_selection/courseselectabsent/absent_list/">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        <span class="menu-text">免修申请</span>
+                    </a>
+                </li>
+
+        </ul>
+    </li>
+
+
+<script type="application/javascript">
+    $(".submenu a").each(function () {
+       var query = $.query.load($(this).attr("href"));
+       if(query.get('target'))
+           $(this).attr('target', query.get('target'))
+    });
+</script>
+
+          </ul><!-- /.nav-list -->
+
+          <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse" data-target="#sidebar2">
+            <i id="sidebar-toggle-icon" class="fa-angle-double-left  ace-icon fa" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+          </div>
+        </div>
+
+        <div class="main-content" style="padding: 0px 10px;">
+
+
+<div class="widget-box custom no-padding-bottom">
+    <div class="widget-header only">
+        <span class="widget-title">
+            <i class="ace-icon fa fa-home home-icon bigger-125"></i>
+            <b>必修、限选课程</b> 退补选阶段，即选即中
+            &emsp; &emsp;<b class="red">选课时间：2019-12-16 13:00:00 到 2019-12-18 14:00:00</b>
+        </span>
+
+        <div class="widget-toolbar  no-border">
+            <span><a href="/course_selection/courseselecttask/remains/" target="_blank"
+                     class="btn btn-white btn-mini">余量查询</a></span>
+
+
+            <span><a href="/schoolcensus/schooltraininfo/48093/stustudyview/" target="_blank"
+                     class="btn btn-white btn-mini">学业进度</a></span>
+
+            <span><a id="show-conflict" class="btn btn-danger btn-minier">冲突课程</a></span>
+        </div>
+    </div>
+</div>
+
+<div class="orange" style="margin: 5px;">
+    <i class="fa fa-hand-o-right"></i> 已选中课堂列表 
+</div>
+
+<div id="selected-container">
+<table class="table table-bordered table-hover" style="table-layout: fixed">
+    <tr>
+        <th width="35">操作</th>
+        <th width="60%">课堂</th>
+
+        <th width="50">课余量</th>
+        <th width="70">学时/学分</th>
+        <th width="60">课程属性</th>
+        <th width="60">选课状态</th>
+
+        <th width="100">上课教师</th>
+        <th width="180">时间地点</th>
+    </tr>
+
+
+    <tr>
+        <td align="center">
+             -
+        </td>
+    	<td>00L204T 心理学 02
+            <span class="text-muted">心理中心</span>
+        </td>
+
+        <td>
+
+                15
+
+        </td>
+        <td>32.0 / 2.0</td>
+        <td>限选</td>
+        <td>置入</td>
+
+        <td><div class="ellipsis">胡心怡</div>
+        <td><div class="ellipsis">第01-16周 星期二 第5节 东区一教 DQ210</div></td>
+	</tr>
+
+    <tr>
+        <td align="center">
+
+            <a data-pk="897580" class="select-delete-btn btn btn-mini btn-white" title="删除课堂">
+                <i class="fa fa-trash-o red"></i></a>
+
+        </td>
+    	<td>40L167Q 经济学原理 07
+            <span class="text-muted">经管学院</span>
+        </td>
+
+        <td>
+
+                40
+
+        </td>
+        <td>64.0 / 4.0</td>
+        <td>必修</td>
+        <td>抽中</td>
+
+        <td><div class="ellipsis">王雅璨</div>
+        <td><div class="ellipsis">第01-16周 星期一 第4节 东区一教 DQ208
+第01-16周 星期三 第5节 东区一教 DQ208</div></td>
+	</tr>
+
+    <tr>
+        <td align="center">
+             -
+        </td>
+    	<td>40L245Q 管理信息系统 03
+            <span class="text-muted">经管学院</span>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>48.0 / 3.0</td>
+        <td>必修</td>
+        <td>置入</td>
+
+        <td><div class="ellipsis">郭春芳</div>
+        <td><div class="ellipsis">第01-16周 星期三 第4节 东区一教 DQ312
+第02, 04, 06, 08, 10, 12, 14, 16周 星期五 第1节 东区一教 DQ204</div></td>
+	</tr>
+
+    <tr>
+        <td align="center">
+             -
+        </td>
+    	<td>40L257Q 专业导论 01
+            <span class="text-muted">经管学院</span>
+        </td>
+
+        <td>
+
+                20
+
+        </td>
+        <td>16.0 / 1.0</td>
+        <td>必修</td>
+        <td>置入</td>
+
+        <td><div class="ellipsis">张力,马忠,穆文歆,王学峰,彭兆祺,华国伟,任旭,陆超,周耀东,邵丽萍,赵颖斯</div>
+        <td><div class="ellipsis">第01-04周 星期六 第4节 思源楼 SY107
+第01-04周 星期六 第5节 思源楼 SY107</div></td>
+	</tr>
+
+    <tr>
+        <td align="center">
+             -
+        </td>
+    	<td>40L331Q 中文写作 04
+            <span class="text-muted">经管学院</span>
+        </td>
+
+        <td>
+
+                17
+
+        </td>
+        <td>24.0 / 1.5</td>
+        <td>必修</td>
+        <td>置入</td>
+
+        <td><div class="ellipsis">殷平</div>
+        <td><div class="ellipsis">第19-21周 星期一 第1节 - 地点见教务处网站或学院通知
+第19-21周 星期二 第1节 - 地点见教务处网站或学院通知
+第19-21周 星期三 第1节 - 地点见教务处网站或学院通知
+第19-21周 星期四 第1节 - 地点见教务处网站或学院通知</div></td>
+	</tr>
+
+    <tr>
+        <td align="center">
+             -
+        </td>
+    	<td>40L332Q 沟通 03
+            <span class="text-muted">经管学院</span>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>24.0 / 1.5</td>
+        <td>必修</td>
+        <td>置入</td>
+
+        <td><div class="ellipsis">吕海军</div>
+        <td><div class="ellipsis">第19-21周 星期一 第4节 - 地点见教务处网站或学院通知
+第19-21周 星期二 第4节 - 地点见教务处网站或学院通知
+第19-21周 星期三 第4节 - 地点见教务处网站或学院通知
+第19-21周 星期四 第4节 - 地点见教务处网站或学院通知</div></td>
+	</tr>
+
+    <tr>
+        <td align="center">
+
+            <a data-pk="897593" class="select-delete-btn btn btn-mini btn-white" title="删除课堂">
+                <i class="fa fa-trash-o red"></i></a>
+
+        </td>
+    	<td>60L612Q 商务英语(A) 03
+            <span class="text-muted">语言学院</span>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>64.0 / 4.0</td>
+        <td>限选</td>
+        <td>抽中</td>
+
+        <td><div class="ellipsis">常枫</div>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ409
+第01-16周 星期五 第4节 东区一教 DQ409</div></td>
+	</tr>
+
+    <tr>
+        <td align="center">
+             -
+        </td>
+    	<td>61L016T 中国近现代史纲要 27
+            <span class="text-muted">马克思主义学院</span>
+        </td>
+
+        <td>
+
+                7
+
+        </td>
+        <td>32.0 / 2.0</td>
+        <td>必修</td>
+        <td>置入</td>
+
+        <td><div class="ellipsis">闫长丽</div>
+        <td><div class="ellipsis">第01-16周 星期五 第5节 东区一教 DQ309</div></td>
+	</tr>
+
+    <tr>
+        <td align="center">
+             -
+        </td>
+    	<td>73L178Q 微积分(B)Ⅱ 10
+            <span class="text-muted">理学院</span>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>80.0 / 5.0</td>
+        <td>必修</td>
+        <td>置入</td>
+
+        <td><div class="ellipsis">刘国忠</div>
+        <td><div class="ellipsis">第01-16周 星期三 第1节 思源楼 SY107
+第01-16周 星期一 第2节 思源楼 SY107
+第01, 03, 05, 07, 09, 11, 13, 15周 星期五 第1节 思源楼 SY107</div></td>
+	</tr>
+
+</table>
+</div>
+
+<div style="margin: 5px 5px 5px 0;">
+    <label data-toggle="tab" href="#current" class="tab label label-yellow arrowed-right">本学期课程</label>
+    <label data-toggle="tab" href="#restudy" class="tab label label-grey arrowed-in arrowed-in-right">重修课程</label>
+    <a id="cross" class="label label-grey arrowed">跨年级选课</a>&nbsp;
+
+    <a id="select-submit-btn" href="#" class="btn btn-minier btn-primary">
+        <i class="fa fa-save"></i> 提交</a>
+</div>
+
+<div class="tab-content no-border no-padding">
+    <div id="current" class="tab-pane active">
+        <!-- 本学期课程 -->
+
+        <table class="table table-bordered table-hover" style="table-layout: fixed">
+    <tr>
+        <th width="50" style="text-align: center;">选择</th>
+        <th width="70%">课程</th>
+
+        <th width="60">课余量</th>
+        <th width="60">学分</th>
+        <th width="60">课程属性</th>
+        <th width="60">考试类型</th>
+
+        <th width="80">上课教师</th>
+        <th width="180">时间地点</th>
+        <th width="30%">选课限制说明</th>
+    </tr>
+
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【40L167Q】经济学原理 01
+                <span class="text-muted">经管学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                42
+
+        </td>
+        <td>4.0</td>
+        <td>必修</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张娜</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第4节 东区一教 DQ102
+第01-16周 星期三 第5节 东区一教 DQ102</div></td>
+        <td><div class="ellipsis"> 19级经管学院全体学生必修，其他同学慎选。</div>
+            <!-- 限选说明 -->
+
+            <div id="92057_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【40L167Q】经济学原理 01<br/>
+                <br>
+                19级经管学院全体学生必修，其他同学慎选。
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【40L167Q】经济学原理 02
+                <span class="text-muted">经管学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>必修</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">佟琼</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第4节 东区一教 DQ110
+第01-16周 星期三 第5节 东区一教 DQ110</div></td>
+        <td><div class="ellipsis"> 19级经管学院全体学生必修，其他同学慎选。</div>
+            <!-- 限选说明 -->
+
+            <div id="92058_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【40L167Q】经济学原理 02<br/>
+                <br>
+                19级经管学院全体学生必修，其他同学慎选。
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【40L167Q】经济学原理 03
+                <span class="text-muted">经管学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                8
+
+        </td>
+        <td>4.0</td>
+        <td>必修</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">王超</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第4节 东区一教 DQ202
+第01-16周 星期三 第5节 东区一教 DQ202</div></td>
+        <td><div class="ellipsis"> 19级经管学院全体学生必修，其他同学慎选。</div>
+            <!-- 限选说明 -->
+
+            <div id="92059_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【40L167Q】经济学原理 03<br/>
+                <br>
+                19级经管学院全体学生必修，其他同学慎选。
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【40L167Q】经济学原理 04
+                <span class="text-muted">经管学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>必修</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">冯华</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第4节 东区一教 DQ204
+第01-16周 星期三 第5节 东区一教 DQ204</div></td>
+        <td><div class="ellipsis"> 19级经管学院全体学生必修，其他同学慎选。</div>
+            <!-- 限选说明 -->
+
+            <div id="92060_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【40L167Q】经济学原理 04<br/>
+                <br>
+                19级经管学院全体学生必修，其他同学慎选。
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【40L167Q】经济学原理 05
+                <span class="text-muted">经管学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>必修</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">彭兆祺</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第4节 东区一教 DQ205
+第01-16周 星期三 第5节 东区一教 DQ205</div></td>
+        <td><div class="ellipsis"> 19级经管学院全体学生必修，其他同学慎选。</div>
+            <!-- 限选说明 -->
+
+            <div id="92061_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【40L167Q】经济学原理 05<br/>
+                <br>
+                19级经管学院全体学生必修，其他同学慎选。
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【40L167Q】经济学原理 06
+                <span class="text-muted">经管学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                67
+
+        </td>
+        <td>4.0</td>
+        <td>必修</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">焦敬娟</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第4节 东区一教 DQ206
+第01-16周 星期三 第5节 东区一教 DQ206</div></td>
+        <td><div class="ellipsis"> 19级经管学院全体学生必修，其他同学慎选。</div>
+            <!-- 限选说明 -->
+
+            <div id="92062_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【40L167Q】经济学原理 06<br/>
+                <br>
+                19级经管学院全体学生必修，其他同学慎选。
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【40L167Q】经济学原理 07
+                <span class="text-muted">经管学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                40
+
+        </td>
+        <td>4.0</td>
+        <td>必修</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">王雅璨</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第4节 东区一教 DQ208
+第01-16周 星期三 第5节 东区一教 DQ208</div></td>
+        <td><div class="ellipsis"> 全英教学，一旦选中不予调整，19级经管学院全体学生必修，其他同学慎选。</div>
+            <!-- 限选说明 -->
+
+            <div id="92063_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【40L167Q】经济学原理 07<br/>
+                <br>
+                全英教学，一旦选中不予调整，19级经管学院全体学生必修，其他同学慎选。
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【40L167Q】经济学原理 08
+                <span class="text-muted">经管学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                25
+
+        </td>
+        <td>4.0</td>
+        <td>必修</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">郭丽华</div></td>
+        <td><div class="ellipsis">第01-16周 星期六 第1节 思源东楼 SD102
+第01-16周 星期六 第2节 思源东楼 SD102</div></td>
+        <td><div class="ellipsis"> 18级转专业至经管学院学生补课课堂，其他同学慎选。</div>
+            <!-- 限选说明 -->
+
+            <div id="92064_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【40L167Q】经济学原理 08<br/>
+                <br>
+                18级转专业至经管学院学生补课课堂，其他同学慎选。
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L288T】跨文化交际 01
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">周志杰</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ312
+第01-16周 星期四 第2节 东区一教 DQ312</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92964_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L288T】跨文化交际 01<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L288T】跨文化交际 02
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">周志杰</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ312
+第01-16周 星期二 第2节 东区一教 DQ312</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92965_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L288T】跨文化交际 02<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L288T】跨文化交际 03
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">周志杰</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ312
+第01-16周 星期五 第4节 东区一教 DQ312</div></td>
+        <td><div class="ellipsis"> 19级4级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92966_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L288T】跨文化交际 03<br/>
+                <br>
+                19级4级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L288T】跨文化交际 04
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘艳平</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ313
+第01-16周 星期四 第2节 东区一教 DQ313</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92967_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L288T】跨文化交际 04<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L288T】跨文化交际 05
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘艳平</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ313
+第01-16周 星期二 第2节 东区一教 DQ313</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92968_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L288T】跨文化交际 05<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L288T】跨文化交际 06
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘艳平</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ313
+第01-16周 星期五 第4节 东区一教 DQ313</div></td>
+        <td><div class="ellipsis"> 19级4级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92969_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L288T】跨文化交际 06<br/>
+                <br>
+                19级4级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L612Q】商务英语(A) 01
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">常枫</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ409
+第01-16周 星期四 第2节 东区一教 DQ409</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92970_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L612Q】商务英语(A) 01<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L612Q】商务英语(A) 02
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">常枫</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ409
+第01-16周 星期二 第2节 东区一教 DQ409</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92971_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L612Q】商务英语(A) 02<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L612Q】商务英语(A) 03
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">常枫</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ409
+第01-16周 星期五 第4节 东区一教 DQ409</div></td>
+        <td><div class="ellipsis"> 19级4级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92972_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L612Q】商务英语(A) 03<br/>
+                <br>
+                19级4级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L612Q】商务英语(A) 04
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘伯星</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ410
+第01-16周 星期四 第2节 东区一教 DQ410</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92973_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L612Q】商务英语(A) 04<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L612Q】商务英语(A) 05
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘伯星</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ410
+第01-16周 星期二 第2节 东区一教 DQ410</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92974_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L612Q】商务英语(A) 05<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">已选</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【60L612Q】商务英语(A) 06
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘伯星</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ410
+第01-16周 星期五 第4节 东区一教 DQ410</div></td>
+        <td><div class="ellipsis"> 19级4级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92975_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【60L612Q】商务英语(A) 06<br/>
+                <br>
+                19级4级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L073T】英美文化 01
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张建群</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ303
+第01-16周 星期四 第2节 东区一教 DQ303</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92959_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L073T】英美文化 01<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L073T】英美文化 02
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张建群</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ303
+第01-16周 星期二 第2节 东区一教 DQ303</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92960_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L073T】英美文化 02<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L073T" value="92961">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L073T】英美文化 03
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                1
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张建群</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ303
+第01-16周 星期五 第4节 东区一教 DQ303</div></td>
+        <td><div class="ellipsis"> 19级4级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92961_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L073T】英美文化 03<br/>
+                <br>
+                19级4级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L073T】英美文化 04
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">李岩</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ304
+第01-16周 星期四 第2节 东区一教 DQ304</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92962_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L073T】英美文化 04<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L073T】英美文化 05
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">李岩</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ304
+第01-16周 星期二 第2节 东区一教 DQ304</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92963_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L073T】英美文化 05<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">选课完</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L102T】视听Ⅱ 01
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>2.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">孙贺</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ108</div></td>
+        <td><div class="ellipsis"> 仅限2019级口语特长班学生</div>
+            <!-- 限选说明 -->
+
+            <div id="93657_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L102T】视听Ⅱ 01<br/>
+                <br>
+                仅限2019级口语特长班学生
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">选课完</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L102T】视听Ⅱ 02
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>2.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">孙贺</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第2节 东区一教 DQ108</div></td>
+        <td><div class="ellipsis"> 仅限2019级口语特长班学生</div>
+            <!-- 限选说明 -->
+
+            <div id="93658_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L102T】视听Ⅱ 02<br/>
+                <br>
+                仅限2019级口语特长班学生
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">选课完</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L102T】视听Ⅱ 03
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>2.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">孙贺</div></td>
+        <td><div class="ellipsis">第01-08周 星期二 第4节 东区一教 DQ413
+第09-16周 星期二 第4节 东区一教 DQ314</div></td>
+        <td><div class="ellipsis"> 仅限2019级口语特长班学生</div>
+            <!-- 限选说明 -->
+
+            <div id="93659_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L102T】视听Ⅱ 03<br/>
+                <br>
+                仅限2019级口语特长班学生
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">选课完</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L106T】阅读与写作Ⅱ 01
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                9
+
+        </td>
+        <td>2.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">Hugh</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ108</div></td>
+        <td><div class="ellipsis"> 仅限2019级口语特长班学生</div>
+            <!-- 限选说明 -->
+
+            <div id="93660_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L106T】阅读与写作Ⅱ 01<br/>
+                <br>
+                仅限2019级口语特长班学生
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">选课完</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L106T】阅读与写作Ⅱ 02
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                1
+
+        </td>
+        <td>2.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">Hugh</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第2节 东区一教 DQ108</div></td>
+        <td><div class="ellipsis"> 仅限2019级口语特长班学生</div>
+            <!-- 限选说明 -->
+
+            <div id="93661_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L106T】阅读与写作Ⅱ 02<br/>
+                <br>
+                仅限2019级口语特长班学生
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">选课完</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L106T】阅读与写作Ⅱ 03
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                3
+
+        </td>
+        <td>2.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">Hugh</div></td>
+        <td><div class="ellipsis">第01-16周 星期五 第4节 东区一教 DQ415</div></td>
+        <td><div class="ellipsis"> 仅限2019级口语特长班学生</div>
+            <!-- 限选说明 -->
+
+            <div id="93662_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L106T】阅读与写作Ⅱ 03<br/>
+                <br>
+                仅限2019级口语特长班学生
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L212T】初级综合英语 01
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">赵冬梅</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第3节 东区一教 DQ102
+第01-16周 星期五 第3节 东区一教 DQ102</div></td>
+        <td><div class="ellipsis"> 19级1级起点民族生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92906_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L212T】初级综合英语 01<br/>
+                <br>
+                19级1级起点民族生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L212T" value="92907">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L212T】初级综合英语 02
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                1
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">赵冬梅</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ102
+第01-16周 星期五 第4节 东区一教 DQ102</div></td>
+        <td><div class="ellipsis"> 19级1级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92907_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L212T】初级综合英语 02<br/>
+                <br>
+                19级1级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L212T" value="92908">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L212T】初级综合英语 03
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                11
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">秦琴</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ103
+第01-16周 星期四 第2节 东区一教 DQ103</div></td>
+        <td><div class="ellipsis"> 19级1级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92908_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L212T】初级综合英语 03<br/>
+                <br>
+                19级1级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L212T" value="92909">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L212T】初级综合英语 04
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                14
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">秦琴</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ103
+第01-16周 星期二 第2节 东区一教 DQ103</div></td>
+        <td><div class="ellipsis"> 19级1级起点2片法4班学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92909_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L212T】初级综合英语 04<br/>
+                <br>
+                19级1级起点2片法4班学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L212T" value="92910">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L212T】初级综合英语 05
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                10
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">秦琴</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ103
+第01-16周 星期五 第4节 东区一教 DQ103</div></td>
+        <td><div class="ellipsis"> 19级1级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92910_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L212T】初级综合英语 05<br/>
+                <br>
+                19级1级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 01
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张博明</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ104
+第01-16周 星期四 第2节 东区一教 DQ104</div></td>
+        <td><div class="ellipsis"> 19级2级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92911_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 01<br/>
+                <br>
+                19级2级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 02
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张博明</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ104
+第01-16周 星期二 第2节 东区一教 DQ104</div></td>
+        <td><div class="ellipsis"> 19级2级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92912_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 02<br/>
+                <br>
+                19级2级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L213T" value="92913">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 03
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                1
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张博明</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ104
+第01-16周 星期五 第4节 东区一教 DQ104</div></td>
+        <td><div class="ellipsis"> 19级2级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92913_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 03<br/>
+                <br>
+                19级2级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 04
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张聪敏</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ106
+第01-16周 星期四 第2节 东区一教 DQ106</div></td>
+        <td><div class="ellipsis"> 19级2级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92914_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 04<br/>
+                <br>
+                19级2级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 05
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张聪敏</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ106
+第01-16周 星期二 第2节 东区一教 DQ106</div></td>
+        <td><div class="ellipsis"> 19级2级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92915_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 05<br/>
+                <br>
+                19级2级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L213T" value="92916">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 06
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                2
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张聪敏</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ106
+第01-16周 星期五 第4节 东区一教 DQ106</div></td>
+        <td><div class="ellipsis"> 19级2级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92916_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 06<br/>
+                <br>
+                19级2级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 07
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">杨蕾</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ105
+第01-16周 星期四 第2节 东区一教 DQ105</div></td>
+        <td><div class="ellipsis"> 19级2级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92917_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 07<br/>
+                <br>
+                19级2级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 08
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">杨蕾</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ105
+第01-16周 星期二 第2节 东区一教 DQ105</div></td>
+        <td><div class="ellipsis"> 19级2级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92918_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 08<br/>
+                <br>
+                19级2级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L213T" value="92919">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 09
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                4
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">杨蕾</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ105
+第01-16周 星期五 第4节 东区一教 DQ105</div></td>
+        <td><div class="ellipsis"> 19级2级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92919_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 09<br/>
+                <br>
+                19级2级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 10
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">赵海燕</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ110
+第01-16周 星期四 第2节 东区一教 DQ110</div></td>
+        <td><div class="ellipsis"> 19级2级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92920_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 10<br/>
+                <br>
+                19级2级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 11
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">赵海燕</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ110
+第01-16周 星期二 第2节 东区一教 DQ110</div></td>
+        <td><div class="ellipsis"> 19级2级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92921_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 11<br/>
+                <br>
+                19级2级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L213T" value="92922">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 12
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                3
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">赵海燕</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ110
+第01-16周 星期五 第4节 东区一教 DQ110</div></td>
+        <td><div class="ellipsis"> 19级2级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92922_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 12<br/>
+                <br>
+                19级2级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 13
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">胡志先</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ102
+第01-16周 星期四 第2节 东区一教 DQ102</div></td>
+        <td><div class="ellipsis"> 19级2级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92923_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 13<br/>
+                <br>
+                19级2级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 14
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">胡志先</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ102
+第01-16周 星期二 第2节 东区一教 DQ102</div></td>
+        <td><div class="ellipsis"> 19级2级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92924_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 14<br/>
+                <br>
+                19级2级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L213T" value="92925">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 15
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                2
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张日美</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ304
+第01-16周 星期五 第4节 东区一教 DQ304</div></td>
+        <td><div class="ellipsis"> 19级2级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92925_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 15<br/>
+                <br>
+                19级2级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 16
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">李栩薏</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ202
+第01-16周 星期四 第2节 东区一教 DQ202</div></td>
+        <td><div class="ellipsis"> 19级2级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92926_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 16<br/>
+                <br>
+                19级2级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L213T" value="92927">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 17
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                2
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">李栩薏</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ202
+第01-16周 星期二 第2节 东区一教 DQ202</div></td>
+        <td><div class="ellipsis"> 19级2级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92927_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 17<br/>
+                <br>
+                19级2级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L213T" value="92928">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 18
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                2
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">李栩薏</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ202
+第01-16周 星期五 第4节 东区一教 DQ202</div></td>
+        <td><div class="ellipsis"> 19级2级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92928_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 18<br/>
+                <br>
+                19级2级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 19
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">陆玫</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ203
+第01-16周 星期四 第2节 东区一教 DQ203</div></td>
+        <td><div class="ellipsis"> 19级2级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92929_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 19<br/>
+                <br>
+                19级2级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 20
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">陆玫</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ203
+第01-16周 星期二 第2节 东区一教 DQ203</div></td>
+        <td><div class="ellipsis"> 19级2级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92930_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 20<br/>
+                <br>
+                19级2级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L213T" value="92931">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 21
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                2
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">陆玫</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ203
+第01-16周 星期五 第4节 东区一教 DQ203</div></td>
+        <td><div class="ellipsis"> 19级2级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92931_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 21<br/>
+                <br>
+                19级2级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 22
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">田永丰</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ204
+第01-16周 星期四 第2节 东区一教 DQ204</div></td>
+        <td><div class="ellipsis"> 19级2级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92932_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 22<br/>
+                <br>
+                19级2级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 23
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">田永丰</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ204
+第01-16周 星期二 第2节 东区一教 DQ204</div></td>
+        <td><div class="ellipsis"> 19级2级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92933_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 23<br/>
+                <br>
+                19级2级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L213T" value="92934">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L213T】中级综合英语 24
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                1
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">田永丰</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ204
+第01-16周 星期五 第4节 东区一教 DQ204</div></td>
+        <td><div class="ellipsis"> 19级2级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92934_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L213T】中级综合英语 24<br/>
+                <br>
+                19级2级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 01
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">左映娟</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ205
+第01-16周 星期四 第2节 东区一教 DQ205</div></td>
+        <td><div class="ellipsis"> 19级3级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92935_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 01<br/>
+                <br>
+                19级3级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 02
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">左映娟</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ205
+第01-16周 星期二 第2节 东区一教 DQ205</div></td>
+        <td><div class="ellipsis"> 19级3级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92936_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 02<br/>
+                <br>
+                19级3级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 03
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">左映娟</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ205
+第01-16周 星期五 第4节 东区一教 DQ205</div></td>
+        <td><div class="ellipsis"> 19级3级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92937_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 03<br/>
+                <br>
+                19级3级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 04
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">乔澄澈</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ206
+第01-16周 星期四 第2节 东区一教 DQ206</div></td>
+        <td><div class="ellipsis"> 19级3级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92938_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 04<br/>
+                <br>
+                19级3级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 05
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">乔澄澈</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ206
+第01-16周 星期二 第2节 东区一教 DQ206</div></td>
+        <td><div class="ellipsis"> 19级3级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92939_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 05<br/>
+                <br>
+                19级3级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L214T" value="92940">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 06
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                1
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">乔澄澈</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ206
+第01-16周 星期五 第4节 东区一教 DQ206</div></td>
+        <td><div class="ellipsis"> 19级3级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92940_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 06<br/>
+                <br>
+                19级3级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 07
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">付天英</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ208
+第01-16周 星期四 第2节 东区一教 DQ208</div></td>
+        <td><div class="ellipsis"> 19级3级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92941_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 07<br/>
+                <br>
+                19级3级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 08
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">付天英</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ208
+第01-16周 星期二 第2节 东区一教 DQ208</div></td>
+        <td><div class="ellipsis"> 19级3级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92942_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 08<br/>
+                <br>
+                19级3级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L214T" value="92943">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 09
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                4
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">付天英</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ208
+第01-16周 星期五 第4节 东区一教 DQ208</div></td>
+        <td><div class="ellipsis"> 19级3级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92943_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 09<br/>
+                <br>
+                19级3级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 10
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘岚</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ209
+第01-16周 星期四 第2节 东区一教 DQ209</div></td>
+        <td><div class="ellipsis"> 19级3级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92944_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 10<br/>
+                <br>
+                19级3级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 11
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘岚</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ209
+第01-16周 星期二 第2节 东区一教 DQ209</div></td>
+        <td><div class="ellipsis"> 19级3级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92945_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 11<br/>
+                <br>
+                19级3级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L214T" value="92946">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 12
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                3
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘岚</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ209
+第01-16周 星期五 第4节 东区一教 DQ209</div></td>
+        <td><div class="ellipsis"> 19级3级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92946_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 12<br/>
+                <br>
+                19级3级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 13
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张薇薇</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ212
+第01-16周 星期四 第2节 东区一教 DQ212</div></td>
+        <td><div class="ellipsis"> 19级3级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92947_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 13<br/>
+                <br>
+                19级3级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 14
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张薇薇</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ212
+第01-16周 星期二 第2节 东区一教 DQ212</div></td>
+        <td><div class="ellipsis"> 19级3级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92948_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 14<br/>
+                <br>
+                19级3级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L214T" value="92949">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 15
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                3
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张薇薇</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ212
+第01-16周 星期五 第4节 东区一教 DQ212</div></td>
+        <td><div class="ellipsis"> 19级3级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92949_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 15<br/>
+                <br>
+                19级3级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 16
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张秋艳</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ213
+第01-16周 星期四 第2节 东区一教 DQ213</div></td>
+        <td><div class="ellipsis"> 19级3级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92950_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 16<br/>
+                <br>
+                19级3级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 17
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张秋艳</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ213
+第01-16周 星期二 第2节 东区一教 DQ213</div></td>
+        <td><div class="ellipsis"> 19级3级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92951_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 17<br/>
+                <br>
+                19级3级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 18
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">张秋艳</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ213
+第01-16周 星期五 第4节 东区一教 DQ213</div></td>
+        <td><div class="ellipsis"> 19级3级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92952_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 18<br/>
+                <br>
+                19级3级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 19
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">黄建伟</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ214
+第01-16周 星期四 第2节 东区一教 DQ214</div></td>
+        <td><div class="ellipsis"> 19级3级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92953_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 19<br/>
+                <br>
+                19级3级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 20
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">黄建伟</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ214
+第01-16周 星期二 第2节 东区一教 DQ214</div></td>
+        <td><div class="ellipsis"> 19级3级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92954_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 20<br/>
+                <br>
+                19级3级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L214T" value="92955">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 21
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                4
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">黄建伟</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ214
+第01-16周 星期五 第4节 东区一教 DQ214</div></td>
+        <td><div class="ellipsis"> 19级3级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92955_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 21<br/>
+                <br>
+                19级3级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 22
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘玉洁</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ215
+第01-16周 星期四 第2节 东区一教 DQ215</div></td>
+        <td><div class="ellipsis"> 19级3级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92956_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 22<br/>
+                <br>
+                19级3级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 23
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘玉洁</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ215
+第01-16周 星期二 第2节 东区一教 DQ215</div></td>
+        <td><div class="ellipsis"> 19级3级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92957_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 23<br/>
+                <br>
+                19级3级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L214T" value="92958">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L214T】高级综合英语 24
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                4
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘玉洁</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ215
+第01-16周 星期五 第4节 东区一教 DQ215</div></td>
+        <td><div class="ellipsis"> 19级3级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92958_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L214T】高级综合英语 24<br/>
+                <br>
+                19级3级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L217T】学术英语交流与写作 01
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">尹静</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ305
+第01-16周 星期四 第2节 东区一教 DQ305</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92982_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L217T】学术英语交流与写作 01<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L217T】学术英语交流与写作 02
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">尹静</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ305
+第01-16周 星期二 第2节 东区一教 DQ305</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92983_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L217T】学术英语交流与写作 02<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L217T" value="92984">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L217T】学术英语交流与写作 03
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                22
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">尹静</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ305
+第01-16周 星期五 第4节 东区一教 DQ305</div></td>
+        <td><div class="ellipsis"> 19级4级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92984_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L217T】学术英语交流与写作 03<br/>
+                <br>
+                19级4级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L217T" value="92985">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L217T】学术英语交流与写作 04
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                2
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">丁研</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ306
+第01-16周 星期四 第2节 东区一教 DQ306</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92985_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L217T】学术英语交流与写作 04<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L217T" value="92986">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L217T】学术英语交流与写作 05
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                1
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">丁研</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ306
+第01-16周 星期二 第2节 东区一教 DQ306</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92986_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L217T】学术英语交流与写作 05<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L217T" value="92987">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L217T】学术英语交流与写作 06
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                17
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">丁研</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ306
+第01-16周 星期五 第4节 东区一教 DQ306</div></td>
+        <td><div class="ellipsis"> 19级4级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92987_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L217T】学术英语交流与写作 06<br/>
+                <br>
+                19级4级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L217T" value="92988">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L217T】学术英语交流与写作 07
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                42
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">外请</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ107
+第01-16周 星期五 第4节 东区一教 DQ107</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92988_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L217T】学术英语交流与写作 07<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L217T" value="93719">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L217T】学术英语交流与写作 08
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                39
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">外请</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ415
+第01-16周 星期二 第2节 东区一教 DQ415</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="93719_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L217T】学术英语交流与写作 08<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L217T" value="93724">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L217T】学术英语交流与写作 09
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                41
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">郝运慧</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ412
+第01-16周 星期五 第4节 东区一教 DQ412</div></td>
+        <td><div class="ellipsis"> 19级4级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="93724_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L217T】学术英语交流与写作 09<br/>
+                <br>
+                19级4级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L222T】实用英语口语与写作 01
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘路薇</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ310
+第01-16周 星期四 第2节 东区一教 DQ310</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92976_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L222T】实用英语口语与写作 01<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L222T】实用英语口语与写作 02
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘路薇</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ310
+第01-16周 星期二 第2节 东区一教 DQ310</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92977_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L222T】实用英语口语与写作 02<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L222T" value="92978">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L222T】实用英语口语与写作 03
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                8
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">刘路薇</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ310
+第01-16周 星期五 第4节 东区一教 DQ310</div></td>
+        <td><div class="ellipsis"> 19级4级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92978_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L222T】实用英语口语与写作 03<br/>
+                <br>
+                19级4级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L222T】实用英语口语与写作 04
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">程瑾涛</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第1节 东区一教 DQ311
+第01-16周 星期四 第2节 东区一教 DQ311</div></td>
+        <td><div class="ellipsis"> 19级4级起点1片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92979_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L222T】实用英语口语与写作 04<br/>
+                <br>
+                19级4级起点1片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L222T" value="92980">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L222T】实用英语口语与写作 05
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                6
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">程瑾涛</div></td>
+        <td><div class="ellipsis">第01-16周 星期四 第1节 东区一教 DQ311
+第01-16周 星期二 第2节 东区一教 DQ311</div></td>
+        <td><div class="ellipsis"> 19级4级起点2片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92980_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L222T】实用英语口语与写作 05<br/>
+                <br>
+                19级4级起点2片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="62L222T" value="92981">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【62L222T】实用英语口语与写作 06
+                <span class="text-muted">语言学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                35
+
+        </td>
+        <td>4.0</td>
+        <td>限选</td>
+        <td>考试</td>
+
+        <td><div class="ellipsis">程瑾涛</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第4节 东区一教 DQ311
+第01-16周 星期五 第4节 东区一教 DQ311</div></td>
+        <td><div class="ellipsis"> 19级4级起点3片学生英语课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92981_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【62L222T】实用英语口语与写作 06<br/>
+                <br>
+                19级4级起点3片学生英语课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 01
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">魏慧琴</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第5节 东区一教 DQ403
+第01, 03, 05, 07, 09, 11, 13, 15周 星期四 第6节 东区一教 DQ210</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92005_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 01<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 02
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">魏慧琴</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第6节 东区一教 DQ104
+第02, 04, 06, 08, 10, 12, 14, 16周 星期四 第6节 东区一教 DQ103</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92006_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 02<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 03
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">张和平</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第5节 东区一教 DQ106
+第01, 03, 05, 07, 09, 11, 13, 15周 星期五 第6节 东区一教 DQ106</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92007_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 03<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 04
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">张和平</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第6节 东区一教 DQ105
+第02, 04, 06, 08, 10, 12, 14, 16周 星期五 第6节 东区一教 DQ106</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92008_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 04<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 05
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">靳小燕</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第4节 东区一教 DQ314
+第01, 03, 05, 07, 09, 11, 13, 15周 星期三 第5节 东区一教 DQ302</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92009_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 05<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 06
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">靳小燕</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第5节 东区一教 DQ314
+第02, 04, 06, 08, 10, 12, 14, 16周 星期三 第5节 东区一教 DQ302</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92010_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 06<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 07
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">王瑞平</div></td>
+        <td><div class="ellipsis">第01-16周 星期三 第4节 逸夫教学楼 YF310
+第01, 03, 05, 07, 09, 11, 13, 15周 星期五 第6节 逸夫教学楼 YF205</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92011_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 07<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 08
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">王瑞平</div></td>
+        <td><div class="ellipsis">第01-16周 星期三 第5节 逸夫教学楼 YF411
+第02, 04, 06, 08, 10, 12, 14, 16周 星期五 第6节 逸夫教学楼 YF205</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92012_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 08<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 09
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">吴为民</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第5节 东区一教 DQ302
+第01, 03, 05, 07, 09, 11, 13, 15周 星期五 第5节 东区一教 DQ104</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92013_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 09<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 10
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">吴为民</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第6节 东区一教 DQ106
+第02, 04, 06, 08, 10, 12, 14, 16周 星期五 第5节 东区一教 DQ104</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92014_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 10<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 11
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">王冰</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第6节 东区一教 DQ105
+第01, 03, 05, 07, 09, 11, 13, 15周 星期四 第6节 东区一教 DQ103</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92015_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 11<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 12
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">冯松鹤</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第6节 东区一教 DQ302
+第02, 04, 06, 08, 10, 12, 14, 16周 星期五 第6节 东区一教 DQ103</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92016_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 12<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 13
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">赵帅锋</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第6节 东区一教 DQ303
+第01, 03, 05, 07, 09, 11, 13, 15周 星期五 第6节 东区一教 DQ103</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92017_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 13<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 14
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">刘湘黔</div></td>
+        <td><div class="ellipsis">第01-16周 星期三 第5节 东区一教 DQ402
+第02, 04, 06, 08, 10, 12, 14, 16周 星期五 第6节 东区一教 DQ104</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92018_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 14<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 15
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">张淳杰</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第6节 东区一教 DQ106
+第01, 03, 05, 07, 09, 11, 13, 15周 星期四 第6节 东区一教 DQ104</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92019_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 15<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L074T】C语言程序设计 16
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">何丹萍</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第6节 东区一教 DQ305
+第02, 04, 06, 08, 10, 12, 14, 16周 星期四 第6节 东区一教 DQ104</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92020_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L074T】C语言程序设计 16<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L075T】C++程序设计 01
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">刘湘黔</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第6节 东区一教 DQ216
+第01, 03, 05, 07, 09, 11, 13, 15周 星期四 第6节 东区一教 DQ105</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92021_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L075T】C++程序设计 01<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L075T】C++程序设计 02
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">张晋豫</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第6节 东区一教 DQ306
+第02, 04, 06, 08, 10, 12, 14, 16周 星期五 第6节 东区一教 DQ105</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92905_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L075T】C++程序设计 02<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L076T】JAVA语言程序设计 01
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">许宏丽</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第5节 东区一教 DQ305
+第01, 03, 05, 07, 09, 11, 13, 15周 星期五 第5节 东区一教 DQ105</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92022_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L076T】JAVA语言程序设计 01<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L076T】JAVA语言程序设计 02
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">许宏丽</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第6节 东区一教 DQ308
+第02, 04, 06, 08, 10, 12, 14, 16周 星期五 第5节 东区一教 DQ105</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92023_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L076T】JAVA语言程序设计 02<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L078T】Web程序设计基础 01
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">范辉</div></td>
+        <td><div class="ellipsis">第01-16周 星期一 第6节 逸夫教学楼 YF505
+第01, 03, 05, 07, 09, 11, 13, 15周 星期四 第6节 逸夫教学楼 YF505</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92024_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L078T】Web程序设计基础 01<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L078T】Web程序设计基础 02
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">关长林</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第6节 逸夫教学楼 YF510
+第02, 04, 06, 08, 10, 12, 14, 16周 星期四 第6节 逸夫教学楼 YF411</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92025_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L078T】Web程序设计基础 02<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L082T】Python语言程序设计 01
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">诸强</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第5节 逸夫教学楼 YF411
+第01, 03, 05, 07, 09, 11, 13, 15周 星期四 第6节 逸夫教学楼 YF411</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92026_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L082T】Python语言程序设计 01<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <span class="red">无余量</span>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L082T】Python语言程序设计 02
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                0
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">王晶</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第6节 逸夫教学楼 YF611
+第02, 04, 06, 08, 10, 12, 14, 16周 星期四 第6节 逸夫教学楼 YF505</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92027_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L082T】Python语言程序设计 02<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="85L082T" value="92028">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L082T】Python语言程序设计 03
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                51
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">王瑞平</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第5节 东区一教 DQ303
+第01, 03, 05, 07, 09, 11, 13, 15周 星期五 第5节 东区一教 DQ106</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92028_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L082T】Python语言程序设计 03<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td align="center">
+
+                <label>
+                    <input name="checkboxs" type="checkbox" class="ace checkbox" kch="85L082T" value="92029">
+                    <span class="lbl"></span>
+                </label>
+
+        </td>
+        <td>
+            <div class="ellipsis">
+                【85L082T】Python语言程序设计 04
+                <span class="text-muted">计算机学院</span>
+            </div>
+        </td>
+
+        <td>
+
+                14
+
+        </td>
+        <td>3.0</td>
+        <td>限选</td>
+        <td>考查</td>
+
+        <td><div class="ellipsis">王瑞平</div></td>
+        <td><div class="ellipsis">第01-16周 星期二 第6节 东区一教 DQ309
+第02, 04, 06, 08, 10, 12, 14, 16周 星期五 第5节 东区一教 DQ106</div></td>
+        <td><div class="ellipsis"> 2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选</div>
+            <!-- 限选说明 -->
+
+            <div id="92029_notice" class="hide">
+                <span class="red2">课堂勾选后，请点击提交按钮进行提交</span><br/>
+
+                课堂：【85L082T】Python语言程序设计 04<br/>
+                <br>
+                2019级及各年级非计算机学院学生计算机模块限选课，请同学们根据本学院本专业的培养计划进行选课，其他同学慎选
+            </div>
+
+        </td>
+    </tr>
+
+</table>
+    </div>
+
+    <div id="restudy" class="tab-pane">
+        <!-- 重修课程 -->
+
+        <table class="table table-bordered table-hover" style="table-layout: fixed">
+    <tr>
+        <th width="50" style="text-align: center;">选择</th>
+        <th width="70%">课程</th>
+
+        <th width="60">课余量</th>
+        <th width="60">学分</th>
+        <th width="60">课程属性</th>
+        <th width="60">考试类型</th>
+
+        <th width="80">上课教师</th>
+        <th width="180">时间地点</th>
+        <th width="30%">选课限制说明</th>
+    </tr>
+
+
+        <tr><td colspan="9" class="text-muted">暂无课程!</td></tr>
+
+</table>
+    </div>
+</div>
+
+<div class="captcha-dialog hide">
+    请输入图中汉字：<img src=""/>
+    <input name="hashkey" type="hidden"/>
+    <input name="answer" />
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#selected-container").ace_scroll({size: 180});
+});
+
+// 验证码刷新
+function updateCaptcha($captcha) {
+    var data = $.ajax({url:"/captcha/refresh/", async:false}).responseJSON;
+    $captcha.find("[name=hashkey]").val(data.key);
+    $captcha.find("img").attr('src', data.image_url);
+}
+
+$("body").on('click', '.captcha-dialog>img', function () {
+    var $captcha = $(this).parents(".captcha-dialog");
+    updateCaptcha($captcha);
+});
+
+// Tab Active
+$(".tab").click(function () {
+    $(".tab").removeClass("label-yellow").addClass("label-grey");
+    $(this).removeClass("label-grey").addClass("label-yellow");
+});
+
+$("#cross").click(function () {
+    initPanel('/course_selection/courseselecttask/selects_action/?action=load&iframe=cross', 1200);
+});
+
+// 删除
+$(".select-delete-btn").click(function (e) {
+    e.preventDefault();
+
+    var select_id = $(this).attr('data-pk');
+    show_common_dialog("退课操作不可恢复，是否继续？", function () {
+        var data = {select_id: select_id};
+        post_to("/course_selection/courseselecttask/selects_action/?action=delete", data);
+    });
+});
+
+// 提交
+$("#select-submit-btn").click(function (e) {
+    e.preventDefault();
+    var selects = get_checked_vals($("table"));
+    if (!selects.length) {
+        show_message("尚未选择课堂！")
+        return false;
+    }
+
+    // 刷新验证码
+    var $captcha = $(".captcha-dialog");
+    updateCaptcha($captcha);
+
+    // 带验证码提交
+    show_common_dialog($captcha, function (ctx) {
+        show_mask("处理中...");
+        var data = {checkboxs: selects};
+        $.extend(data, get_form_data(ctx));
+        post_to('/course_selection/courseselecttask/selects_action/?action=submit', data);
+    });
+});
+
+// 勾选禁用相似课堂
+$(".checkbox").change(function () {
+    var $that = $(this);
+
+    // 弹出限选说明
+    var curVal = $that.val();
+    if($("#"+curVal+"_notice").html() && $that.get(0).checked) {
+        show_common_dialog($("#"+curVal+"_notice"), function () {
+            // 确定选中
+            var kch = $that.attr('kch');
+            var siblings = $('[kch=' + kch + ']').not($that);
+
+            siblings.attr('disabled', false);
+            if ($that.get(0).checked) {
+                siblings.attr('disabled', true);
+            }
+        }, "限制说明提示", {
+            ok_text: '已了解',
+            cancel_callback: function () {$that[0].checked = false;}
+        });
+    }
+});
+
+// 冲突课堂检测
+$("#show-conflict").click(function (e) {
+    e.preventDefault();
+    initPanel('/course_selection/courseselecttask/conflict/?pure=true', 800);
+});
+</script>
+
+        </div><!-- /.main-content -->
+
+        <div class="footer">
+          <div class="footer-inner">
+            <div class="footer-content">
+              <span class="blue">&copy; 2015 - 2019 北京交通大学</span>
+            </div>
+          </div>
+        </div><!-- /.footer-->
+      </div><!-- /.main-content-inner -->
+    </div><!-- /.main-content -->
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+      <i class="ace-icon fa fa-angle-double-up icon-only bigger-180"></i>
+    </a>
+  </div><!-- /.main-container -->
+
+  <!-- 右侧弹出Iframe -->
+  <div id="iframe-panel" class="modal aside" style="z-index:1039;"
+     data-backdrop="false" data-offset=""
+     data-fixed="true" data-placement="right" data-background="true" tabindex="-1">
+
+    <div id="panel-container" class="modal-dialog">
+        <div class="modal-content" style="border: none; background-color:white">
+            <div class="modal-body" style="padding: 10px;"> <!-- iframe --> </div>
+        </div>
+
+        <button style="position: absolute; left: 0; top: 0; width: 24px;"
+                data-target="#iframe-panel"  data-toggle="modal">
+            <i class="ace-icon fa fa-remove bigger-120 icon-only"></i>
+        </button>
+    </div>
+  </div>
+
+  <script src="/static/lib/ace1.4/components/handlebars.js"></script>
+  <script src="/static/lib/ace1.4/components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/static/lib/ace1.4/components/bootbox.js/bootbox.js"></script>
+  <script src="/static/lib/ace1.4/components/chosen/chosen.jquery.min.js"></script>
+  <script src="/static/lib/ace1.4/components/moment/moment.min.js"></script>
+  <script src="/static/lib/ace1.4/components/jquery.gritter/js/jquery.gritter.min.js"></script>
+  <script src="/static/lib/ace1.4/components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <script src="/static/lib/ace1.4/components/bootstrap-datepicker/js/locales/bootstrap-datepicker.zh-CN.js"></script>
+  <script src="/static/lib/ace1.4/components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+  <script src="/static/lib/ace1.4/components/typeahead.js/dist/typeahead.jquery.js"></script>
+  <script src="/static/lib/ace1.4/components/typeahead.js/dist/bloodhound.js"></script>
+  <script src="/static/lib/ace1.4/components/jquery.maskedinput/dist/jquery.maskedinput.js"></script>
+
+  <script src="/static/lib/ace1.4/dist/js/ace-extra.min.js"></script>
+  <script src="/static/lib/ace1.4/dist/js/ace-elements.min.js"></script>
+  <script src="/static/lib/ace1.4/dist/js/ace.min.js"></script>
+
+  <script src="/static/js/data_process.js?v=2.5.3"></script>
+  <script src="/static/js/data_import.js?v=2.5.3"></script>
+  <script src="/static/js/data_export.js?v=2.5.3"></script>
+  <script src="/static/js/page_button.js?v=2.5.3"></script>
+  <script src="/static/js/table_manage.js?v=2.5.3"></script>
+
+  <!-- 初始化操作 -->
+  <script src="/static/js/base.js?v=2.5.3"></script>
+  <script src="/static/js/ajax.js?v=2.5.3"></script>
+  <script src="/static/js/initialize.js?v=2.5.3"></script>
+
+  <!--[if lte IE 8]>
+    <script language="javascript">
+      alert("提示: 由于安全漏洞及性能原因，本系统对于IE6,7,8不完全支持。请使用Chrome或者IE高版本浏览器");
+    </script>
+  <![endif]-->
+
+
+  <!-- 初始化 -->
+  <script type="text/javascript">
+
+
+    // 消息弹窗
+    var message = "";
+
+    if(message) show_message(message);
+
+    // 排序字段
+    window.csrf_token = 'L0cg8pzFXmHEpJAYpL2X6lWoqQ6XFyzlU16JPctCgVQw2WNcgH22BRFTEry19kyn';
+    window.order = "-";
+    window.orderArr = order.split(',');
+
+    // 导入导出功能
+    $('a.data_process').data_process();
+    $('a.data_import').data_import({
+        'import_info_json': '',
+        'import_columns':'',
+        'import_columns_nomust': ''});
+    $('a.data_export').data_export({'export_columns':''});
+  </script>
+
+  <!-- Iframe面板 -->
+  <script type="text/javascript">
+      // 初始化面板
+      function initPanel(url, width, hide, data) {
+          if(window.parent != window) {
+              window.parent.initPanel(url, width, hide);
+              return;
+          }
+          $("#panel-container").css({width: width});
+          $("#panel-container .modal-body").empty().append("<iframe width='100%' height='100%'>");
+
+          var height = $(window).height() - 20;
+          $("#panel-container iframe").height(10000).attr("src", url).load(function() {
+              $(this).height(height);
+
+              var curWindow = $(this)[0].contentWindow;
+              curWindow.$("body").ace_scroll({size: height});
+              if (data) curWindow.pannelData = data;
+          });
+          if(!hide) togglePanel();
+      }
+
+      // 折叠面板
+      function togglePanel() {
+          if(window.parent != window) {
+              window.parent.togglePanel();
+              return;
+          }
+          $("#iframe-panel").ace_aside().modal("toggle");
+      }
+  </script>
+
+  </body>
+</html>

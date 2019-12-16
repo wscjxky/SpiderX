@@ -80,6 +80,7 @@ def post_request(cookies, class_code, hashkey, answer, req_id, pred_type='pp', c
     #     res = requests.get(check_url, cookies=cookies, headers=check_classheader)
     #     count += 1
     data = {'checkboxs': class_code,
+    # 'is_cross':True
             'hashkey': hashkey,
             'answer': answer
             }
@@ -187,7 +188,6 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='pp'):
                                 print(answer)
                                 if result == 403:
                                     answer, req_id = chaojiying.PostPic(img_data.content, 2003)
-
                                     result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                           answer=answer,
                                                           req_id=req_id, pred_type='cjy')
