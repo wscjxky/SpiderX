@@ -5,9 +5,10 @@ from selenium.webdriver.chrome.options import Options
 from YDM import *
 from chaojiying import Chaojiying_Client
 from chaoren import *
-
+import sys
+sys.path.append('./')
 THREAD_FLAG = False
-sleep_time_503 = 2
+sleep_time_503 = 1
 chaoren_client = Chaoren()
 chaoren_client.data['username'] = 'wscjxky'  # 修改为打码账号
 chaoren_client.data['password'] = 'wscjxky123'  # 修改为打码密码
@@ -153,6 +154,7 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
             print(
                 "503次数:{}" + str(error_503))
             print(error_503)
+            return False
             # print(503)
             # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
     soup = BeautifulSoup(res.text, 'html.parser')
@@ -160,6 +162,7 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
     # table = soup.find('div', id='container')
     # 专业课的table
     table = soup.find('div', id='current')
+
     try:
         if table:
             class_trs = table.find_all('tr')[1:]
@@ -209,7 +212,9 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
                                 else:
                                     return False
         else:
-            print("没table")
+            if("503" in res.text):
+                time.sleep(sleep_time_503)
+                print(503)
     except Exception as e:
         print(e)
     return False
