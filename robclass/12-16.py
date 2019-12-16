@@ -58,10 +58,10 @@ def get_Session():
     # time.sleep(10)
     cookie = driver.get_cookies()
     # time.sleep(1)
-    assert len(cookie) == 2
-    # while len(cookie) <= 1:
-    #     time.sleep(2)
-    #     get_Session()
+    # assert len(cookie) == 2
+    while len(cookie) <= 1:
+        time.sleep(2)
+        get_Session()
     for i in cookie:  # 添加cookie到CookieJar
         BCOOKIES[i["name"]] = i["value"]
     print('reload' + str(BCOOKIES))
