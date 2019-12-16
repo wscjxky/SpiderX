@@ -5,8 +5,11 @@ from selenium.webdriver.chrome.options import Options
 from YDM import *
 from chaojiying import Chaojiying_Client
 from chaoren import *
+
 import sys
 sys.path.append('./')
+requests.adapters.DEFAULT_RETRIES = 5 # 增加重连次数
+
 THREAD_FLAG = False
 sleep_time_503 = 2
 chaoren_client = Chaoren()
@@ -67,6 +70,7 @@ def get_Session():
     print('reload' + str(BCOOKIES))
 
     ssrequest = requests.session()
+    ssrequest.keep_alive = False
     requests.utils.add_dict_to_cookiejar(ssrequest.cookies, BCOOKIES)
     driver.close()
     driver.quit()
