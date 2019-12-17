@@ -196,6 +196,10 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
                 for index_kecheng, k_code in enumerate(kecheng_code):
                     if k_code in tr.text:
                         has_free = tr.find('input')
+                        is_chosen = tr.find("span", class_="red").text
+                        if("选" in is_chosen):
+                            print(str(index_kecheng)+str(index_kecheng)+str(k_code)+"课程已选上")
+                            exit()
                         if has_free:
                             class_code = has_free["value"].strip()
                             class_name = tr.find('div', class_='ellipsis')

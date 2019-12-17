@@ -164,8 +164,7 @@ def post_request(cookies, class_code, hashkey, img_data, pred_type="ydm"):
         else:
             return 500
     except Exception as e:
-        print(f
-        "139postreq bug ： {e}")
+        print("139postreq bug ："+str(e))
         return 403
 
 
@@ -203,6 +202,15 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
     table = soup.find('div', id='current')
 
     try:
+        class_trs = table.find_all('tr')[1:]
+        for tr in class_trs:
+            for index_kecheng, k_code in enumerate(kecheng_code):
+                if k_code in tr.text:
+                    has_free = tr.find('input')
+                    is_chosen = tr.find("span", class_="red").text
+                    if("选"in is_chosen):
+                        print(str(index_kecheng)+str(k_code)+"课程已选上")
+                    exit()
         class_code = "91941"
         res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
                            headers=headers_image)
