@@ -194,8 +194,8 @@ def is_free(kecheng_code, xuhao, proxy='', is_cross=False):
     table = soup.find('div', id='current')
     if is_cross:
         table = soup.find('table', class_='table')
-    with open("a.html", 'w', encoding="utf-8")as f:
-        f.write(res.text)
+    # with open("a.html", 'w', encoding="utf-8")as f:
+    #     f.write(res.text)
     try:
         if table:
             class_trs = table.find_all('tr')[1:]
@@ -300,6 +300,7 @@ if __name__ == '__main__':
                 kecheng_code = data[2].split(',')
                 xuhao = data[3].split(',')
                 name = data[4]
+    is_cross=False
     if "跨年级" in name:
         is_cross=True
         print("该用户是跨年级用户")
