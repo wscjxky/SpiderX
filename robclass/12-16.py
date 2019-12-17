@@ -325,6 +325,7 @@ if __name__ == '__main__':
             if is_free(kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
+                make_noise()
                 break
             else:
                 if retry_num % 20 == 0:
