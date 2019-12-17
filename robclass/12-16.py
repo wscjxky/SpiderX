@@ -164,9 +164,14 @@ def make_noise():
                 duration, freq))
 
 
-def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
+def is_free(kecheng_code, xuhao, proxy='', is_cross=False):
     global cookies, error_503
-    check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
+    load_url = "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&"
+    if is_cross:
+        check_url = load_url + 'iframe=cross&page=1&perpage=500'
+        print("is_croos")
+    else:
+        check_url = load_url + 'iframe=school&page=1&perpage=500'
     res = requests.get(check_url, cookies=cookies, headers=get_user_agent(),
                        proxies={"http": "http://{}".format(proxy)}
                        )
@@ -188,7 +193,10 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
     # table = soup.find('div', id='container')
     # 专业课的table
     table = soup.find('div', id='current')
-
+    if is_cross:
+        table = soup.find('table', class_='table')
+    with open("a.html", 'w', encoding="utf-8")as f:
+        f.write(res.text)
     try:
         if table:
             class_trs = table.find_all('tr')[1:]
@@ -198,8 +206,8 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
                         has_free = tr.find('input')
                         try:
                             is_chosen = tr.find("span", class_="red").text
-                            if("选" in is_chosen):
-                                print(str(index_kecheng)+str(index_kecheng)+str(k_code)+"课程已选上")
+                            if ("选" in is_chosen):
+                                print(str(index_kecheng) + str(index_kecheng) + str(k_code) + "课程已选上")
                                 exit()
                         except:
                             pass
@@ -229,7 +237,7 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
                                 # result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                 #                       img_data=img_data.content, pred_type=pred_type)
                                 result = start_threading(cookies=cookies, class_code=class_code, hashkey=hashkey,
-                                                         img_data=img_data.content, pred_type=pred_type)
+                                                         img_data=img_data.content)
                                 if result == 200:
                                     return True
 
@@ -258,7 +266,7 @@ def callback(request, result):
         raise Success
 
 
-def start_threading(cookies, class_code, hashkey, img_data, pred_type):
+def start_threading(cookies, class_code, hashkey, img_data):
     global STOP_FLAG
     device_list = ['pp', 'cjy', 'chaoren', 'ydm']  # 需要处理的设备个数
     task_pool = threadpool.ThreadPool(5)  # 5是线程池中线程的个数
@@ -293,30 +301,27 @@ if __name__ == '__main__':
                 kecheng_code = data[2].split(',')
                 xuhao = data[3].split(',')
                 name = data[4].split(',')
-
+    if "跨专业" in name:
+        is_cross=True
     assert len(kecheng_code) == len(xuhao)
     print(len(kecheng_code), len(xuhao))
     print(username, password, kecheng_code, xuhao, name)
-    # username = '18251076'
-    # password = '10962905'
-    # kecheng_code = ['85L074T']
-    # xuhao = ["11"]
     error_503 = 0
-    time_delay = 0.2
     retry_max = 50000
     reset = False
     i = 0
     retry_num = 0
+    # is_cross = True
     cookies = get_Session()
     while True:
         if THREAD_FLAG:
             print(username, password)
-            print("搶課完成" )
+            print("搶課完成")
             break
         try:
             time.sleep(1)
 
-            if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='chaoren'):
+            if is_free(kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
                 break

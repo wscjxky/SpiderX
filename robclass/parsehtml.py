@@ -1,12 +1,12 @@
 from bs4 import BeautifulSoup
 import  re
-kecheng_code = ['62L212T']
-xuhao = ['04']
+kecheng_code = ['80L342Q']
+xuhao = ['01']
 import  requests
 with open("a.html", 'r', encoding="utf-8") as f:
     res = f.read()
     soup = BeautifulSoup(res, 'html.parser')
-    table = soup.find('div', id='current')
+    table = soup.find('table', class_='table')
     class_trs = table.find_all('tr')[1:]
     for tr in class_trs:
         for index_kecheng, k_code in enumerate(kecheng_code):

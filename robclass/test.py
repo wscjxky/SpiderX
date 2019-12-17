@@ -176,9 +176,13 @@ def delete_proxy(proxy):
     requests.get("http://127.0.0.1:5010/delete/?proxy={}".format(proxy))
 
 
-def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
+def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm',is_cross=False):
     global cookies, error_503
-    check_url = 'https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&iframe=school&page=1&perpage=500'
+    load_url="https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&"
+    if is_cross:
+        check_url = load_url+'iframe=cross&page=1&perpage=500'
+    else:
+        check_url = load_url+'iframe=school&page=1&perpage=500'
     res = requests.get(check_url, cookies=cookies, headers=get_user_agent(),
                        proxies={"http": "http://{}".format(proxy)}
                        )
@@ -228,6 +232,7 @@ def is_free(kecheng_code, xuhao, proxy='', pred_type='ydm'):
     except Exception as e:
         print(e)
     return False
+
 
 
 class Success(SyntaxWarning):
@@ -283,13 +288,7 @@ if __name__ == '__main__':
     assert len(kecheng_code) == len(xuhao)
     print(len(kecheng_code), len(xuhao))
     print(username, password, kecheng_code, xuhao, name)
-    # username = '18251076'
-    # password = '10962905'
-    # kecheng_code = ['85L074T']
-    # xuhao = ["11"]
     error_503 = 0
-    time_delay = 0.2
-    retry_max = 50000
     reset = False
     i = 0
     retry_num = 0
@@ -301,7 +300,7 @@ if __name__ == '__main__':
             break
         try:
             time.sleep(1)
-            if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='chaoren'):
+            if is_free(kecheng_code=kecheng_code, xuhao=xuhao, pred_type='chaoren',is_cross=True):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
                 break
