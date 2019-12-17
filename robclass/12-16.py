@@ -320,7 +320,7 @@ if __name__ == '__main__':
             print("搶課完成")
             break
         try:
-            time.sleep(1)
+            time.sleep(0.7)
 
             if is_free(kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross):
                 print(username, password)
