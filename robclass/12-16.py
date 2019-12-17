@@ -308,7 +308,7 @@ if __name__ == '__main__':
     while True:
         if THREAD_FLAG:
             print(username, password)
-            print("搶課完成" + str(kecheng_code[i]))
+            print("搶課完成" )
             break
         try:
             time.sleep(1)
