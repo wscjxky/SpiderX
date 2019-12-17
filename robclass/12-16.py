@@ -98,7 +98,7 @@ def post_request(cookies, class_code, hashkey, img_data, pred_type="ydm"):
         elif pred_type == "cjy":
             answer, req_id = chaojiying.PostPic(img_data, 2003)
         data = {'checkboxs': class_code,
-                # 'is_cross':True
+                # 'is_cross':True,
                 'hashkey': hashkey,
                 'answer': answer
                 }
@@ -169,7 +169,6 @@ def is_free(kecheng_code, xuhao, proxy='', is_cross=False):
     load_url = "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&"
     if is_cross:
         check_url = load_url + 'iframe=cross&page=1&perpage=500'
-        print("is_croos")
     else:
         check_url = load_url + 'iframe=school&page=1&perpage=500'
     res = requests.get(check_url, cookies=cookies, headers=get_user_agent(),
@@ -300,9 +299,10 @@ if __name__ == '__main__':
                 password = data[1]
                 kecheng_code = data[2].split(',')
                 xuhao = data[3].split(',')
-                name = data[4].split(',')
-    if "跨专业" in name:
+                name = data[4]
+    if "跨年级" in name:
         is_cross=True
+        print("该用户是跨年级用户")
     assert len(kecheng_code) == len(xuhao)
     print(len(kecheng_code), len(xuhao))
     print(username, password, kecheng_code, xuhao, name)
@@ -327,7 +327,7 @@ if __name__ == '__main__':
                 break
             else:
                 if retry_num % 20 == 0:
-                    print(name[0] + " " + str(time.strftime("%H:%M:%S")
+                    print(name + " " + str(time.strftime("%H:%M:%S")
                                               ) + '  retry_time : ' + str(retry_num))
                 i += 1
                 retry_num += 1
