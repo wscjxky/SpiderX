@@ -251,7 +251,7 @@ def callback(request, result):
 
 def start_threading(cookies, class_code, hashkey, img_data, pred_type):
     global STOP_FLAG
-    device_list = ['pp', 'cjy', 'chaoren', 'ydm']  # 需要处理的设备个数
+    device_list = [ 'ydm', 'cjy', 'chaoren','pp']  # 需要处理的设备个数
     task_pool = threadpool.ThreadPool(5)  # 5是线程池中线程的个数
     request_list = []  # 存放任务列表
     # 首先构造任务列表
