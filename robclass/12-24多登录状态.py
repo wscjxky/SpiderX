@@ -205,7 +205,7 @@ def is_free(student_data,proxy='', is_cross=False):
                             try:
                                 is_chosen = tr.find("span", class_="red").text
                                 if ("选" in is_chosen):
-                                    print(student)
+                                    print(student["name"])
                                     print( "课程已选上")
                                     return student
                             except:
@@ -239,7 +239,7 @@ def is_free(student_data,proxy='', is_cross=False):
                                     result = start_threading(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                             img_data=img_data.content)
                                     if result == 200:
-                                        print(student)
+                                        print(student["name"])
                                         return student
                                     else:
                                         return False
