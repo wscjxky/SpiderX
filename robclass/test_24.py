@@ -207,7 +207,8 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
                                 if ("选" in is_chosen):
                                     print(str(index_kecheng) +
                                         str(index_kecheng) + str(k_code) + "课程已选上")
-                                    exit()
+                                    Student_Data.remove(student)
+                                    continue
                             except:
                                 pass
                             if has_free:
@@ -294,7 +295,7 @@ Student_Data=[]
 # 15281106 wscjxky123 00L094T 01 徐开元,测试
 
 if __name__ == '__main__':
-    with open('rob_data.txt', 'r', encoding='utf8')as f:
+    with open('test.txt', 'r', encoding='utf8')as f:
         ls = f.readlines()
         for line in ls:
             if line != '' and "#" not in line:
