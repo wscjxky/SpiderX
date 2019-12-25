@@ -230,7 +230,8 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
                                     make_noise()
                                     print(class_name)
                                     print(class_code)
-                                    cookies=student_data["cookies"]
+                                    cookies=student["cookies"]
+                                    print(student)
                                     res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
                                                     headers=headers_image)
                                     json_data = res.json()
@@ -244,7 +245,7 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
                                     result = start_threading(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                             img_data=img_data.content)
                                     if result == 200:
-                                        return True
+                                        return student
 
                                     else:
                                         return False
@@ -299,7 +300,7 @@ Student_Data=[]
 if __name__ == '__main__':
     with open('rob_data.txt', 'r', encoding='utf8')as f:
         ls = f.readlines()
-        for line in ls:
+        for line in ls[:3]:
             if line != '' and "#" not in line:
                 line = line.strip('\n')
                 data = line.split(' ')
@@ -344,9 +345,9 @@ if __name__ == '__main__':
         try:
             chosen_stu=is_free(student_data=Student_Data,kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross)
             if chosen_stu:
-                print(username, password)
+                print(student)
                 print("搶課完成" + str(kecheng_code[i]))
-                Student_Data.remove()
+                Student_Data.remove(student)
                 make_noise()
                 # break
             else:
