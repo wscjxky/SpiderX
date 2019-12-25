@@ -205,8 +205,8 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
                             try:
                                 is_chosen = tr.find("span", class_="red").text
                                 if ("选" in is_chosen):
-                                    print(str(index_kecheng) +
-                                        str(index_kecheng) + str(k_code) + "课程已选上")
+                                    print(student)
+                                    print( "课程已选上")
                                     return student
                             except:
                                 pass
