@@ -164,7 +164,7 @@ def make_noise():
             'play --no-show-progress --null --channels 1 synth %s sine %f' % (
                 duration, freq))
 
-
+import random
 def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
     global error_503
     load_url = "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&"
@@ -173,7 +173,7 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
     else:
         check_url = load_url + 'iframe=school&page=1&perpage=500'
     # 取第一个cookie
-    res = requests.get(check_url, cookies=student_data[0]['cookies'], headers=get_user_agent(),
+    res = requests.get(check_url, cookies=student_data[random.randint(0,len(student_data)-1)]['cookies'], headers=get_user_agent(),
                        proxies={"http": "http://{}".format(proxy)}
                        )
     if res.status_code == 503:

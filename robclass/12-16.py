@@ -188,9 +188,9 @@ def is_free(kecheng_code, xuhao, proxy='', is_cross=False):
             # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
     soup = BeautifulSoup(res.text, 'html.parser')
     # 任选课的table
-    # table = soup.find('div', id='container')
+    table = soup.find('div', id='container')
     # 专业课的table
-    table = soup.find('div', id='current')
+    # table = soup.find('div', id='current')
     if is_cross:
         table = soup.find('table', class_='table')
     # with open("a.html", 'w', encoding="utf-8")as f:
