@@ -246,6 +246,7 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
                                                             img_data=img_data.content)
                                     if result == 200:
                                         return student
+                                        print(student)
 
                                     else:
                                         return False
@@ -338,16 +339,13 @@ if __name__ == '__main__':
     cookies=None
     while True:
         time.sleep(0.3)
-        if THREAD_FLAG:
-            print(username, password)
-            print("搶課完成")
-            break
+
         try:
             chosen_stu=is_free(student_data=Student_Data,kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross)
             if chosen_stu:
-                print(student)
+                print(chosen_stu)
                 print("搶課完成" + str(kecheng_code[i]))
-                Student_Data.remove(student)
+                Student_Data.remove(chosen_stu)
                 make_noise()
                 # break
             else:
@@ -361,3 +359,5 @@ if __name__ == '__main__':
             # raise (e)
             print(e)
             continue
+        if THREAD_FLAG:
+            print("搶課完成")
