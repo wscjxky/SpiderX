@@ -224,7 +224,6 @@ def is_free(student_data,proxy='', is_cross=False):
                                     print("有课余量：")
                                     make_noise()
                                     print(class_name)
-                                    print(class_code)
                                     cookies=student["cookies"]
                                     print(student['name'])
                                     res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
@@ -240,9 +239,8 @@ def is_free(student_data,proxy='', is_cross=False):
                                     result = start_threading(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                             img_data=img_data.content)
                                     if result == 200:
-                                        return student
                                         print(student)
-
+                                        return student
                                     else:
                                         return False
         else:
