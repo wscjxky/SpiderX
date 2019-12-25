@@ -196,9 +196,7 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
     # table = soup.find('div', id='current')
     if is_cross:
         table = soup.find('table', class_='table')
-    with open("a.html", 'w', encoding="utf-8")as f:
-        f.write(res.text)
-    
+
     try:
         if table:
             class_trs = table.find_all('tr')[1:]
