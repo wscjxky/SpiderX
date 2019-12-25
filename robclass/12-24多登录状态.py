@@ -28,9 +28,10 @@ app_id = "303997"  # 开发者分成用的账号，在开发者中心可以查�
 app_key = "o8SL2OUcncoCeYCDuN7PhS/54Ns/wepQ"
 pred_type = "40300"
 api = FateadmApi(app_id, app_key, pd_id, pd_key)
+error_503 = 0
 
 
-def get_Session():
+def get_Session(username,password):
     BCOOKIES = {}
     chrome_options = Options()
     chrome_options.add_argument('--headless')
@@ -72,6 +73,7 @@ def get_Session():
     print('reload' + str(BCOOKIES))
     ssrequest = requests.session()
     requests.utils.add_dict_to_cookiejar(ssrequest.cookies, BCOOKIES)
+    
     driver.close()
     driver.quit()
     return ssrequest.cookies
@@ -163,14 +165,15 @@ def make_noise():
                 duration, freq))
 
 
-def is_free(kecheng_code, xuhao, proxy='', is_cross=False):
-    global cookies, error_503
+def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
+    global error_503
     load_url = "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&"
     if is_cross:
         check_url = load_url + 'iframe=cross&page=1&perpage=500'
     else:
         check_url = load_url + 'iframe=school&page=1&perpage=500'
-    res = requests.get(check_url, cookies=cookies, headers=get_user_agent(),
+    # 取第一个cookie
+    res = requests.get(check_url, cookies=student_data[0]['cookies'], headers=get_user_agent(),
                        proxies={"http": "http://{}".format(proxy)}
                        )
     if res.status_code == 503:
@@ -199,49 +202,50 @@ def is_free(kecheng_code, xuhao, proxy='', is_cross=False):
         if table:
             class_trs = table.find_all('tr')[1:]
             for tr in class_trs:
-                for index_kecheng, k_code in enumerate(kecheng_code):
-                    if k_code in tr.text:
-                        has_free = tr.find('input')
-                        try:
-                            is_chosen = tr.find("span", class_="red").text
-                            if ("选" in is_chosen):
-                                print(str(index_kecheng) +
-                                      str(index_kecheng) + str(k_code) + "课程已选上")
-                                exit()
-                        except:
-                            pass
-                        if has_free:
-                            class_code = has_free["value"].strip()
-                            class_name = tr.find('div', class_='ellipsis')
-                            if class_name:
-                                class_name = class_name.text.strip()
-                            else:
-                                class_name = tr.find(
-                                    'div', class_='hide').text.strip()
-                            class_name = re.search(
-                                "】(.*)", class_name).group(1)
-                            if xuhao[index_kecheng] in class_name:
-                                print("有课余量：")
-                                make_noise()
-                                print(class_name)
-                                print(class_code)
-                                res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
-                                                   headers=headers_image)
-                                json_data = res.json()
-                                hashkey = json_data['key']
-                                print(json_data)
-                                img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],
-                                                        headers=headers)
-
-                                # result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
-                                #                       img_data=img_data.content, pred_type=pred_type)
-                                result = start_threading(cookies=cookies, class_code=class_code, hashkey=hashkey,
-                                                         img_data=img_data.content)
-                                if result == 200:
-                                    return True
-
+                for index_student,student in Student_Data:
+                    for index_kecheng, k_code in enumerate(student["kecheng_code"]):
+                        if k_code in tr.text:
+                            has_free = tr.find('input')
+                            try:
+                                is_chosen = tr.find("span", class_="red").text
+                                if ("选" in is_chosen):
+                                    print(str(index_kecheng) +
+                                        str(index_kecheng) + str(k_code) + "课程已选上")
+                                    exit()
+                            except:
+                                pass
+                            if has_free:
+                                class_code = has_free["value"].strip()
+                                class_name = tr.find('div', class_='ellipsis')
+                                if class_name:
+                                    class_name = class_name.text.strip()
                                 else:
-                                    return False
+                                    class_name = tr.find(
+                                        'div', class_='hide').text.strip()
+                                class_name = re.search(
+                                    "】(.*)", class_name).group(1)
+                                if xuhao[index_kecheng] in class_name:
+                                    print("有课余量：")
+                                    make_noise()
+                                    print(class_name)
+                                    print(class_code)
+                                    res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
+                                                    headers=headers_image)
+                                    json_data = res.json()
+                                    hashkey = json_data['key']
+                                    print(json_data)
+                                    img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],
+                                                            headers=headers)
+
+                                    # result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
+                                    #                       img_data=img_data.content, pred_type=pred_type)
+                                    result = start_threading(cookies=cookies, class_code=class_code, hashkey=hashkey,
+                                                            img_data=img_data.content)
+                                    if result == 200:
+                                        return True
+
+                                    else:
+                                        return False
         else:
             if ("503" in res.text):
                 time.sleep(sleep_time_503)
@@ -287,11 +291,11 @@ def start_threading(cookies, class_code, hashkey, img_data):
         print(e)
         return 200
 
-
+Student_Data=[]
 if __name__ == '__main__':
     with open('rob_data.txt', 'r', encoding='utf8')as f:
         ls = f.readlines()
-        for line in ls[7:]:
+        for line in ls[:2]:
             if line != '' and "#" not in line:
                 line = line.strip('\n')
                 data = line.split(' ')
@@ -301,33 +305,42 @@ if __name__ == '__main__':
                 xuhao = data[3].split(',')
                 name = data[4]
                 print(username, password, kecheng_code, xuhao, name)
+                assert len(kecheng_code) == len(xuhao)
+                print(len(kecheng_code), len(xuhao))
+                Student_Data.append({
+                    "cookies":"",
+                    "username":username,
+                    "password":password,
+                    "kecheng_code":kecheng_code,
+                    "xuhao":xuhao,
+                    "name":name,
+                })
     is_cross = False
+    error_503 = 0
+
     if "跨年级" in name:
         is_cross = True
         print("该用户是跨年级用户")
-    assert len(kecheng_code) == len(xuhao)
-    print(len(kecheng_code), len(xuhao))
-    print(username, password, kecheng_code, xuhao, name)
-    error_503 = 0
+
     retry_max = 50000
     reset = False
     i = 0
     retry_num = 0
     # is_cross = True
-    cookies = get_Session()
+    for index,student in enumerate(Student_Data):  
+        cookies = get_Session(student['username'],student['password'])
+        Student_Data[index]['cookies']=cookies
     while True:
         if THREAD_FLAG:
             print(username, password)
             print("搶課完成")
             break
         try:
-            time.sleep(0.7)
-
-            if is_free(kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross):
+            if is_free(student_data=Student_Data,kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross):
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
                 make_noise()
-                break
+                # break
             else:
                 if retry_num % 20 == 0:
                     print(name + " " + str(time.strftime("%H:%M:%S")

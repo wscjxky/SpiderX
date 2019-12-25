@@ -1,15 +1,15 @@
-Accept:application/json, text/javascript, */*; q=0.01
-Accept-Encoding:gzip, deflate
+Accept:application/json,text/javascript,*/*;q=0.01
+Accept-Encoding:gzip,deflate
 Accept-Language:zh-CN,zh;q=0.9
 Cache-Control:no-cache
 Connection:keep-alive
 Content-Length:310
-Content-Type:application/x-www-form-urlencoded; charset=UTF-8
-Cookie:_WEU=HPg_m7eVomhVrFGVSw3vsFYHjcvW9GDZbwzwW9nKqax6m6LFY_3erB9xmJOc3Rq7; JSESSIONID=49F1C851119B4ACE1F72746ED02D5CB5; JSESSIONID=98921BFF875708E895AD76E707F385A6
+Content-Type:application/x-www-form-urlencoded;charset=UTF-8
+Cookie:_WEU=O559X8k79OE3UINrjocoo2KoVCS*4YuvdwXWbWfsdmNQ2acbnRm1XbitGfUwpHDv;JSESSIONID=8EEB0C403F76A434FE8D11F133795A2D;JSESSIONID=E670C1BC8BFF1F5071091E3BB7BC0995
 Host:newxk.urp.seu.edu.cn
 Origin:http://newxk.urp.seu.edu.cn
 Pragma:no-cache
-Referer:http://newxk.urp.seu.edu.cn/xsxkapp/sys/xsxkapp/*default/grablessons.do
-token:f9ffcfa4-7409-4911-bd21-02ace768c1e0
-User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36
+Referer:http://newxk.urp.seu.edu.cn/xsxkapp/sys/xsxkapp/*default/grablessons.do?token=a91e9e55-09d4-43e0-a435-d3533252e516
+token:a91e9e55-09d4-43e0-a435-d3533252e516
+User-Agent:Mozilla/5.0(WindowsNT10.0;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/79.0.3945.88Safari/537.36
 X-Requested-With:XMLHttpRequest
