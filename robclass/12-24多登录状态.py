@@ -207,7 +207,7 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
                                 if ("选" in is_chosen):
                                     print(str(index_kecheng) +
                                         str(index_kecheng) + str(k_code) + "课程已选上")
-                                    exit()
+                                    return student
                             except:
                                 pass
                             if has_free:
@@ -333,11 +333,13 @@ if __name__ == '__main__':
         Student_Data[index]['cookies']=cookies
     cookies=None
     while True:
+        time.sleep(0.3)
+
         try:
             chosen_stu=is_free(student_data=Student_Data,kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross)
             if chosen_stu:
                 print(chosen_stu)
-                print("搶課完成" )
+                print("搶課完成")
                 Student_Data.remove(chosen_stu)
                 make_noise()
                 # break
