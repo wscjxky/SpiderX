@@ -299,7 +299,7 @@ Student_Data=[]
 if __name__ == '__main__':
     with open('rob_data.txt', 'r', encoding='utf8')as f:
         ls = f.readlines()
-        for line in ls[:3]:
+        for line in ls:
             if line != '' and "#" not in line:
                 line = line.strip('\n')
                 data = line.split(' ')

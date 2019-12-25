@@ -300,7 +300,6 @@ if __name__ == '__main__':
                 kecheng_code = data[2].split(',')
                 xuhao = data[3].split(',')
                 name = data[4]
-                print(username, password, kecheng_code, xuhao, name)
     is_cross = False
     if "跨年级" in name:
         is_cross = True
