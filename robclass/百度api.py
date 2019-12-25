@@ -5,14 +5,16 @@ def get_file_content(filePath):
     with open(filePath, 'rb') as fp:
         return fp.read()
 import os 
-dir1="C:/Users/Administrator/Desktop/NEW"
-files=os.listdir(dir1)
-print(files)
+dir1="D:/pycharmproject/SpiderX/robclass/t.jpg"
+image = get_file_content(dir1)
+res=client.basicAccurate(image)
+print(res)
+files=[1]
+# files=os.listdir(dir1)
 with open("题目2.txt",'w',encoding="utf8") as f_w:
     for f in files:
-        with open(dir1+"/"+f,"r",encoding="utf8"):
-            image = get_file_content(dir1+"/"+f)
-            """ 调用通用文字识别, 图片参数为本地图片 """
+            # image = get_file_content(dir1+"/"+f)
+            # """ 调用通用文字识别, 图片参数为本地图片 """
             res=client.basicAccurate(image)
             print(res)
             for r in res['words_result']:
