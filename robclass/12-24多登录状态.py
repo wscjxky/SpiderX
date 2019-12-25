@@ -230,6 +230,7 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
                                     make_noise()
                                     print(class_name)
                                     print(class_code)
+                                    cookies=student_data["cookies"]
                                     res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
                                                     headers=headers_image)
                                     json_data = res.json()
@@ -333,7 +334,7 @@ if __name__ == '__main__':
     for index,student in enumerate(Student_Data):  
         cookies = get_Session(student['username'],student['password'])
         Student_Data[index]['cookies']=cookies
-    print(Student_Data)
+    cookies=None
     while True:
         time.sleep(0.3)
         if THREAD_FLAG:
@@ -341,9 +342,11 @@ if __name__ == '__main__':
             print("搶課完成")
             break
         try:
-            if is_free(student_data=Student_Data,kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross):
+            chosen_stu=is_free(student_data=Student_Data,kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross)
+            if chosen_stu:
                 print(username, password)
                 print("搶課完成" + str(kecheng_code[i]))
+                Student_Data.remove()
                 make_noise()
                 # break
             else:
