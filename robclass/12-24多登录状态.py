@@ -331,6 +331,7 @@ if __name__ == '__main__':
         cookies = get_Session(student['username'],student['password'])
         Student_Data[index]['cookies']=cookies
     while True:
+        time.sleep(0.3)
         if THREAD_FLAG:
             print(username, password)
             print("搶課完成")
