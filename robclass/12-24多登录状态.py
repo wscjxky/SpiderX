@@ -95,7 +95,7 @@ def post_request(cookies, class_code, hashkey, img_data, pred_type="ydm"):
             res = chaoren_client.recv_byte(img_data)
             answer, req_id = res[u'result'], res[u'imgId']
         elif pred_type == "pp":
-            answer, req_id = api.api.Predict(40300, img_data)
+            answer, req_id = api.Predict(40300, img_data)
         elif pred_type == "cjy":
             answer, req_id = chaojiying.PostPic(img_data, 2003)
         data = {'checkboxs': class_code,
@@ -191,18 +191,19 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
             # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
     soup = BeautifulSoup(res.text, 'html.parser')
     # 任选课的table
-    # table = soup.find('div', id='container')
+    table = soup.find('div', id='container')
     # 专业课的table
-    table = soup.find('div', id='current')
+    # table = soup.find('div', id='current')
     if is_cross:
         table = soup.find('table', class_='table')
-    # with open("a.html", 'w', encoding="utf-8")as f:
-    #     f.write(res.text)
+    with open("a.html", 'w', encoding="utf-8")as f:
+        f.write(res.text)
+    
     try:
         if table:
             class_trs = table.find_all('tr')[1:]
             for tr in class_trs:
-                for index_student,student in Student_Data:
+                for index_student,student in enumerate(Student_Data):
                     for index_kecheng, k_code in enumerate(student["kecheng_code"]):
                         if k_code in tr.text:
                             has_free = tr.find('input')
@@ -292,10 +293,12 @@ def start_threading(cookies, class_code, hashkey, img_data):
         return 200
 
 Student_Data=[]
+# 15281106 wscjxky123 00L094T 01 徐开元,测试
+
 if __name__ == '__main__':
     with open('rob_data.txt', 'r', encoding='utf8')as f:
         ls = f.readlines()
-        for line in ls[:2]:
+        for line in ls:
             if line != '' and "#" not in line:
                 line = line.strip('\n')
                 data = line.split(' ')
@@ -330,6 +333,7 @@ if __name__ == '__main__':
     for index,student in enumerate(Student_Data):  
         cookies = get_Session(student['username'],student['password'])
         Student_Data[index]['cookies']=cookies
+    print(Student_Data)
     while True:
         time.sleep(0.3)
         if THREAD_FLAG:

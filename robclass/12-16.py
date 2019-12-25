@@ -93,7 +93,7 @@ def post_request(cookies, class_code, hashkey, img_data, pred_type="ydm"):
             res = chaoren_client.recv_byte(img_data)
             answer, req_id = res[u'result'], res[u'imgId']
         elif pred_type == "pp":
-            answer, req_id = api.api.Predict(40300, img_data)
+            answer, req_id = api.Predict(40300, img_data)
         elif pred_type == "cjy":
             answer, req_id = chaojiying.PostPic(img_data, 2003)
         data = {'checkboxs': class_code,
