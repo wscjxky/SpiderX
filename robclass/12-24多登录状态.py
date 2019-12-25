@@ -229,7 +229,7 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
                                     print(class_name)
                                     print(class_code)
                                     cookies=student["cookies"]
-                                    print(student)
+                                    print(student['name'])
                                     res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
                                                     headers=headers_image)
                                     json_data = res.json()
@@ -348,7 +348,7 @@ if __name__ == '__main__':
                 # break
             else:
                 if retry_num % 20 == 0:
-                    print(name + " " + str(time.strftime("%H:%M:%S")
+                    print( str(time.strftime("%H:%M:%S")
                                            ) + '  retry_time : ' + str(retry_num))
                 i += 1
                 retry_num += 1
