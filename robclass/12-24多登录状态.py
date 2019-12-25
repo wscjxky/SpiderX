@@ -162,7 +162,7 @@ def make_noise():
                 duration, freq))
 
 import random
-def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
+def is_free(student_data,proxy='', is_cross=False):
     global error_503
     load_url = "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&"
     if is_cross:
@@ -220,7 +220,7 @@ def is_free(student_data,kecheng_code, xuhao, proxy='', is_cross=False):
                                         'div', class_='hide').text.strip()
                                 class_name = re.search(
                                     "】(.*)", class_name).group(1)
-                                if xuhao[index_kecheng] in class_name:
+                                if student["xuhao"][index_kecheng] in class_name:
                                     print("有课余量：")
                                     make_noise()
                                     print(class_name)
@@ -336,7 +336,7 @@ if __name__ == '__main__':
         time.sleep(0.3)
 
         try:
-            chosen_stu=is_free(student_data=Student_Data,kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross)
+            chosen_stu=is_free(student_data=Student_Data, is_cross=is_cross)
             if chosen_stu:
                 print(chosen_stu)
                 print("搶課完成")
