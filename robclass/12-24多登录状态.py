@@ -333,8 +333,6 @@ if __name__ == '__main__':
         Student_Data[index]['cookies']=cookies
     cookies=None
     while True:
-        time.sleep(0.3)
-
         try:
             chosen_stu=is_free(student_data=Student_Data,kecheng_code=kecheng_code, xuhao=xuhao, is_cross=is_cross)
             if chosen_stu:
