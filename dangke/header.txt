@@ -1,0 +1,11 @@
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
+Cache-Control: max-age=0
+Connection: keep-alive
+Cookie: tk_debfed08d81c7bfedd781b4165fa2ed652dce81b="2|1:0|10:1583589732|43:tk_debfed08d81c7bfedd781b4165fa2ed652dce81b|116:eyJ1c2VyX25hbWUiOiAiMjAxOTA1NTgyNSIsICJ1c2VyX3VpZCI6ICIyMDE5MDU1ODI1IiwgInVzZXJfY24iOiAiXHU1ZjIwXHU2ODkzXHU2ZGI1In0=|e8c70312512f2fdb184462e830f52f25936f6597b8e5f2cba6740c385cb96bfd"; u_id=2|1:0|10:1583590102|4:u_id|456:eyJ1c2VyX2lkIjogMTIwMTcsICJzdGF0ZSI6IDEsICJ1c2VyX3NpZCI6ICIyMDE5MDU1ODI1IiwgInVzZXJfbmFtZSI6ICJcdTVmMjBcdTY4OTNcdTZkYjUiLCAidXNlcl9wd2QiOiAiMDViNTMwYWQwZmI1NjI4NmZlMDUxZDVmOGJlNWI4NDUzZjFjZDkzZiIsICJwaGFzZSI6IDQsICJhdmF0YXIiOiBudWxsLCAidHJ1ZV9hdmF0YXIiOiBudWxsLCAic3RhZ2VfaWQiOiAxOCwgInN0YWdlX2NsYXNzX2lkIjogNjAsICJwYXJ0eV9icmFuY2giOiAiIiwgInRva2VuIjogMTU4MzU4OTczMiwgInVzZXJfdHlwZSI6IDEsICJzZXNzaW9uIjogImM4NGEwNjQ1LWZhOTctNDY2Ny05YWE0LTk5MDMzYTY0MWJlMCJ9|1216f286047609700d31eef86e62a5000138196f6ee56f35dff87fa0dd575f2f; _xsrf=2|54fd02df|91b3ce16686b6415ace9f63190870a29|1583590102
+Host: wsdx.nwafu.edu.cn
+If-None-Match: W/"57c029816b89180f611715496b45410e1ecaa8a7"
+Referer: http://wsdx.nwafu.edu.cn/user/lesson
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36

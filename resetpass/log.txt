@@ -1,0 +1,15 @@
+正在连接: 116.213.94.34
+Wed Mar 18 20:10:21 2020[sudo] password for zbl: 
+更改用户 hengli 的密码 。
+passwd： 所有的身份验证令牌已经成功更新。
+
+正在连接: 116.213.94.34
+Wed Mar 18 20:10:28 2020[sudo] password for zbl: 
+更改用户 hengli 的密码 。
+passwd： 所有的身份验证令牌已经成功更新。
+
+正在连接: 116.213.94.34
+Wed Mar 18 20:10:29 2020[sudo] password for zbl: 
+更改用户 hengli 的密码 。
+passwd： 所有的身份验证令牌已经成功更新。
+正在连接: 116.213.94.34

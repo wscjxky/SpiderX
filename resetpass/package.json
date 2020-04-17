@@ -1,0 +1,13 @@
+{
+  "name": "bubble",
+  "version": "0.0.1",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^8.1.1",
+    "node-xlsx": "^0.15.0",
+    "ssh2": "^0.8.9"
+  }
+}

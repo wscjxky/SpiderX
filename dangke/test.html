@@ -1,0 +1,913 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>我的课程 - 入党教育培训管理系统</title>
+    <link rel="stylesheet" href="/static/framework/layui/css/layui.css?v=895bff3b9589b57d9c53261a815cc6c4" media="all">
+    <link rel="stylesheet" type="text/css" href="/static/www/css/public.css?v=07c9e77594c3f66a3c0506f4046a02b8"/>
+    <link rel="stylesheet" type="text/css" href="/static/www/iconfont/other/iconfont.css?v=8a2037dc7ce80354969589490d838fbf"/>
+
+    
+    <style>
+        .wrap_basic li {
+            color: #484848;
+            float: left;
+            font-size: 18px;
+            padding: 0 35px;
+            line-height: 50px;
+            margin-top: -1px;
+            margin-left: -1px;
+            cursor: pointer;
+            border-right: 1px solid #dbdbdb;
+        }
+    </style>
+
+</head>
+<body>
+<div class="wrap">
+    
+    <div class="head">
+        <div class="w1150">
+                <a href="/" class="logo"></a>
+
+            <div class="head_right">
+                <ul>
+                            <li><a href="/jjfz" class="head_cut">我要去学习</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="w1150">
+        <div class="wrap_left">
+            <div class="wrap_left_title"><a href="/user/home">个人中心</a></div>
+            <div class="wrap_left_list">
+                <ul>
+                            <li>
+                                    <div class="left_list_h2 list_h2_click ">
+                                        <i class="iconfont">&#xe642;</i><span>账户管理</span><b></b>
+                                    </div>
+                                    <dl class="list_dl">
+                                            <dd>
+                                                <a href="/user/account/info"
+                                                   class="">基本信息</a>
+                                            </dd>
+                                            <dd>
+                                                <a href="/user/account/pwd"
+                                                   class="">修改密码</a>
+                                            </dd>
+                                            <dd>
+                                                <a href="/user/account/avatar"
+                                                   class="">头像修改</a>
+                                            </dd>
+                                    </dl>
+                            </li>
+
+
+
+                            <li>
+                                        <div class="left_list_h2  ">
+                                            <a href="/user/task">
+                                                <i class="iconfont">&#xe664;</i><span>学习任务</span><b></b>
+                                            </a>
+                                        </div>
+
+                            </li>
+
+                            <li>
+                                        <div class="left_list_h2  ">
+                                            <a href="/user/study">
+                                                <i class="iconfont">&#xe6d3;</i><span>学习统计</span><b></b>
+                                            </a>
+                                        </div>
+
+                            </li>
+
+
+                            <li>
+                                        <div class="left_list_h2  ">
+                                            <a href="/user/error_lib">
+                                                <i class="iconfont">&#xe663;</i><span>我的错题库</span><b></b>
+                                            </a>
+                                        </div>
+
+                            </li>
+
+                            <li>
+                                        <div class="left_list_h2  ">
+                                            <a href="/user/archives">
+                                                <i class="iconfont">&#xe60b;</i><span>我的成绩单</span><b></b>
+                                            </a>
+                                        </div>
+
+                            </li>
+
+                            <li>
+
+                            </li>
+
+                            <li>
+                                    <div class="left_list_h2 list_h2_click ">
+                                        <i class="iconfont">&#xe678;</i><span>我的学习圈</span><b></b>
+                                    </div>
+                                    <dl class="list_dl">
+                                            <dd>
+                                                <a href="/user/comment"
+                                                   class="">我的言论</a>
+                                            </dd>
+                                            <dd>
+                                                <a href="/user/message"
+                                                   class="">消息列表</a>
+                                            </dd>
+                                            <dd>
+                                                <a href="/user/follow"
+                                                   class="">我的关注</a>
+                                            </dd>
+                                    </dl>
+                            </li>
+
+                            <li>
+                                        <div class="left_list_h2  ">
+                                            <a href="/user/notice">
+                                                <i class="iconfont">&#xe71a;</i><span>通知消息</span><b></b>
+                                            </a>
+                                        </div>
+
+                            </li>
+
+
+                </ul>
+                <a href="javascript:void(0);" class="head_test user_logout"><i class="iconfont">&#xe635;</i>安全退出</a>
+            </div>
+
+        </div>
+        <div class="wrap_right" style="margin-bottom:55px;">
+            
+    <div class="wrap_right_h2">
+        <span>我的课程</span>
+
+    </div>
+    <div class="basic_div statistics_margin">
+        <div class="basic1">
+            <div style="padding:20px 20px 10px 65px;font-size:16px;">
+                理论学习环节共需要完成 <b style="color:red;">24</b>
+                学时的学习，其中必读课程<b style="color:red">28.7</b>个学时，
+                选读课程<b style="color:red;">0</b>个学时。
+                <br/>目前已选<b style="color:red;">6.7</b>个学时
+            </div>
+            <ul class="statistics_ul">
+                <li class="statistics_title"><span>课程总数</span><span>其中必读</span><span>其中选读</span></li>
+                <li class="statistics_title1">
+                    <span>33</span>
+                    <span>28</span>
+                    <span>5</span>
+                </li>
+                <li class="statistics_title"><span>已获得学时</span><span>已完成必读学时</span><span>已完成选读学时</span></li>
+                <li class="statistics_title1">
+                    <span>8.3</span>
+                    <span>3.6</span>
+                    <span>4.7</span>
+                </li>
+            </ul>
+            <h2 class="statistics_h2" style="margin-bottom:40px;">必读课程</h2>
+            <div style="padding:0 40px;">
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2066&r=video&t=2"
+                           class="plan_a" >读懂马克思主义哲学</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深入学习马克思主义基本原理</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2066&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;float: right; color: green;">已完成</div>
+
+                            <div style="width:100px;float:right">学时：0.2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2067&r=video&t=2"
+                           class="plan_a" >读懂马克思主义政治经济学</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深入学习马克思主义基本原理</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2067&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;float: right; color: green;">已完成</div>
+
+                            <div style="width:100px;float:right">学时：0.2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2068&r=video&t=2"
+                           class="plan_a" >读懂马克思的科学社会主义思想</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深入学习马克思主义基本原理</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2068&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;float: right; color: green;">已完成</div>
+
+                            <div style="width:100px;float:right">学时：0.5</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2064&r=video&t=2"
+                           class="plan_a" >重温经典-学习马克思主义经典著作</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深入学习马克思主义基本原理</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2064&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;float: right; color: green;">已完成</div>
+
+                            <div style="width:100px;float:right">学时：0.7</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2107&r=video&t=2"
+                           class="plan_a" >习近平新时代中国特色社会主义思想和基本方略</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：用习近平新时代中国特色社会主义思想武装头脑</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2107&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：0.7</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2103&r=video&t=2"
+                           class="plan_a" >认真学习和深刻领会五大发展理念</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：用习近平新时代中国特色社会主义思想武装头脑</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2103&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2099&r=video&t=2"
+                           class="plan_a" >信仰的力量——我们为什么要信仰马克思主义</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：坚定理想信念，加强党性修养</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2099&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：1.2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2079&r=video&t=2"
+                           class="plan_a" >作风建设永远在路上</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：党的优良传统与作风</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2079&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2080&r=video&t=2"
+                           class="plan_a" >贯彻八项规定 改进党的作风</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：党的优良传统与作风</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2080&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2175&r=video&t=2"
+                           class="plan_a" >新版《中国共产党纪律处分条例》亮点释义</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：严守党纪党规，增强党的纪律观念</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2175&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：1.2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2163&r=video&t=2"
+                           class="plan_a" >新时代党的建设与反腐败斗争</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深刻学习领会全面从严治党</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2163&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：1</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2161&r=video&t=2"
+                           class="plan_a" >新时代党的建设总要求和八项重点任务</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深刻学习领会全面从严治党</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2161&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：0.7</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2150&r=video&t=2"
+                           class="plan_a" >习近平论全面从严治党系列解读 </a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深刻学习领会全面从严治党</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2150&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：1</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2145&r=video&t=2"
+                           class="plan_a" >坚定理想信念 永远当先锋</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：永葆党员先进性、纯洁性，发挥先锋模范作用</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2145&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;float: right; color: green;">已完成</div>
+
+                            <div style="width:100px;float:right">学时：2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2146&r=video&t=2"
+                           class="plan_a" >讲党性 守规矩 做表率 建设伟大的新时代</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：永葆党员先进性、纯洁性，发挥先锋模范作用</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2146&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2108&r=video&t=2"
+                           class="plan_a" >新思想 发展当代中国马克思主义新境界</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：用习近平新时代中国特色社会主义思想武装头脑</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2108&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：0.2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2062&r=video&t=2"
+                           class="plan_a" >马克思主义中国化的百年流变</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深入学习马克思主义基本原理</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2062&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2049&r=video&t=2"
+                           class="plan_a" >【十九大党章公开课】新时代中国共产党的历史使命</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深刻学习领会新时代中国共产党的历史使命</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2049&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：0.2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2051&r=video&t=2"
+                           class="plan_a" >新时代中国共产党的历史使命及其实现路径</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深刻学习领会新时代中国共产党的历史使命</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2051&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：0.5</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2155&r=video&t=2"
+                           class="plan_a" >坚定不移全面从严治党，不断提高党的执政能力</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深刻学习领会全面从严治党</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2155&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：1.5</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2091&r=video&t=2"
+                           class="plan_a" >北京联合大学精品党课-坚定理想信念 做合格共产党员</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：坚定理想信念，加强党性修养</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2091&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：1.5</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2173&r=video&t=2"
+                           class="plan_a" >中央纪委国家监委法规室主任权威解读新版《中国共产党纪律处分条例》</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：严守党纪党规，增强党的纪律观念</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2173&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：0.7</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2137&r=video&t=2"
+                           class="plan_a" >如何做一名“四讲四有”的合格党员</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：永葆党员先进性、纯洁性，发挥先锋模范作用</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2137&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：0.5</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2087&r=video&t=2"
+                           class="plan_a" >重温经典-学习党的优良作风</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：党的优良传统与作风</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2087&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：0.5</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2162&r=video&t=2"
+                           class="plan_a" >建党新思路：推进全面从严治党向纵深发展</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深刻学习领会全面从严治党</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2162&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：0.5</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2097&r=video&t=2"
+                           class="plan_a" >重温经典-学习党员修养</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：坚定理想信念，加强党性修养</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2097&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：0.2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2057&r=video&t=2"
+                           class="plan_a" >新时代中国共产党的历史使命</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深刻学习领会新时代中国共产党的历史使命</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2057&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：1</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2101&r=video&t=2"
+                           class="plan_a" > 我们不能没有信仰</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：坚定理想信念，加强党性修养</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2101&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：2</div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+            </div>
+            <h2 class="statistics_h2" style="margin-bottom:40px;">选读课程</h2>
+            <div style="padding:0 40px;">
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2061&r=video&t=2"
+                           class="plan_a">活的马克思主义</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深入学习马克思主义基本原理</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2061&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;float: right; color: green;">已完成</div>
+
+                            <div style="width:100px;float:right">学时：1</div>
+                        </div>
+
+                    </div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2147&r=video&t=2"
+                           class="plan_a">牢记宗旨，不忘初心，努力做一名合格的共产党员</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：永葆党员先进性、纯洁性，发挥先锋模范作用</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2147&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;float: right; color: green;">已完成</div>
+
+                            <div style="width:100px;float:right">学时：0.7</div>
+                        </div>
+
+                    </div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2144&r=video&t=2"
+                           class="plan_a">高校大学生党员系列微课——预备党员</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：永葆党员先进性、纯洁性，发挥先锋模范作用</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2144&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;float: right; color: green;">已完成</div>
+
+                            <div style="width:100px;float:right">学时：1</div>
+                        </div>
+
+                    </div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2063&r=video&t=2"
+                           class="plan_a">《共产党宣言》及其当代价值</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：深入学习马克思主义基本原理</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2063&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;float: right; color: green;">已完成</div>
+
+                            <div style="width:100px;float:right">学时：2</div>
+                        </div>
+
+                    </div>
+                    <div class="study_plan2" style="margin:10px 40px;">
+                        <a href="/ybdy/lesson/play?v_id=2133&r=video&t=2"
+                           class="plan_a">保持党的纯洁性，扎实推进党风廉政建设</a>
+
+                        <div class="clear"></div>
+                        <div class="fleft" style="margin-top: 5px;width:780px;color:grey;margin-bottom:10px;line-height: 30px;">
+                            <div style="float:left;">所属：永葆党员先进性、纯洁性，发挥先锋模范作用</div>
+                            <div style="float:right;">
+                                <a href="/ybdy/lesson/play?v_id=2133&r=video&t=2" class="study_a"
+                                   style="line-height:30px;cursor:pointer;"> 学习</a>
+                            </div>
+
+                                <div style="width:100px;color:red;float:right;">未完成</div>
+
+                            <div style="width:100px;float:right">学时：2</div>
+                        </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="foot">
+        技术支持：<a href="http://www.iwingchina.com" style="color:white;margin-right:15px;"
+                target="_blank">北京艾唯博瑞科技有限公司</a> 联系电话：010-84098558<a
+            href="http://dangqipiaopiao.iwingchina.com/help.html" target="_blank"
+            class="foot_help"><i class="iconfont">&#xe6d3;</i>帮助咨询 </a>
+    </div>
+</div>
+<script src="/static/www/js/jquery-1.12.4.min.js?v=4f252523d4af0b478c810c2547a63e19" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/jquery.tooltip.js?v=8c8e4ac2a38e8fabaebbe457f42eeaff"></script>
+<script src="/static/www/js/public.js?v=1024e1899b74c76650e3b5a465c3ca9e" type="text/javascript" charset="utf-8"></script>
+<script src="/static/www/js/user.js?v=414538d4475894dc6597580444134f99" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/verify.js?v=c9aec6b26fb59518483ae01663c7e130" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/static/framework/layui/layui.js?v=b860b310e9b592cd1dbc4fb5d37b09b7"></script>
+<script>
+    function user_logout(btn_num, btn_text, public_text, public_cont_class) {
+        if (btn_num == 1) {
+            var public_a = '<a href="#" class="public_submit">' + btn_text[0] + '</a>';
+        } else {
+            var public_a = '<a href="#" class="public_submit">' + btn_text[0] + '</a> <a href="#" class="public_cancel">' + btn_text[1] + '</a>';
+        }
+        var public_html = '<div class="public_mask"></div><div class="public_cont ' + public_cont_class + '"><div class="public_title"><h3>温馨提示</h3><div class="public_close"></div></div><div class="public_text">' + public_text + '</div><div class="public_btn">' + public_a + '</div></div>';
+        $("body").append(public_html);
+        $(".public_close").click(function () {
+            $(".public_mask").remove();
+            $(".public_cont").remove();
+        });
+        $(".public_mask").click(function () {
+            $(".public_mask").remove();
+            $(".public_cont").remove();
+        });
+        if (btn_num == 1) {
+            $(".public_submit").click(function () {
+                submit_fun();
+            })
+        } else {
+            $(".public_submit").click(function () {
+                window.location.href = "/user/cas_login/logout";
+            });
+            $(".public_cancel").click(function () {
+                $(".public_mask").remove();
+                $(".public_cont").remove();
+            })
+        }
+    }
+
+    $(".user_logout").click(function () {
+        user_logout(2, ['确认', '取消'], "<span style='font-size:20px;'>您确认要退出平台吗？</span>")
+    });
+    if (myBrowser() == "IE6" || myBrowser() == "IE7" || myBrowser() == "IE8") {
+        layui.use("layer", function () {
+            var layer = layui.layer;
+            layer.alert('您的浏览器版本过低，为了更好的体验，请使用Chrome、Firefox、IE9以上浏览器！', {
+                skin: 'layui-layer-molv' //样式类名
+                , closeBtn: 0
+            }, function () {
+                layer.close();
+            });
+        });
+    }
+
+</script>
+<script type="text/javascript">
+    var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+    var browser = navigator.userAgent.toLowerCase();
+    var isMobile = false;
+    for (var i = 0; i < mobileAgent.length; i++) {
+        if (browser.indexOf(mobileAgent[i]) != -1) {
+            isMobile = true;
+            location.href = '/user_wap';  //跳转指定链接
+            break;
+        }
+    }
+
+    var timesRun = 0;
+    var t1 = window.setInterval(function () {
+        if (timesRun > 0) {
+            window.clearInterval(t1);
+        }
+
+        $.ajax({
+            type: "GET", cache: false, dataType: "json", url: "/user/public/refresh",
+            data: {
+                t: 1,
+                _xsrf: $(":input[name='_xsrf']").val()
+            }, success: function (data) {
+                if (data.code == 1) {
+                    timesRun += 1;
+
+                    public_alert2(1, ["退出"], '<i class="iconfont">&#xe633;</i><p>用户登录超时，点击退出重新登录</p><p></p>', 'public_cont1', function () {
+                        window.location.href = "/user/logout";
+                    });
+                } else if (data.code == 2) {
+                    timesRun += 1;
+
+                    public_alert2(1, ["退出"], '<i class="iconfont">&#xe633;</i><p>异地登录，点击退出重新登录后，请及时修改密码</p><p></p>', 'public_cont1', function () {
+                        window.location.href = "/user/logout";
+                    });
+                } else {
+                    return true;
+                }
+            }
+        });
+    }, 30000);
+</script>
+    
+</body>
+</html>
