@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.options import Options
 from YDM import *
 from chaojiying import Chaojiying_Client
 from chaoren import *
-
+import time
 import sys
 
 sys.path.append('./')
@@ -24,18 +24,18 @@ yundama = YDMHttp()
 pd_id = "103797"
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
 app_id = "303997"  # 开发者分成用的账号，在开发者中心可以查询到
-app_key = "o8SL2OUcncoCeYCDuN7PhS/54Ns/wepQ"
+app_key = "UwlgecslQIl8kZojP+Vf7NFCQ72SC/FH"
 pred_type = "40300"
 api = FateadmApi(app_id, app_key, pd_id, pd_key)
 error_503 = 0
 
 
-def get_Session(username,password):
+def get_Session(username, password):
     BCOOKIES = {}
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
-    driver = Chrome(executable_path='chromedriver',
+    driver = Chrome(executable_path='./chromedriver',
                     options=chrome_options)
     url = 'http://jwc.bjtu.edu.cn'
     driver.get(url)
@@ -72,7 +72,7 @@ def get_Session(username,password):
     print('reload' + str(BCOOKIES))
     ssrequest = requests.session()
     requests.utils.add_dict_to_cookiejar(ssrequest.cookies, BCOOKIES)
-    
+
     driver.close()
     driver.quit()
     return ssrequest.cookies
@@ -153,16 +153,20 @@ def make_noise():
         freq = 500  # Hz
         winsound.Beep(freq, duration)
     except:
-        import os
+        # import os
+        #
+        # duration = 1  # second
+        # freq = 500  # Hz
+        # os.system(
+        #     'play --no-show-progress --null --channels 1 synth %s sine %f' % (
+        #         duration, freq))
+        print('noise')
 
-        duration = 1  # second
-        freq = 500  # Hz
-        os.system(
-            'play --no-show-progress --null --channels 1 synth %s sine %f' % (
-                duration, freq))
 
 import random
-def is_free(student_data,proxy='', is_cross=False):
+
+
+def is_free(student_data, proxy='', is_cross=False):
     global error_503
     load_url = "https://dean.bjtu.edu.cn/course_selection/courseselecttask/selects_action/?action=load&"
     if is_cross:
@@ -170,7 +174,8 @@ def is_free(student_data,proxy='', is_cross=False):
     else:
         check_url = load_url + 'iframe=school&page=1&perpage=500'
     # 取第一个cookie
-    res = requests.get(check_url, cookies=student_data[random.randint(0,len(student_data)-1)]['cookies'], headers=get_user_agent(),
+    res = requests.get(check_url, cookies=student_data[random.randint(0, len(student_data) - 1)]['cookies'],
+                       headers=get_user_agent(),
                        proxies={"http": "http://{}".format(proxy)}
                        )
     if res.status_code == 503:
@@ -188,9 +193,9 @@ def is_free(student_data,proxy='', is_cross=False):
             # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
     soup = BeautifulSoup(res.text, 'html.parser')
     # 任选课的table
-    table = soup.find('div', id='container')
+    # table = soup.find('div', id='container')
     # 专业课的table
-    # table = soup.find('div', id='current')
+    table = soup.find('div', id='current')
     if is_cross:
         table = soup.find('table', class_='table')
 
@@ -198,15 +203,16 @@ def is_free(student_data,proxy='', is_cross=False):
         if table:
             class_trs = table.find_all('tr')[1:]
             for tr in class_trs:
-                for index_student,student in enumerate(Student_Data):
+                for index_student, student in enumerate(Student_Data):
                     for index_kecheng, k_code in enumerate(student["kecheng_code"]):
                         if k_code in tr.text:
                             has_free = tr.find('input')
                             try:
                                 is_chosen = tr.find("span", class_="red").text
+
                                 if ("选" in is_chosen):
                                     print(student["name"])
-                                    print( "课程已选上")
+                                    print("课程已选上")
                                     return student
                             except:
                                 pass
@@ -224,10 +230,10 @@ def is_free(student_data,proxy='', is_cross=False):
                                     print("有课余量：")
                                     make_noise()
                                     print(class_name)
-                                    cookies=student["cookies"]
+                                    cookies = student["cookies"]
                                     print(student['name'])
                                     res = requests.get('https://dean.bjtu.edu.cn/captcha/refresh/', cookies=cookies,
-                                                    headers=headers_image)
+                                                       headers=headers_image)
                                     json_data = res.json()
                                     hashkey = json_data['key']
                                     print(json_data)
@@ -237,7 +243,7 @@ def is_free(student_data,proxy='', is_cross=False):
                                     # result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                     #                       img_data=img_data.content, pred_type=pred_type)
                                     result = start_threading(cookies=cookies, class_code=class_code, hashkey=hashkey,
-                                                            img_data=img_data.content)
+                                                             img_data=img_data.content)
                                     if result == 200:
                                         print(student["name"])
                                         return student
@@ -288,7 +294,8 @@ def start_threading(cookies, class_code, hashkey, img_data):
         print(e)
         return 200
 
-Student_Data=[]
+
+Student_Data = []
 # 15281106 wscjxky123 00L094T 01 徐开元,测试
 
 if __name__ == '__main__':
@@ -307,12 +314,12 @@ if __name__ == '__main__':
                 assert len(kecheng_code) == len(xuhao)
                 print(len(kecheng_code), len(xuhao))
                 Student_Data.append({
-                    "cookies":"",
-                    "username":username,
-                    "password":password,
-                    "kecheng_code":kecheng_code,
-                    "xuhao":xuhao,
-                    "name":name,
+                    "cookies": "",
+                    "username": username,
+                    "password": password,
+                    "kecheng_code": kecheng_code,
+                    "xuhao": xuhao,
+                    "name": name,
                 })
     is_cross = False
     error_503 = 0
@@ -326,15 +333,15 @@ if __name__ == '__main__':
     i = 0
     retry_num = 0
     # is_cross = True
-    for index,student in enumerate(Student_Data):  
-        cookies = get_Session(student['username'],student['password'])
-        Student_Data[index]['cookies']=cookies
-    cookies=None
+    for index, student in enumerate(Student_Data):
+        cookies = get_Session(student['username'], student['password'])
+        Student_Data[index]['cookies'] = cookies
+    cookies = None
     while True:
-        time.sleep(0.3)
+        # time.sleep(0.1)
 
         try:
-            chosen_stu=is_free(student_data=Student_Data, is_cross=is_cross)
+            chosen_stu = is_free(student_data=Student_Data, is_cross=is_cross)
             if chosen_stu:
                 print(chosen_stu)
                 print("搶課完成")
@@ -343,8 +350,8 @@ if __name__ == '__main__':
                 # break
             else:
                 if retry_num % 20 == 0:
-                    print( str(time.strftime("%H:%M:%S")
-                                           ) + '  retry_time : ' + str(retry_num))
+                    print(str(time.strftime("%H:%M:%S")
+                              ) + '  retry_time : ' + str(retry_num))
                 i += 1
                 retry_num += 1
                 reset = False

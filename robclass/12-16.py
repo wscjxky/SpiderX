@@ -25,7 +25,7 @@ yundama = YDMHttp()
 pd_id = "103797"
 pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
 app_id = "303997"  # 开发者分成用的账号，在开发者中心可以查询到
-app_key = "o8SL2OUcncoCeYCDuN7PhS/54Ns/wepQ"
+app_key = "UwlgecslQIl8kZojP+Vf7NFCQ72SC/FH"
 pred_type = "40300"
 api = FateadmApi(app_id, app_key, pd_id, pd_key)
 
@@ -35,7 +35,7 @@ def get_Session():
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
-    driver = Chrome(executable_path='chromedriver',
+    driver = Chrome(executable_path='./chromedriver',
                     options=chrome_options)
     url = 'http://jwc.bjtu.edu.cn'
     driver.get(url)
@@ -188,9 +188,9 @@ def is_free(kecheng_code, xuhao, proxy='', is_cross=False):
             # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
     soup = BeautifulSoup(res.text, 'html.parser')
     # 任选课的table
-    table = soup.find('div', id='container')
+    # table = soup.find('div', id='container')
     # 专业课的table
-    # table = soup.find('div', id='current')
+    table = soup.find('div', id='current')
     if is_cross:
         table = soup.find('table', class_='table')
     # with open("a.html", 'w', encoding="utf-8")as f:
