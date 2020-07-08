@@ -297,7 +297,7 @@ def login(url, username, password):
     elem.send_keys(username)
     elem = driver.find_element_by_xpath('//*[@id="id_password"]')
     elem.send_keys(password)
-    elem = driver.find_element_by_xpath('//*[@id="form1"]/div/div/button')
+    elem = driver.find_element_by_xpath('//*[@id="login"]/dl/dd[2]/div/div[3]/button')
     # time.sleep(2)
     elem.click()
 

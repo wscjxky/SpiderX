@@ -30,37 +30,56 @@ pred_type = "40300"
 api = FateadmApi(app_id, app_key, pd_id, pd_key)
 
 
+
 def get_Session():
     BCOOKIES = {}
     chrome_options = Options()
-    chrome_options.add_argument('--headless')
+    # chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
     driver = Chrome(executable_path='./chromedriver.exe',
                     options=chrome_options)
-    url = 'http://jwc.bjtu.edu.cn'
-    driver.get(url)
+
+    # jwc   
+    # url = 'http://jwc.bjtu.edu.cn'
+    # driver.get(url)
+    # driver.maximize_window()
+    # elem = driver.find_element_by_xpath(
+    #     '/html/body/div[3]/table/tbody/tr[1]/td[1]/div/div[1]/span/a[1]')
+    # elem.click()
+    # time.sleep(0.8)
+    # elem = driver.find_element_by_xpath('//*[@id="TextBoxUserName"]')
+    # elem.send_keys(username)
+    # elem = driver.find_element_by_xpath('//*[@id="TextBoxPassword"]')
+    # elem.send_keys(password)
+    # elem = driver.find_element_by_xpath('//*[@id="rbUserCenter"]')
+    # elem.click()
+    # elem = driver.find_element_by_xpath(
+    #     '//*[@id="ButtonLogin"]')
+    # elem.click()
+    # time.sleep(1)
+
+    # elem = driver.find_element_by_xpath(
+    #     '//*[@id="ctl00_ctl00_ctl00_ctl00_placeHolderContent_placeHolderContent_placeHolderMenuBar_navMenu_tvNavMenut0"]')
+    # elem.click()
+
+    
+    # mis
+    driver.get('https://mis.bjtu.edu.cn/')
     driver.maximize_window()
-    elem = driver.find_element_by_xpath(
-        '/html/body/div[3]/table/tbody/tr[1]/td[1]/div/div[1]/span/a[1]')
-    elem.click()
-    time.sleep(0.8)
-    elem = driver.find_element_by_xpath('//*[@id="TextBoxUserName"]')
+    elem = driver.find_element_by_css_selector('#id_loginname')
     elem.send_keys(username)
-    elem = driver.find_element_by_xpath('//*[@id="TextBoxPassword"]')
+    elem = driver.find_element_by_xpath('//*[@id="id_password"]')
     elem.send_keys(password)
-    elem = driver.find_element_by_xpath('//*[@id="rbUserCenter"]')
-    elem.click()
-    elem = driver.find_element_by_xpath(
-        '//*[@id="ButtonLogin"]')
+    elem = driver.find_element_by_xpath('//*[@id="login"]/dl/dd[2]/div/div[3]/button')
     elem.click()
     time.sleep(1)
-
     elem = driver.find_element_by_xpath(
-        '//*[@id="ctl00_ctl00_ctl00_ctl00_placeHolderContent_placeHolderContent_placeHolderMenuBar_navMenu_tvNavMenut0"]')
+        '/html/body/div[2]/div/div[3]/div/dl/dd[1]/div/ul/li[3]/div/div[2]/h3/a')
     elem.click()
     handles = driver.window_handles
     driver.switch_to.window(handles[-1])
-    # time.sleep(10)
+
+    time.sleep(1)
     cookie = driver.get_cookies()
     # time.sleep(1)
     assert len(cookie) == 2
@@ -232,9 +251,9 @@ def is_free(kecheng_code, xuhao, proxy='', is_cross=False):
                                 print(json_data)
                                 img_data = requests.get('https://dean.bjtu.edu.cn' + json_data['image_url'],
                                                         headers=headers)
-
+                                randomNumber = random.randint(0,len(device_list)-1)
                                 # result = post_request(cookies=cookies, class_code=class_code, hashkey=hashkey,
-                                #                       img_data=img_data.content, pred_type=pred_type)
+                                #                       img_data=img_data.content, pred_type=device_list[randomNumber])
                                 result = start_threading(cookies=cookies, class_code=class_code, hashkey=hashkey,
                                                          img_data=img_data.content)
                                 if result == 200:
@@ -263,12 +282,12 @@ def callback(request, result):
         raise Success
     elif result == 500:
         raise Success
-
+device_list = ['pp', 'cjy', 'chaoren']
 
 def start_threading(cookies, class_code, hashkey, img_data):
     global STOP_FLAG
     #  'ydm'
-    device_list = ['pp', 'cjy', 'chaoren']  # 需要处理的设备个数
+      # 需要处理的设备个数
     task_pool = threadpool.ThreadPool(5)  # 5是线程池中线程的个数
     request_list = []  # 存放任务列表
     # 首先构造任务列表
@@ -300,6 +319,7 @@ if __name__ == '__main__':
                 password = data[1]
                 kecheng_code = data[2].split(',')
                 xuhao = data[3].split(',')
+                print(data)
                 name = data[4]
     is_cross = False
     if "跨年级" in name:
