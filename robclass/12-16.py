@@ -23,7 +23,7 @@ chaojiying = Chaojiying_Client(
 yundama = YDMHttp()
 
 pd_id = "103797"
-pd_key = "L5oPz3M0cbHJhiOfzs1gTk4oW9b2yVsB"
+pd_key = "jz3U4Zp2DU7Rmn4ZI9MWKMVRqFR2+M0w"
 app_id = "303997"  # 开发者分成用的账号，在开发者中心可以查询到
 app_key = "UwlgecslQIl8kZojP+Vf7NFCQ72SC/FH"
 pred_type = "40300"

@@ -236,6 +236,7 @@ class FateadmApi():
             param["asign"] = asign
         url = self.host + "/api/capreg"
         rsp = HttpRequest(url, param)
+        print(rsp.pred_rsp.value)
         code = rsp.pred_rsp.value
         if code == '' or len(code) < 3:
             self.Justice(rsp.request_id)
@@ -264,5 +265,4 @@ class FateadmApi():
         rsp = HttpRequest(url, param)
 
         return rsp
-
 

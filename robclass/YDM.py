@@ -56,6 +56,7 @@ class YDMHttp:
         res = requests.post(url, files=files, data=fields)
         return res.text
 
+
 #     # 初始化
 # yundama = YDMHttp()
 #
