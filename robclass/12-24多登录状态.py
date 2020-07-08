@@ -35,7 +35,7 @@ def get_Session(username, password):
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
-    driver = Chrome(executable_path='./chromedriver',
+    driver = Chrome(executable_path='./chromedriver.exe',
                     options=chrome_options)
     url = 'http://jwc.bjtu.edu.cn'
     driver.get(url)
@@ -305,6 +305,7 @@ if __name__ == '__main__':
             if line != '' and "#" not in line:
                 line = line.strip('\n')
                 data = line.split(' ')
+                print(line)
                 username = data[0]
                 password = data[1]
                 kecheng_code = data[2].split(',')

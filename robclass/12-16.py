@@ -18,7 +18,7 @@ chaoren_client = Chaoren()
 chaoren_client.data['username'] = 'wscjxky'  # 修改为打码账号
 chaoren_client.data['password'] = 'wscjxky123'  # 修改为打码密码
 chaojiying = Chaojiying_Client(
-    'wscjxky', 'wscjxky123', '898146')  # 用户中心>>软件ID 生成一个替换 96001
+    'wscjxky', 'wscjxky123', '898146')  # 用户中心f>>软件ID 生成一个替换 96001
 
 yundama = YDMHttp()
 
@@ -35,7 +35,7 @@ def get_Session():
     chrome_options = Options()
     chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
-    driver = Chrome(executable_path='./chromedriver',
+    driver = Chrome(executable_path='./chromedriver.exe',
                     options=chrome_options)
     url = 'http://jwc.bjtu.edu.cn'
     driver.get(url)
@@ -88,14 +88,14 @@ def post_request(cookies, class_code, hashkey, img_data, pred_type="ydm"):
     try:
 
         if pred_type == "ydm":
-            req_id, answer = yundama.decode(img_data, 2003, 20)
+            req_id, answer = yundama.decode(img_data, 2004, 20)
         elif pred_type == "chaoren":
             res = chaoren_client.recv_byte(img_data)
             answer, req_id = res[u'result'], res[u'imgId']
         elif pred_type == "pp":
-            answer, req_id = api.Predict(40300, img_data)
+            answer, req_id = api.Predict(40400, img_data)
         elif pred_type == "cjy":
-            answer, req_id = chaojiying.PostPic(img_data, 2003)
+            answer, req_id = chaojiying.PostPic(img_data, 2004)
         data = {'checkboxs': class_code,
                 # 'is_cross':True,
                 'hashkey': hashkey,
@@ -188,11 +188,11 @@ def is_free(kecheng_code, xuhao, proxy='', is_cross=False):
             # is_free(kecheng_code, xuhao, proxy=proxy, pred_type=pred_type)
     soup = BeautifulSoup(res.text, 'html.parser')
     # 任选课的table
-    # table = soup.find('div', id='container')
+    table = soup.find('div', id='container')
     # 专业课的table
-    table = soup.find('div', id='current')
-    if is_cross:
-        table = soup.find('table', class_='table')
+    # table = soup.find('div', id='current')
+    # if is_cross:
+        # table = soup.find('table', class_='table')
     # with open("a.html", 'w', encoding="utf-8")as f:
     #     f.write(res.text)
     try:
@@ -267,7 +267,8 @@ def callback(request, result):
 
 def start_threading(cookies, class_code, hashkey, img_data):
     global STOP_FLAG
-    device_list = ['pp', 'cjy', 'chaoren', 'ydm']  # 需要处理的设备个数
+    #  'ydm'
+    device_list = ['pp', 'cjy', 'chaoren']  # 需要处理的设备个数
     task_pool = threadpool.ThreadPool(5)  # 5是线程池中线程的个数
     request_list = []  # 存放任务列表
     # 首先构造任务列表
