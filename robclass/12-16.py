@@ -34,48 +34,47 @@ api = FateadmApi(app_id, app_key, pd_id, pd_key)
 def get_Session():
     BCOOKIES = {}
     chrome_options = Options()
-    # chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--headless')
     chrome_options.add_argument('disable-infobars')
     driver = Chrome(executable_path='./chromedriver.exe',
                     options=chrome_options)
-
     # jwc   
-    # url = 'http://jwc.bjtu.edu.cn'
-    # driver.get(url)
-    # driver.maximize_window()
-    # elem = driver.find_element_by_xpath(
-    #     '/html/body/div[3]/table/tbody/tr[1]/td[1]/div/div[1]/span/a[1]')
-    # elem.click()
-    # time.sleep(0.8)
-    # elem = driver.find_element_by_xpath('//*[@id="TextBoxUserName"]')
-    # elem.send_keys(username)
-    # elem = driver.find_element_by_xpath('//*[@id="TextBoxPassword"]')
-    # elem.send_keys(password)
-    # elem = driver.find_element_by_xpath('//*[@id="rbUserCenter"]')
-    # elem.click()
-    # elem = driver.find_element_by_xpath(
-    #     '//*[@id="ButtonLogin"]')
-    # elem.click()
-    # time.sleep(1)
+    if account=='jwc':
+        url = 'http://jwc.bjtu.edu.cn'
+        driver.get(url)
+        driver.maximize_window()
+        elem = driver.find_element_by_xpath(
+            '/html/body/div[3]/table/tbody/tr[1]/td[1]/div/div[1]/span/a[1]')
+        elem.click()
+        time.sleep(0.8)
+        elem = driver.find_element_by_xpath('//*[@id="TextBoxUserName"]')
+        elem.send_keys(username)
+        elem = driver.find_element_by_xpath('//*[@id="TextBoxPassword"]')
+        elem.send_keys(password)
+        elem = driver.find_element_by_xpath('//*[@id="rbUserCenter"]')
+        elem.click()
+        elem = driver.find_element_by_xpath(
+            '//*[@id="ButtonLogin"]')
+        elem.click()
+        time.sleep(1)
 
-    # elem = driver.find_element_by_xpath(
-    #     '//*[@id="ctl00_ctl00_ctl00_ctl00_placeHolderContent_placeHolderContent_placeHolderMenuBar_navMenu_tvNavMenut0"]')
-    # elem.click()
-
-    
+        elem = driver.find_element_by_xpath(
+            '//*[@id="ctl00_ctl00_ctl00_ctl00_placeHolderContent_placeHolderContent_placeHolderMenuBar_navMenu_tvNavMenut0"]')
+        elem.click()
     # mis
-    driver.get('https://mis.bjtu.edu.cn/')
-    driver.maximize_window()
-    elem = driver.find_element_by_css_selector('#id_loginname')
-    elem.send_keys(username)
-    elem = driver.find_element_by_xpath('//*[@id="id_password"]')
-    elem.send_keys(password)
-    elem = driver.find_element_by_xpath('//*[@id="login"]/dl/dd[2]/div/div[3]/button')
-    elem.click()
-    time.sleep(1)
-    elem = driver.find_element_by_xpath(
-        '/html/body/div[2]/div/div[3]/div/dl/dd[1]/div/ul/li[3]/div/div[2]/h3/a')
-    elem.click()
+    else:
+        driver.get('https://mis.bjtu.edu.cn/')
+        driver.maximize_window()
+        elem = driver.find_element_by_css_selector('#id_loginname')
+        elem.send_keys(username)
+        elem = driver.find_element_by_xpath('//*[@id="id_password"]')
+        elem.send_keys(password)
+        elem = driver.find_element_by_xpath('//*[@id="login"]/dl/dd[2]/div/div[3]/button')
+        elem.click()
+        time.sleep(1)
+        elem = driver.find_element_by_xpath(
+            '/html/body/div[2]/div/div[3]/div/dl/dd[1]/div/ul/li[3]/div/div[2]/h3/a')
+        elem.click()
     handles = driver.window_handles
     driver.switch_to.window(handles[-1])
 
@@ -83,9 +82,7 @@ def get_Session():
     cookie = driver.get_cookies()
     # time.sleep(1)
     assert len(cookie) == 2
-    # while len(cookie) <= 1:
-    #     time.sleep(2)
-    #     get_Session()
+
     for i in cookie:  # 添加cookie到CookieJar
         BCOOKIES[i["name"]] = i["value"]
     print('reload' + str(BCOOKIES))
@@ -309,25 +306,21 @@ def start_threading(cookies, class_code, hashkey, img_data):
 
 
 if __name__ == '__main__':
-    with open('rob_data.txt', 'r', encoding='utf8')as f:
-        ls = f.readlines()
-        for line in ls:
-            if line != '' and "#" not in line:
-                line = line.strip('\n')
-                data = line.split(' ')
-                username = data[0]
-                password = data[1]
-                kecheng_code = data[2].split(',')
-                xuhao = data[3].split(',')
-                print(data)
-                name = data[4]
+    import os 
+
+    username =os.sys.argv[1]
+    password = os.sys.argv[2]
+    kecheng_code = os.sys.argv[3].split(',')
+    xuhao =os.sys.argv[4].split(',')
+    name = os.sys.argv[5]
+    account = os.sys.argv[6]
     is_cross = False
     if "跨年级" in name:
         is_cross = True
         print("该用户是跨年级用户")
     assert len(kecheng_code) == len(xuhao)
     print(len(kecheng_code), len(xuhao))
-    print(username, password, kecheng_code, xuhao, name)
+    print(username, password, kecheng_code, xuhao, name,account)
     error_503 = 0
     retry_max = 50000
     reset = False
